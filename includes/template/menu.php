@@ -1,0 +1,39 @@
+<?php
+$pagina="";
+if(isset($_REQUEST['pagina']))
+{
+	$pagina=$_REQUEST['pagina'];
+}
+$page=explode("/",$pagina);
+echo $page[0];
+	if($page[0]!="administracion")
+	{
+		if(isset($_REQUEST['id_cat']))
+		{
+			include("includes/template/menusubcat.php");
+		}
+		else
+		{
+			include("includes/template/menucat.php");
+		}
+	}
+	else
+	{
+		/*if(!isset($_SESSION)){
+			session_start();
+		}*/
+		if($_SESSION['rol']==2)
+		{
+			include("includes/template/menupanelemp.php");
+		}
+		if($_SESSION['rol']==3)
+		{
+			include("includes/template/menupanelmod.php");
+		}
+		
+		if($_SESSION['rol']==4)
+		{
+			include("includes/template/menupaneladm.php");
+		}
+	}
+?>

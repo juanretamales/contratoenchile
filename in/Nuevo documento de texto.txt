@@ -1,0 +1,14 @@
+http://127.0.0.1/in/hola%20empresa
+
+ahora cambiar la url de 
+http://127.0.0.1/detalle/hola%20empresa/hola%20servicio
+
+a
+
+http://127.0.0.1/in/hola%20empresa/hola%20servicio
+
+para seguir en la web del usuario
+
+cambiar el megusta a la pagina in y no al detalle
+
+la pagina index de holaempresa no se crea, ya que al crear un servicio aria mucho lag, pero se carga igual

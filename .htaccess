@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/*(.*)/*(.*)/*(.*)/*$ index.php?pagina=$1&b=$2&c=$3&d=$4	[L]
+ErrorDocument 404 /error/404.php
+</IfModule>
+ErrorDocument 404 /error/404.php
