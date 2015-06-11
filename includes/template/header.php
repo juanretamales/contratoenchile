@@ -1,5 +1,5 @@
 <header id="header">
-			<a href="<?php //echo WEB_BASE;?>#" onclick="actualizarChat()" id="imglogo" title="Pagina de inicio de Contrato en Chile">
+			<a href="<?php echo WEB_BASE;?>#" id="imglogo" title="Pagina de inicio de Contrato en Chile">
 			
 			</a>
 			<form id="frmBuscar"  method="get" action="http://www.google.com/search" >

@@ -366,29 +366,62 @@ h1
 	margin: 0px;
 	color: black;
 }
-#contenido h1
-{
-
-}
 #artComentarios, #artCelular, #artRedes
 {
 	width: calc(100% - 245px);
 	float: left;
-	margin: 10px 0px;
+	margin: 0px 0px 10px 0px;
 	padding: 10px;
 	background: url(../imagenes/bg.png);
 }
 #artComentarios div
 {
 	width: 30%;
-	margin: 10px;
+	margin: 1.66%;
 	float: left;
 }
 #artComentarios div a
 {
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	display: block;
+}
+#artComentarios div label
+{
+	font-size: 20px;
+}
+#imgContrata
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/compra.png);
+}
+#imgProteccion
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/proteccion.png);
+}
+#imgPublica
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/publica.png);
+}
+#imgCelular
+{
+	
+	margin-top: -80px;
+	float: right;
 	width: 200px;
-	height: 100px;
-	background: red;
+	height: 200px;
+	background: url(../imagenes/celular.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+#artCelular label
+{
+	font-size: 40px;
 }
 .servicios
 {
