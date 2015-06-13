@@ -181,9 +181,9 @@
 		//include('includes/template/menu.php');
 		$page=explode("/",$pag);
 		//print_r($page);
-		echo '<nav id="menu1" class="menu-panel celular">';
+		/*echo '<nav id="menu1" class="menu-panel celular">';
 		echo '<ul><li tabindex="1"><span><a href="#" onclick="verMenu()">Ver menu</a></span></li></ul>';
-		echo '</nav>';
+		echo '</nav>';*/
 		if($page[0]=="administracion")
 		{
 			echo '<nav id="menu2" class="menu-panel escritorio">';

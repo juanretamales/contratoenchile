@@ -1,8 +1,8 @@
 /*************************************/
 /* Diseño web Contrato en Chile      */
-/* V2.5                              */
+/* V3.0                              */
 /*************************************/
-/* Ventana por defecto tamaño grande */
+/* Ventana por defecto tamaño pequeño */
 * {
 	padding: 0px;
 	margin: 0px;
@@ -873,17 +873,6 @@ h1
 	body
 	{
 		width: 480px;
-		background: b;
-	}
-	.celular
-	{
-		display: inline;
-		height: auto;
-	}
-	.escritorio
-	{
-		display: none;
-		height: auto;
 	}
 	.item
 	{
@@ -902,6 +891,46 @@ h1
 	.sortable 
 	{
 		width:480px; 
+	}
+	/*menu*/
+	#frmBuscar, #enlaces, #divContratos
+	{
+		display: none;
+	}
+	#menuCelular
+	{
+		float: right;
+		margin-top: -35px;
+		width: 10%;
+		height: 50px;
+		color: black;
+	}
+	#menuCelular ul li span a
+	{
+		color: black;
+	}
+	#header
+	{
+		position: fixed;
+		max-width: 480px;
+		width: 100%;
+	}
+	#header #imglogo
+	{
+		width: 80%;
+		height: 50px;
+	}
+	#contenido
+	{
+		margin-top: 70px;
+		float: left;
+		width: 100%;
+		max-width: 480px;
+	}
+	#contenido div
+	{
+		width: 80%; 
+		margin-left: 10%;
 	}
 }
 @media screen and (max-width: 320px)

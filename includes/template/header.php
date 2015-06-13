@@ -2,10 +2,16 @@
 			<a href="<?php echo WEB_BASE;?>#" id="imglogo" title="Pagina de inicio de Contrato en Chile">
 			
 			</a>
-			<form id="frmBuscar"  method="get" action="http://www.google.com/search" >
-				<input id="buscador" name="q" type="text" placeholder="Buscar servicio...">
-				<input type="hidden" name="sitesearch" value="<?php echo WEB_BASE;?>">
-				<input type="submit" value="Buscar">
+			<nav id="menuCelular" class="">
+				<ul><li tabindex="1"><span><a onclick="verMenu">Menu</a></span></li></ul>
+			</nav>
+			<div>
+				<form id="frmBuscar"  method="get" action="http://www.google.com/search" >
+					<input id="buscador" name="q" type="text" placeholder="Buscar servicio...">
+					<input type="hidden" name="sitesearch" value="<?php echo WEB_BASE;?>">
+					<input type="submit" value="Buscar">
+				</form>
+				<div id="enlaces">
 				<?php
 					if(!isset($_SESSION)){
 						session_start();
@@ -41,7 +47,8 @@
 							
 					}
 				?>
-			</form>
+				<div>
+			</div>
 		</header>
 		<?php
 			if(isset($_SESSION['rol']))
