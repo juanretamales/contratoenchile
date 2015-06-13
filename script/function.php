@@ -181,11 +181,11 @@
 		//include('includes/template/menu.php');
 		$page=explode("/",$pag);
 		//print_r($page);
+		echo '<nav id="menu1" class="menu-panel celular">';
+		echo '<ul><li tabindex="1"><span><a href="#" onclick="verMenu()">Ver menu</a></span></li></ul>';
+		echo '</nav>';
 		if($page[0]=="administracion")
 		{
-			echo '<nav id="menu1" class="menu-panel celular">';
-			echo '<ul><li tabindex="1"><span><a href="#" onclick="verMenu()">Ver menu</a></span></li></ul>';
-			echo '</nav>';
 			echo '<nav id="menu2" class="menu-panel escritorio">';
 			echo '<ul class="item"><li tabindex="1"><span><a href="#" onclick="verMenu()">Volver</a></span></li></ul>';
 			$i=2;
@@ -314,7 +314,7 @@
 			require_once "transaccion.php";
 			$transaccion=new transaccion($arg);
 			$arg=array ();
-			echo '<nav id="menuprincipal"><ul>';
+			echo '<nav id="menu2" class="menuprincipal escritorio">';
 			if(isset($page[0])==true && isset($page[1])==false)
 			{
 				if($page[0]!="servicios")

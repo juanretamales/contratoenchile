@@ -214,17 +214,17 @@ header
 	display: none;
 }
 /* menu */
-#menuprincipal
+.menuprincipal
 {
 	float: left;
 	//font-weight:bold;
 	height:100%;
 }
-#menuprincipal > ul > li 
+.menuprincipal > ul > li 
 {
 	text-align: center;
 }
-#menuprincipal > ul
+.menuprincipal > ul
 {
 	background: #8FC242;
 }
