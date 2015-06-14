@@ -2,51 +2,55 @@
 			<a href="<?php echo WEB_BASE;?>#" id="imglogo" title="Pagina de inicio de Contrato en Chile">
 			
 			</a>
-			<nav id="menuCelular" class="">
-				<ul><li tabindex="1"><a onclick="verMenu">Menu</a></li></ul>
-			</nav>
+			
 			<div>
 				<form id="frmBuscar"  method="get" action="http://www.google.com/search" >
 					<input id="buscador" name="q" type="text" placeholder="Buscar servicio...">
 					<input type="hidden" name="sitesearch" value="<?php echo WEB_BASE;?>">
 					<input type="submit" value="Buscar">
 				</form>
-				<div id="menuSuperior">
-				<?php
-					if(!isset($_SESSION)){
-						session_start();
-					}
-					if(isset($_SESSION['rol']))
-					{
-						if($_SESSION['rol']==0)
-						{
-							echo "<a href='".WEB_BASE."'><img src='".WEB_BASE."imagenes/UI/home.png' title='panel'><label>Inicio</label></a>";
-							echo "<a title='Registrate' href='".WEB_BASE."registrar'> <img src='".WEB_BASE."imagenes/UI/join.png' title='panel'><label>Unete a la comunidad</label></a>";
-							echo "<a title='Identificate' href='".WEB_BASE."identificarse'><img src='".WEB_BASE."imagenes/UI/login.png' title='panel'><label>Identificate</label></a>";	
-						}
-						else
-						{
-							echo "Contrato en Chile te saluda cordialmente, ".$_SESSION['nombre'];
-							
-							echo "<a class='hdsalir'  onclick='desconectarse()'><img src='".WEB_BASE."imagenes/UI/salir.png' width='20px'  title='salir'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."administracion'><img src='".WEB_BASE."imagenes/UI/panel.png' width='20px'  title='panel'></a>";
-							echo "<a class='hdcanasta' onclick='desplegarContratos()'><img src='".WEB_BASE."imagenes/UI/mensaje.png' width='20px'  title='mensajes'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."comparacion'><img src='".WEB_BASE."imagenes/UI/comparacion.png' width='20px'  title='comparacion'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."canasta'><img src='".WEB_BASE."imagenes/UI/canasta.png' width='20px'  title='Canasta'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."canasta'><img src='".WEB_BASE."imagenes/UI/alerta.png' width='20px'  title='Alerta'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."'>Inicio</a>";
-	
-						}
-					}
-					else
-					{
-						echo "<a href='".WEB_BASE."identificarse'>Identificarse</a>";
-						echo "<a href='".WEB_BASE."registrar'>Registrarse</a>";
-						echo "<a class='hdcanasta' href='".WEB_BASE."'>Inicio</a>";
-							
-					}
-				?>
-				</div>
+				<nav id="menuSuperior" class="">
+					<ul id="menuComprimido">
+						<li><a onclick="verMenu"><img src="<?php echo WEB_BASE;?>imagenes/UI/menu.png"><label>Menu</label></a></li>
+					</ul>
+					<ul id="menuDescomprimido" class="oculto">
+						<li><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/home.png"><label>Inicio</label></a></li>
+						<?php
+							if(!isset($_SESSION)){
+								session_start();
+							}
+							if(isset($_SESSION['rol']))
+							{
+								if($_SESSION['rol']==0)
+								{
+						?>
+						<li><a href="<?php echo WEB_BASE;?>registrar"><img src="<?php echo WEB_BASE;?>imagenes/UI/join.png"><label>Unete a la comunidad</label></a></li>
+						<li><a href="<?php echo WEB_BASE;?>identificarse"><img src="<?php echo WEB_BASE;?>imagenes/UI/login.png"><label>Identificate</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros twitts</label></a></li>
+						<?php
+								}
+								else
+								{
+						?>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
+						<li><a href="<?php echo WEB_BASE;?>canasta"><img src="<?php echo WEB_BASE;?>imagenes/UI/canasta.png"><label>Canasta de servicios</label></a></li>
+						<li><a href="<?php echo WEB_BASE;?>comparacion"><img src="<?php echo WEB_BASE;?>imagenes/UI/comparacion.png"><label>Comparacion de servicios</label></a></li>
+						<li><a onclick='desplegarContratos()'><img src="<?php echo WEB_BASE;?>imagenes/UI/mensaje.png"><label>Ver mensajes</label></a></li>
+						<li><a href="<?php echo WEB_BASE;?>administracion"><img src="<?php echo WEB_BASE;?>imagenes/UI/panel.png"><label>Panel de control</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
+						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros Tweets</label></a></li>
+						<li><a onclick='desconectarse()'><img src="<?php echo WEB_BASE;?>imagenes/UI/salir.png"><label>Desconectarse</label></a></li>
+						<?php
+								}
+							}
+						?>
+						<li class="celular"><a onclick="verMenu">Volver</a></li>
+					</ul>
+				</nav>
 			</div>
 		</header>
 		<?php

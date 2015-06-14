@@ -21,9 +21,12 @@ html
 	height: 100%;
 	margin:0px;
 }
-.oculto{
+.oculto
+{
+	visibility: hidden;
 	position: absolute;
-	text-indent: -1000000px;
+  text-indent: -1000000px;
+	margin-left: -10000000px;
 }
 li 
 {
@@ -71,13 +74,37 @@ li
 /* - MENU SUPERIOR */
 #menuSuperior
 {
-	float: right;
+	float: left;
 	padding: 0px;
 	width: 320px;
 	margin: 0px;
+}
+#menuSuperior > ul > li > a
+{
+	width: 100%;
+	display: block;
+	font-size: 20px;
+	color: black;
+	text-decoration: none;
+	position: absolute;
+	top: 10px;
+	left: 280px;
+}
+#menuSuperior > ul > li > a > label
+{
 	display: none;
 }
-#menuSuperior > a
+#menuSuperior > #menuComprimido > li > a
+{
+	width: 100%;
+	display: block;
+	font-size: 20px;
+	border-color: black;
+	color: black;
+	text-decoration: none;
+	padding: 5px 20px;
+}
+#menuSuperior > #menuDescomprimido > li > a
 {
 	width: 100%;
 	display: block;
@@ -91,17 +118,123 @@ li
 	text-decoration: none;
 	padding: 5px 20px;
 }
-#menuSuperior > a:hover
+#menuSuperior > ul > li > a:hover
 {
 	background: rgba(0,0,0,0.5);
 }
-#menuSuperior > a > img
+#menuSuperior > ul > li > a > img
 {
 	width: 20px;
 	float: left;
 	margin-top: 1px;
 }
-/* CHAT */
+/* CHAT CORREGIR!!! */
+#divContratos
+{
+	background: white;
+	position: fixed;
+	float: right;
+	top: 60px;
+	right: 0px;
+	border: 2px solid rgba(143, 194, 66, 0.8);
+	width: 14em;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	height: 40%;
+	z-index: 20;
+}
+#divContratos2
+{
+	//position: fixed;
+	float: right;
+	top: 60px;
+	right: 0px;
+	border: 2px solid rgba(143, 194, 66, 0.8);
+	width: 14em;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	height: 40%;
+}
+
+
+#divContratos div:first-child
+{
+	background: rgba(143, 194, 66, 0.8);
+}
+#divContratos div
+{
+	background: white;
+	padding: 0 10px;
+}
+#divContratos div:nth-child(n+2):hover
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+#divContratos:last-child
+{
+	margin-bottom: 30px;
+}
+#divChat
+{
+	position: fixed;
+	bottom: 0px;
+	right: 200px;
+}
+#divChat > div
+{
+	width: 200px;
+	max-height: 300px;
+	margin: 0 2px;
+	border: 2px solid black;
+	float: left;
+}
+#divChat > div .cabecera
+{
+	background: lightblue;
+	font-size: 16px;
+	text-align: center;
+}
+#divChat > div .cabecera img
+{
+	width: 20px;
+	float: right;
+}
+#divChat > div .historial
+{
+	background: white;
+	padding: 2px;
+}
+#divChat > div .historial .a
+{
+	background: lightblue;
+	text-align: left;
+	margin: 2px 15px 2px 3px;
+	padding: 0 6px;
+	border-radius: 0px 5px 5px 0px;
+	-moz-border-radius: 0px 5px 5px 0px;
+	-webkit-border-radius: 0px 5px 5px 0px;
+	
+}
+#divChat > div .historial .b
+{
+	background: silver;
+	text-align: right;
+	margin: 2px 3px 2px 15px;
+	padding: 0 6px;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+}
+#divChat > div .escribir input
+{
+	width: 100%;
+}
+#divChat .inactivo div:nth-child(n+2)
+{
+	display: none;
+}
 /* MENU */
 #categorias
 {
@@ -151,7 +284,58 @@ li
 	padding: 10px 0px;
 }
 
- 
+ #footer, .foot
+{
+	width: 100%;  
+	background: #CBE86B;
+	height: auto;
+	text-align: center;
+	bottom: 0px;
+	float: left;
+	padding-bottom: 20px;
+}
+.btn {
+    background-color: #282828;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    color: white;
+    float: center;
+    font-size: 0.75em;
+    font-weight: normal;
+    padding: 8px 15px 9px 50px;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #484848;
+}
+.btn-collapse {
+    background: url("../imagenes/ui/collapse.png") no-repeat scroll center -5px rgba(72, 72, 72, 0.5); ;
+    border-radius: 2px;
+    line-height: 30px;
+    width: 50px;
+}
+.btn-collapsed {
+    background: url("../imagenes/ui/collapse.png") no-repeat scroll center -46px rgba(72, 72, 72, 0.5);
+    height: 40px;
+    top: -10px;
+	border-radius: 2px;
+    line-height: 30px;
+    width: 50px;
+}
+.derechos ul
+{
+	margin: 0 auto;
+}
+.derechos ul li
+{
+	width: 33%;
+	float: left;
+}
+#masdetalles div
+{
+	width: 33%;
+	float: left;
+}
 /* Móviles en horizontal o tablets en vertical*/
 @media (min-width: 768px) {
 
