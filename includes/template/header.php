@@ -3,7 +3,7 @@
 			
 			</a>
 			<nav id="menuCelular" class="">
-				<ul><li tabindex="1"><span><a onclick="verMenu">Menu</a></span></li></ul>
+				<ul><li tabindex="1"><a onclick="verMenu">Menu</a></li></ul>
 			</nav>
 			<div>
 				<form id="frmBuscar"  method="get" action="http://www.google.com/search" >
@@ -11,7 +11,7 @@
 					<input type="hidden" name="sitesearch" value="<?php echo WEB_BASE;?>">
 					<input type="submit" value="Buscar">
 				</form>
-				<div id="enlaces">
+				<div id="menuSuperior">
 				<?php
 					if(!isset($_SESSION)){
 						session_start();
@@ -20,10 +20,9 @@
 					{
 						if($_SESSION['rol']==0)
 						{
-							echo "<a title='Identificate' class='hdcanasta' href='".WEB_BASE."identificarse'><img src='".WEB_BASE."imagenes/UI/login.png' width='20px'  title='panel'></a>";
-							echo "<a title='Registrate' class='hdcanasta' href='".WEB_BASE."registrar'>Unete a la comunidad <img src='".WEB_BASE."imagenes/UI/join.png' width='20px'  title='panel'></a>";
-							echo "<a class='hdcanasta' href='".WEB_BASE."'>Inicio</a>";
-							
+							echo "<a href='".WEB_BASE."'><img src='".WEB_BASE."imagenes/UI/home.png' title='panel'><label>Inicio</label></a>";
+							echo "<a title='Registrate' href='".WEB_BASE."registrar'> <img src='".WEB_BASE."imagenes/UI/join.png' title='panel'><label>Unete a la comunidad</label></a>";
+							echo "<a title='Identificate' href='".WEB_BASE."identificarse'><img src='".WEB_BASE."imagenes/UI/login.png' title='panel'><label>Identificate</label></a>";	
 						}
 						else
 						{
@@ -47,7 +46,7 @@
 							
 					}
 				?>
-				<div>
+				</div>
 			</div>
 		</header>
 		<?php

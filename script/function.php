@@ -314,7 +314,7 @@
 			require_once "transaccion.php";
 			$transaccion=new transaccion($arg);
 			$arg=array ();
-			echo '<nav id="menu2" class="menuprincipal escritorio">';
+			echo '<nav id="categorias" class="menuprincipal escritorio">';
 			if(isset($page[0])==true && isset($page[1])==false)
 			{
 				if($page[0]!="servicios")
@@ -323,7 +323,7 @@
 					$categorias=$transaccion->listarCategorias($arg);
 					for($i=0;$i<count($categorias);$i++)
 					{
-						echo '<li><a class="menu" href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
+						echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
 					}
 				}
 				else
