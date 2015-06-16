@@ -1,5 +1,5 @@
 
-<section id="footer" class="foot">
+<section id="footer">
 	<div>
 		<a id="expandir" onclick="desplegarFooter()" class="btn btn-collapsed" href="javascript:void(0);"></a>
 		<h4 id="" onclick="desplegarFooter()" class="">Más información<i class="" data-class=""></i></h4>

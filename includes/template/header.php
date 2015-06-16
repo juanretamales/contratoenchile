@@ -11,7 +11,7 @@
 				</form>
 				<nav id="menuSuperior" class="">
 					<ul id="menuComprimido">
-						<li><a onclick="verMenu"><img src="<?php echo WEB_BASE;?>imagenes/UI/menu.png"><label>Menu</label></a></li>
+						<li><a onclick="verMenu('')"><img src="<?php echo WEB_BASE;?>imagenes/UI/menu.png"><label>Menu</label></a></li>
 					</ul>
 					<ul id="menuDescomprimido" class="oculto">
 						<li><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/home.png"><label>Inicio</label></a></li>
@@ -26,23 +26,23 @@
 						?>
 						<li><a href="<?php echo WEB_BASE;?>registrar"><img src="<?php echo WEB_BASE;?>imagenes/UI/join.png"><label>Unete a la comunidad</label></a></li>
 						<li><a href="<?php echo WEB_BASE;?>identificarse"><img src="<?php echo WEB_BASE;?>imagenes/UI/login.png"><label>Identificate</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros twitts</label></a></li>
+						<li class="celular"><a onclick="verMenu('frmBuscar')"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
+						<li class="celular"><a onclick="verMenu('categorias')"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
+						<li class="celular"><a onclick="verMenu('divTwitter')"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
+						<li class="celular"><a onclick="verMenu('divFacebook')"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros twitts</label></a></li>
 						<?php
 								}
 								else
 								{
 						?>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
+						<li class="celular"><a onclick="verMenu('frmBuscar')"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
+						<li class="celular"><a onclick="verMenu('categorias')"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
 						<li><a href="<?php echo WEB_BASE;?>canasta"><img src="<?php echo WEB_BASE;?>imagenes/UI/canasta.png"><label>Canasta de servicios</label></a></li>
 						<li><a href="<?php echo WEB_BASE;?>comparacion"><img src="<?php echo WEB_BASE;?>imagenes/UI/comparacion.png"><label>Comparacion de servicios</label></a></li>
 						<li><a onclick='desplegarContratos()'><img src="<?php echo WEB_BASE;?>imagenes/UI/mensaje.png"><label>Ver mensajes</label></a></li>
 						<li><a href="<?php echo WEB_BASE;?>administracion"><img src="<?php echo WEB_BASE;?>imagenes/UI/panel.png"><label>Panel de control</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
-						<li class="celular"><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros Tweets</label></a></li>
+						<li class="celular"><a onclick="verMenu('divTwitter')"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
+						<li class="celular"><a onclick="verMenu('divFacebook')"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros twitts</label></a></li>
 						<li><a onclick='desconectarse()'><img src="<?php echo WEB_BASE;?>imagenes/UI/salir.png"><label>Desconectarse</label></a></li>
 						<?php
 								}
@@ -81,7 +81,7 @@
 				?>
 					
 				
-				<div id="divChat" class="min" style="">
+				<div id="divChat" class="min">
 					
 				</div>
 				<?php
