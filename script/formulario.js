@@ -7,6 +7,29 @@ var intervaloTiempo=[5,10];
 var intervaloChat=new Array();
 
 //funciones del diseño
+function verMenu(id)
+{
+	var elem = ["menuDescomprimido", "frmBuscar", "categorias", "divTwitter", "divFacebook", "contenido"];
+	var item="contenido";
+	if(id!="")
+	{
+		if($('#'+id).css('display')=='none')
+		{
+			item=id;
+		}
+	}
+	for(var i=0; i<elem.length;i++)
+	{
+		$('#'+elem[i]).css('display', 'none');
+	}
+	$('#'+item).css('display', "inline");
+	/*for(var i=0; i<elem.length;i++)
+	{
+		$(elem[i]).css('display', '');
+	}
+	$('#'+id).css('display', 'inline');
+	console.log("id:"+id);*/
+}
 function desplegarContratos()
 {
     if ($("#divContratos").hasClass('activo')){
@@ -4965,21 +4988,6 @@ function cambiarMedia()
 function actualizarMedia()
 {
 	$('#txtUrl').val($('#txtUrl1').val()+";"+$('#txtUrl2').val()+";"+$('#txtUrl3').val());
-}
-function verMenu()
-{
-	if($('#menu1').css('display')=='none')
-	{
-		$('#menu1').css('display', 'inline');
-		$('#menu2').css('display', 'none');
-		$('#contenido').css('display', 'inline');
-	}
-	else
-	{
-		$('#menu1').css('display', 'none');
-		$('#menu2').css('display', 'inline');
-		$('#contenido').css('display', 'none');
-	}
 }
 function enviarCorreo()
 {

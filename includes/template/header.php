@@ -11,9 +11,9 @@
 				</form>
 				<nav id="menuSuperior" class="">
 					<ul id="menuComprimido">
-						<li><a onclick="verMenu('')"><img src="<?php echo WEB_BASE;?>imagenes/UI/menu.png"><label>Menu</label></a></li>
+						<li><a onclick="verMenu('menuDescomprimido')"><img src="<?php echo WEB_BASE;?>imagenes/UI/menu.png"><label>Menu</label></a></li>
 					</ul>
-					<ul id="menuDescomprimido" class="oculto">
+					<ul id="menuDescomprimido">
 						<li><a href="<?php echo WEB_BASE;?>"><img src="<?php echo WEB_BASE;?>imagenes/UI/home.png"><label>Inicio</label></a></li>
 						<?php
 							if(!isset($_SESSION)){
@@ -48,7 +48,7 @@
 								}
 							}
 						?>
-						<li class="celular"><a onclick="verMenu">Volver</a></li>
+						<li class="celular"><a onclick="verMenu('')">Volver</a></li>
 					</ul>
 				</nav>
 			</div>
