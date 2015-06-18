@@ -186,8 +186,8 @@
 		echo '</nav>';*/
 		if($page[0]=="administracion")
 		{
-			echo '<nav id="menu2" class="menu-panel escritorio">';
-			echo '<ul class="item"><li tabindex="1"><span><a href="#" onclick="verMenu()">Volver</a></span></li></ul>';
+			echo '<nav id="menuVertical" class="menu-panel escritorio">';
+			//echo '<ul class="item"><li tabindex="1"><span><a href="#" onclick="verMenu()">Volver</a></span></li></ul>';
 			$i=2;
 			
 			echo '<ul>';
@@ -209,7 +209,7 @@
 				{
 					if(count($entidad)<MAX_EMPRESAS)
 					{
-						echo '<li tabindex="'.$i.'"><span><a href="'.WEB_BASE.'administracion/registrar/empresa">Crear Empresa</a></span></li>';
+						echo '<li tabindex="'.$i.'" class="crearEmpresa" ><span><a href="'.WEB_BASE.'administracion/registrar/empresa">Crear Empresa</a></span></li>';
 						$i++;
 					}
 					$empresax='<li>Empresa <select id="ddlEmpresa" onchange="seleccionarEmpresa()">';
@@ -241,7 +241,7 @@
 				}
 				else
 				{
-					echo '<li tabindex="'.$i.'"><span><a href="'.WEB_BASE.'administracion/registrar/empresa">Crear Empresa</a></span></li>';
+					echo '<li tabindex="'.$i.'" class="crearEmpresa"><span><a href="'.WEB_BASE.'administracion/registrar/empresa">Crear Empresa</a></span></li>';
 					$i++;
 				}
 				//*****************Fin de listar las empresas del usuario**************//
@@ -314,7 +314,8 @@
 			require_once "transaccion.php";
 			$transaccion=new transaccion($arg);
 			$arg=array ();
-			echo '<nav id="categorias" class="menuprincipal escritorio">';
+			echo '<nav id="menuVertical" class="menuprincipal escritorio">';
+			echo "<ul>";
 			if(isset($page[0])==true && isset($page[1])==false)
 			{
 				if($page[0]!="servicios")

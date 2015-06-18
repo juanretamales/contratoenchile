@@ -9,7 +9,7 @@ var intervaloChat=new Array();
 //funciones del diseño
 function verMenu(id)
 {
-	var elem = ["menuDescomprimido", "frmBuscar", "categorias", "divTwitter", "divFacebook", "contenido"];
+	var elem = ["menuDescomprimido", "frmBuscar", "categorias", "divTwitter", "divFacebook", "contenido", "divContratos", "menuVertical"];
 	var item="contenido";
 	if(id!="")
 	{
@@ -32,6 +32,7 @@ function verMenu(id)
 }
 function desplegarContratos()
 {
+	verMenu('divContratos');
     if ($("#divContratos").hasClass('activo')){
 		//actualizarChat=setInterval(actualizarChat(), 10000);
         document.getElementById("divContratos").className="inactivo";

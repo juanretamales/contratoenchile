@@ -27,7 +27,7 @@
 						<li><a href="<?php echo WEB_BASE;?>registrar"><img src="<?php echo WEB_BASE;?>imagenes/UI/join.png"><label>Unete a la comunidad</label></a></li>
 						<li><a href="<?php echo WEB_BASE;?>identificarse"><img src="<?php echo WEB_BASE;?>imagenes/UI/login.png"><label>Identificate</label></a></li>
 						<li class="celular"><a onclick="verMenu('frmBuscar')"><img src="<?php echo WEB_BASE;?>imagenes/UI/buscar.png"><label>Buscar Servicios</label></a></li>
-						<li class="celular"><a onclick="verMenu('categorias')"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
+						<li class="celular"><a onclick="verMenu('menuVertical')"><img src="<?php echo WEB_BASE;?>imagenes/UI/navegar.png"><label>Navegar por las categorias</label></a></li>
 						<li class="celular"><a onclick="verMenu('divTwitter')"><img src="<?php echo WEB_BASE;?>imagenes/UI/face.png"><label>Revisar nuestro facebook</label></a></li>
 						<li class="celular"><a onclick="verMenu('divFacebook')"><img src="<?php echo WEB_BASE;?>imagenes/UI/twitter.png"><label>Leer nuestros twitts</label></a></li>
 						<?php

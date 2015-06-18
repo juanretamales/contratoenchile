@@ -90,13 +90,13 @@ li
 }
 #menuSuperior > #menuComprimido > li > a
 {
-	width: 30px;
+	width: 100%;
 	display: block;
 	font-size: 20px;
 	border-color: black;
 	color: black;
 	text-decoration: none;
-	padding: 15px 15px;
+	padding: 15px 20px;
 	position: absolute;
 	top: 0px;
 	left: 260px;
@@ -138,43 +138,25 @@ li
 #divContratos
 {
 	background: white;
-	position: fixed;
 	float: right;
-	top: 60px;
-	right: 0px;
-	border: 2px solid rgba(143, 194, 66, 0.8);
-	width: 14em;
-	border-radius: 5px 0px 0px 5px;
-	-moz-border-radius: 5px 0px 0px 5px;
-	-webkit-border-radius: 5px 0px 0px 5px;
-	height: 40%;
-	z-index: 20;
-}
-#divContratos2
-{
-	//position: fixed;
-	float: right;
-	top: 60px;
-	right: 0px;
-	border: 2px solid rgba(143, 194, 66, 0.8);
-	width: 14em;
-	border-radius: 5px 0px 0px 5px;
-	-moz-border-radius: 5px 0px 0px 5px;
-	-webkit-border-radius: 5px 0px 0px 5px;
-	height: 40%;
-}
-
-
-#divContratos div:first-child
-{
 	background: rgba(143, 194, 66, 0.8);
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	width: 100%;
+	display: none;
 }
-#divContratos div
+#divContratos > div:first-child
+{
+	text-align: center;
+	background: rgba(0, 0, 0, 0.1);
+}
+#divContratos > div
 {
 	background: white;
 	padding: 0 10px;
 }
-#divContratos div:nth-child(n+2):hover
+#divContratos > div:nth-child(n+2):hover
 {
 	background: rgba(0, 0, 0, 0.3);
 }
@@ -242,11 +224,14 @@ li
 	display: none;
 }
 /* MENU */
-#categorias
+/* - CATEGORIAS */
+#menuVertical
 {
-	display: none;
+	//display: none;
+	float: left;
+	width: 100%;
 }
-#categorias > li > a
+#menuVertical li > a
 {
 	border-top-style: solid;
 	border-bottom-style: solid;
@@ -260,60 +245,60 @@ li
 	width: 100%;
 	padding: 10px 0px;
 }
-#categorias > li > a:hover
+#menuVertical li > a:hover
 {
 	background: rgba(0,0,0,0.5);
 }
+/* - Panel de control */
+#menuVertical li > span
+{
+	text-align: center;
+	width: 100%;
+	font-size: 20px;
+}
+#menuVertical > ul > li a, #menuVertical > ul > li span 
+{
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: #585858;
+	border: solid 1px #fff;
+	padding: 4px 0px;
+	position: relative;
+	
+}
+#menuVertical > ul > li > span > a { border: 0px }
+
+#menuVertical > ul > li ul li a
+{
+	background: #848484;
+	font-weight:normal;
+}
+
+#menuVertical  ul > li ul {display: none; }
+
+#menuVertical  ul > li a:link:hover ul {display: none;}
+
+#menuVertical  ul > li a:active:hover ul  {display: block;}
+
+#menuVertical  ul > li:focus ul, 
+#menuVertical  ul > li:active ul, 
+#menuVertical ul > li a:active ul {display: block;}
+
 /* CONTENIDO */
 #contenido
 {
 	float: left;
 	background: rgba(255, 255, 255, 1);
+}
+/* - /(ininio) */
+/* - /administracion(ininio del panel de administracion) */
+canvas
+{
+	float: left;
+	//position: absolute;
 	width: 100%;
 }
-/* - FORMULARIOS */
-#contenido form
-{
-	width: 100%;
-	text-align: center;
-}
-#contenido form > div
-{
-	margin: 0px;
-	padding: 0px;
-}
-#contenido form > div > label
-{
-	font-size: 22px;
-	//display: none;
-}
-#contenido form > div > img
-{
-	width: 100%;
-}
-#contenido form > div > input
-{
-	display: block;
-	float: initial;
-	width: 100%;
-	font-size: 22px;
-	background: rgba(0, 0, 0, 0.2);
-}
-#contenido form > div > input[type="submit"]
-{
-	display: block;
-	padding: 6px 0px;
-	width: 100%;
-}
-#contenido form a
-{
-	font-size: 20px;
-	color: black;
-	text-decoration: none;
-	text-align: center;
-}
-/* - PAGINA /(ininio) */
-
 /* FOOTER */
 #footer
 {
