@@ -1374,11 +1374,11 @@ function modificarEmpresa()
 	return false;
 }
 
-function comprobador(element)
+function comprobador(element, min=0, max=255)
 {
 	if(document.getElementById( 'txt'+element))
 	{
-		if($('#txt'+element).val().length>0 && $('#txt'+element).val().length<255 && document.getElementById( 'txt'+element).value.indexOf("_-_")<0)
+		if($('#txt'+element).val().length>min && $('#txt'+element).val().length<max && document.getElementById( 'txt'+element).value.indexOf("_-_")<0)
 		{
 			if ( document.getElementById( 'img'+element))
 			{
@@ -1956,7 +1956,7 @@ function agregarSubcategoria()
 function agregarServicio()
 {
 	var mensaje="";
-	var elements = ["Nombre", "Categoria", "Subcategoria", "TipoServicio", "Descripcion"];
+	var elements = ["Nombre", "Categoria", "Subcategoria", "TipoServicio"];
 	for (i = 0; i < elements.length; i++)
 	{
 		if(!comprobador(elements[i]))
@@ -1976,6 +1976,13 @@ function agregarServicio()
 		if(!comprobador('Estado'))
 		{
 			mensaje="error con la Estado";
+		}
+	}
+	if ( document.getElementById( 'txtDescripcion'))
+	{
+		if(!comprobador('Descripcion', 0, 1000))
+		{
+			mensaje="error con la Descripcion";
 		}
 	}
 	if(mensaje=="")

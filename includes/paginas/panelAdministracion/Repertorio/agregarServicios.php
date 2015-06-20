@@ -16,7 +16,7 @@ if(isset($_REQUEST['pagina']))
 	<section id="contenido" >
 	<form class="formulario" onsubmit="return agregarServicio()" method="post">
 		<div id="error"></div>
-				<h1 class="titulo2">Añadir nuevo servicio</h1>
+				<h1 class="titulo2">AÃ±adir nuevo servicio</h1>
 				<?php
 					require_once "script/webConfig.php";
 					$page=explode("/",$pagina);
@@ -79,7 +79,7 @@ if(isset($_REQUEST['pagina']))
 				</div>
 				<div>
 					<label>Descripcion</label>
-					<textarea rows="4" cols="22" required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255"></textarea>
+					<textarea rows="4" cols="22" required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="1000"></textarea>
 					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgDescripcion">
 				</div>
 				<div>
@@ -115,7 +115,7 @@ if(isset($_REQUEST['pagina']))
 					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgEstado">
 				</div>
 				<div>
-					<input type="submit" value="Añadir">
+					<input type="submit" value="AÃ±adir">
 				</div>
 				<a href="
 				<?php 

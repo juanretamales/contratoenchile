@@ -14,9 +14,19 @@ function serializeToArray($arreglo)
 		if(strpos($code[$i],"=")>0)
 		{
 			$code2=explode("=", $code[$i]);
-			if(strlen($code2[1])>0 && strlen($code2[1])<255)
+			if($code2[0]=="txtDescripcion")
 			{
-				$variables[$code2[0]]= str_replace("'",'%22', urldecode($code2[1]));
+				if(strlen($code2[1])>0 && strlen($code2[1])<1000)
+				{
+					$variables[$code2[0]]= str_replace("'",'%22', urldecode($code2[1]));
+				}
+			}
+			else
+			{
+				if(strlen($code2[1])>0 && strlen($code2[1])<255)
+				{
+					$variables[$code2[0]]= str_replace("'",'%22', urldecode($code2[1]));
+				}
 			}
 		}
 	}

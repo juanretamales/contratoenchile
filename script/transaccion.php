@@ -3814,6 +3814,7 @@ class transaccion
 		$mysqli=$this->conectar();
 		$resultado = $mysqli->real_query($query);
 		//echo $query;
+		//echo $resultado->error;
 		if(isset($arg['insert_id']))
 		{
 			$resultado=$mysqli->insert_id;

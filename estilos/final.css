@@ -90,7 +90,7 @@ li
 }
 #menuSuperior > #menuComprimido > li > a
 {
-	width: 100%;
+	width: 20px;
 	display: block;
 	font-size: 20px;
 	border-color: black;
@@ -224,12 +224,14 @@ li
 	display: none;
 }
 /* MENU */
-/* - CATEGORIAS */
+/* - MENU VERTICAL (CATEGORIAS y menu de administracion) */
+/* Corregir colores del menu */
 #menuVertical
 {
 	//display: none;
 	float: left;
 	width: 100%;
+	//background: black;
 }
 #menuVertical li > a
 {
@@ -247,7 +249,7 @@ li
 }
 #menuVertical li > a:hover
 {
-	background: rgba(0,0,0,0.5);
+	background: rgba(0, 0, 0, 0.8);
 }
 /* - Panel de control */
 #menuVertical li > span
@@ -261,17 +263,16 @@ li
 	display: block;
 	text-decoration: none;
 	color: #fff;
-	background-color: #585858;
+	background-color: rgba(0, 0, 0, 0.3);
 	border: solid 1px #fff;
 	padding: 4px 0px;
 	position: relative;
-	
 }
 #menuVertical > ul > li > span > a { border: 0px }
 
 #menuVertical > ul > li ul li a
 {
-	background: #848484;
+	background: rgba(0, 0, 0, 0.5);
 	font-weight:normal;
 }
 
@@ -290,14 +291,100 @@ li
 {
 	float: left;
 	background: rgba(255, 255, 255, 1);
+	width: 100%;
 }
 /* - /(ininio) */
+#artComentarios, #artCelular
+{
+	width: 100%;
+	float: left;
+	background: url(../imagenes/bg.png);
+}
+#artComentarios > div
+{
+	width: 100%;
+	text-align: center;
+}
+#artComentarios > div > a
+{
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	display: block;
+	margin-left: calc(50% - 48px);
+	width: 96px;
+	height: 81px;
+}
+#artComentarios > div > label
+{
+	font-size: 20px;
+}
+#artComentarios > div:nth-child(2n - 1)
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+#imgContrata
+{
+	background: url(../imagenes/compra.png);
+}
+#imgProteccion
+{
+	background: url(../imagenes/proteccion.png);
+}
+#imgPublica
+{
+	background: url(../imagenes/publica.png);
+}
+#imgCelular
+{
+	//margin-top: -80px;
+	float: left;
+	margin-left: calc(50% - 100px);
+	width: 200px;
+	height: 230px;
+	background: url(../imagenes/celular.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+#artCelular > label
+{
+	font-size: 40px;
+}
+#artCelular > p
+{
+	//margin-top: 50px;
+}
+#artRedes
+{
+	display: none;
+}
 /* - /administracion(ininio del panel de administracion) */
 canvas
 {
 	float: left;
 	//position: absolute;
 	width: 100%;
+}
+/* - FORMULARIOS */
+#contenido form
+{
+	width: 100%;
+}
+#contenido form > div
+{
+	width: 100%;
+	text-align: center;
+}
+#contenido form > div > label
+{
+	width: 100%;
+}
+#contenido form > div > input, #contenido form > div > select, #contenido form > div > textarea
+{
+	width: 100%;
+}
+#contenido form > div > img
+{
+	display: none;
 }
 /* FOOTER */
 #footer
