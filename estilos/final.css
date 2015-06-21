@@ -228,7 +228,7 @@ li
 /* Corregir colores del menu */
 #menuVertical
 {
-	//display: none;
+	display: none;
 	float: left;
 	width: 100%;
 	//background: black;
@@ -485,7 +485,7 @@ canvas
 /* Escritorios muy anchos */
 @media (min-width: 1200px) 
 { 
-
+	
 }
 .visible
 {

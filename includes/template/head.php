@@ -53,6 +53,10 @@
 
 <LINK href="<?php echo WEB_BASE; ?>estilos/final.css" rel="stylesheet" type="text/css">
 
+<LINK href="<?php echo WEB_BASE; ?>estilos/768px.css" rel="stylesheet" type="text/css">
+<LINK href="<?php echo WEB_BASE; ?>estilos/1024px.css" rel="stylesheet" type="text/css">
+<LINK href="<?php echo WEB_BASE; ?>estilos/1200px.css" rel="stylesheet" type="text/css">
+
 <script src="<?php echo WEB_BASE; ?>script/jquery-1.11.0.min.js"></script>
 <script src="<?php echo WEB_BASE; ?>script/holder.js"></script>
 <!--<script src="<?php echo WEB_BASE; ?>script/sortable.js"></script>-->
