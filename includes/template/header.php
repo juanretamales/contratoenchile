@@ -1,6 +1,6 @@
-<header id="header">
+<section id="header">
 			<a href="<?php echo WEB_BASE;?>#" id="imglogo" title="Pagina de inicio de Contrato en Chile">
-			
+				<img src="<?php echo WEB_BASE;?>imagenes/1x1.png">
 			</a>
 			
 			<div>
@@ -52,7 +52,7 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
+		</section>
 		<?php
 			if(isset($_SESSION['rol']))
 			{

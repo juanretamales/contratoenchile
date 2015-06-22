@@ -35,6 +35,10 @@ li
 	list-style:none;
 }
 /* HEADER */
+#header
+{
+	background: #CBE86B;
+}
 /* - LOGO */
 #imglogo
 {
@@ -232,6 +236,7 @@ li
 	float: left;
 	width: 100%;
 	//background: black;
+	text-align: center;
 }
 #menuVertical li > a
 {
@@ -250,6 +255,7 @@ li
 #menuVertical li > a:hover
 {
 	background: rgba(0, 0, 0, 0.8);
+	color: white;
 }
 /* - Panel de control */
 #menuVertical li > span
@@ -385,6 +391,18 @@ canvas
 #contenido form > div > img
 {
 	display: none;
+}
+/* - SERVICIOS (LISTA) */
+.servicios
+{
+	width: 320px;
+}
+.servicios .comparar, .servicios .canasta, .servicios .tipo
+{
+	width: 320px;
+	float: initial;
+	display: block;
+	background: white;
 }
 /* FOOTER */
 #footer
