@@ -38,13 +38,9 @@
 				}
 				for($i=0;$i<count($servicios) && $i<5;$i++)
 				{
-					$arg=array(
-					'id_serv'=>$servicios [$i] ['id_serv'],
-					'id_tm'=>3
-					);
-					$imagenes=listarMedia($arg);
 			?>
-					<a href="<?php echo WEB_BASE.'detalle/'.$servicios [0] ['nom_ent'].'/'.$servicios [$i] ['nom_serv']; ?>">					<article class="servicios">										<?php						if(count($imagenes)==0)						{					?>						<img width="120" height="95" src="<?php echo WEB_BASE; ?>script/holder.js/120x95">					<?php						}						else						{					?>						<img width="120" height="95" src="<?php echo $imagenes [$i] ['url_med']; ?>">					<?php						}					?>						<label class="titulo"><?php echo $servicios [$i] ['nom_serv'] . ' de ' . $servicios [$i] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo substr($servicios [$i] ['desc_serv'], 0, 250); ?></p>						<p class="tipo">							<a><?php echo $servicios [$i] ['nom_scat']; ?></a>							<a><?php echo $servicios [$i] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [$i] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [$i] ['id_serv']; ?>)" class="comparar">Agregar a comparacion</a>						<?php								} 							}						?>					</article>				</a>
+					<a href="<?php echo WEB_BASE.'detalle/'.$servicios [0] ['nom_ent'].'/'.$servicios [$i] ['nom_serv']; ?>">					<article class="servicios">										<?php						if($servicios [$i] ['desc_img']=="")						{					?>							<img  style="background: url(<?php echo WEB_BASE; ?>script/holder.js/120x95);" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">					<?php						}						else						{					?>	
+						<img  style="background: url(<?php echo $servicios [$i] ['desc_img']; ?>); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">					<?php						}					?>						<label class="titulo"><?php echo $servicios [$i] ['nom_serv'] . ' de ' . $servicios [$i] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo substr($servicios [$i] ['desc_serv'], 0, 250); ?></p>						<p class="tipo">							<a><?php echo $servicios [$i] ['nom_scat']; ?></a>							<a><?php echo $servicios [$i] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [$i] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [$i] ['id_serv']; ?>)" class="comparar">Agregar a comparacion</a>						<?php								} 							}						?>					</article>				</a>
 			<?php } ?>
 			</section>
 		<?php cc_footer(); ?>

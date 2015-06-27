@@ -17,7 +17,7 @@
 	for($i=0;$i<10;$i++)
 	{
 		$color = rand(48,96);
-		imageline($captcha, rand(0,130),rand(0,35), rand(0,130), rand(0,35),imagecolorallocate($captcha, $color, $color, $color));
+		//imageline($captcha, rand(0,130),rand(0,35), rand(0,130), rand(0,35),imagecolorallocate($captcha, $color, $color, $color));
 	}
 	$texto = substr(md5(rand()*time()),0,5);
 	$texto = strtoupper($texto);

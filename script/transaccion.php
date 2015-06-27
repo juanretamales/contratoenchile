@@ -1363,6 +1363,7 @@ class transaccion
 		}
 		$query = $query. " order by `id_med`";
 		$listar= array();
+		//echo $query;
 		$mysqli=$this->conectar();
 		$mysqli->real_query($query);
 		$resultado = $mysqli->use_result();
@@ -3096,27 +3097,30 @@ class transaccion
 		require_once('db.php');
 		$db=new db();
 		$query="SELECT
-					s.id_serv,
-					s.nom_serv,
-					ent.nom_ent,
-					ts.nom_ts,
-					c.nom_cat,
-					sc.nom_scat,
-					est.nom_est,
-					s.desc_serv
-				FROM
-					servicio s,
-					tiposervicio ts,
-					categoria c,
-					subcategoria sc,
-					entidad ent,
-					estado est
-				WHERE
-					s.id_ent=ent.id_ent and
-					s.id_est=est.id_est and
-					s.id_ts=ts.id_ts and
-					s.id_scat=sc.id_scat and
-					sc.id_cat=c.id_cat";
+			s.id_serv,
+			s.nom_serv,
+			ent.nom_ent,
+			ts.nom_ts,
+			c.nom_cat,
+			sc.nom_scat,
+			est.nom_est,
+			s.desc_serv,
+			m.`url_med`
+		FROM
+			servicio s,
+			tiposervicio ts,
+			categoria c,
+			subcategoria sc,
+			entidad ent,
+			estado est,
+			media m
+		WHERE
+			s.id_ent=ent.id_ent AND
+			s.id_est=est.id_est AND
+			s.id_ts=ts.id_ts AND
+			s.id_scat=sc.id_scat AND
+			sc.id_cat=c.id_cat AND
+			m.`id_med`=s.`desc_img`";
 		
 		if(isset($arg['id_ent']))
 		{
@@ -3190,7 +3194,8 @@ class transaccion
 				'nom_cat'=>$fila['nom_cat'], 
 				'nom_scat'=>$fila['nom_scat'], 
 				'nom_est'=>$fila['nom_est'], 
-				'desc_serv'=>$fila['desc_serv']
+				'desc_serv'=>$fila['desc_serv'],
+				'desc_img'=>$fila['url_med']
 			);
 		}
 		$mysqli->close();

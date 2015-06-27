@@ -252,6 +252,10 @@ li
 	width: 100%;
 	padding: 10px 0px;
 }
+#menuVertical .seleccionado
+{
+	background: yellow;
+}
 #menuVertical li > a:hover
 {
 	background: rgba(0, 0, 0, 0.8);
@@ -395,14 +399,95 @@ canvas
 /* - SERVICIOS (LISTA) */
 .servicios
 {
-	width: 320px;
+	margin: 2px 0px 0 0;
+	min-height: 95px;
+	width: 100%;
+	//background: #ffff99;
+	float: left;
+	//position: relative;
+	text-align: center;
 }
-.servicios .comparar, .servicios .canasta, .servicios .tipo
+.servicios > .titulo
 {
-	width: 320px;
-	float: initial;
+	font-weight:bold;
+}
+.servicios label
+{
+	color: black;
+	margin: 0 10px;
+	font-size: 20px;
+}
+.servicios p
+{
+	color: black;
+	font-weight:lighter;
+}
+.servicios:hover
+{
+	//background: #e8e96f;
+}
+.servicios .descripcion
+{
+	border: 1px solid black;
+	width: calc(100% - 2px);
+}
+.servicios .descripcion:hover
+{
+	height: auto;
+	min-height: 40px;
+}
+.servicios > a > img
+{
+	height: 200px;
+	width: 80%;
+	margin-left: 10%;
+	float: left;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.servicios .tipo
+{
+	margin: 0px;
+	color: black;
+	display:inline-block;
+	cursor:pointer;
+	font-family:arial;
+	font-size:15px;
+	text-decoration:none;
+	text-align: center;
+	width: 100%;
+}
+.servicios .tipo a
+{
 	display: block;
 	background: white;
+	color: silver;
+}
+.servicios .tipo a:hover
+{
+	background: gray;
+}
+.servicios > .reputacion, .servicios > .reputacion label
+{
+	font-size: 12px;
+}
+.servicios .reputacion label
+{
+	float: right;
+	text-align: center;
+}
+.servicios > .reputacion li
+{
+	padding: 5px;
+}
+.servicios > .reputacion > .calNo_calificable
+{
+	display: none;
+}
+.servicios > .reputacion li:nth-child(2n)
+{
+	background: silver;
 }
 /* FOOTER */
 #footer
