@@ -33,12 +33,9 @@ if(isset($_REQUEST['pagina']))
 						}
 					}
 				?>
-		<div class="instrucciones">
-			<label>Agregar un servicio</label>
-			<p class="instrucciones">Primero seleccione una categoria</p>
-		</div>
+		<h1>Agregar un servicio</h1>
+		<p class="instrucciones">Primero seleccione una categoria</p>
 		<div class="formulario">
-			
 			<div>
 				<label>Categoria</label>
 				<select onchange="listarSubcategoria()" required x-moz-errormessage="Debe seleccionar un Tipo" id="txtCategoria" name="txtCategoria" required>
@@ -55,9 +52,11 @@ if(isset($_REQUEST['pagina']))
 				</select>
 			</div>
 		</div>
+		<p class="instrucciones">Previzualizacion del servicio</p>
 		<article class="servicios">
-			<img width="120" height="95" id="imagenDescripcion" onclick="cambiarImagen()" src="<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar imagen">
+			<img  style="background: url('<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar_imagen'); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
 			<input type="hidden" id="txtimagenDescripcion" name="txtimagenDescripcion" value="<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar imagen">
+			
 			<label class="titulo"><input required x-moz-errormessage="Debe ingresar el nombre del servicio" type="text" id="txtNombre" name="txtNombre" required maxlength="255"> de <?php echo $_SESSION['empresa'];?></label>
 			<p class="descripcion">Esta seccion se llenara con el bloque de abajo</p>
 			<p class="tipo">
@@ -77,8 +76,11 @@ if(isset($_REQUEST['pagina']))
 				<?php } ?>
 					</select></a>
 				<a onclick="" class="canasta">Agregar a Canasta</a>
-				<a onclick="" class="comparar">Agregar a comparacion</a>
-			</p>
+				<a onclick="" class="comparar">Agregar a Comparacion</a>
+			
+			
+			
+			
 		</article>
 		<article class="servicios">
 		<textarea rows="4" cols="22" spellcheck="false" wrap="off" autofocus placeholder="Describe tu servicio..." required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255">

@@ -45,7 +45,7 @@
 				{
 					
 			?>
-					<article class="servicios">						<label class="titulo"><?php echo $servicios [0] ['nom_serv'] . ' de ' . $servicios [0] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo $servicios [0] ['desc_serv']; ?></p>						<p class="tipo">							<a><?php echo $servicios [0] ['nom_scat']; ?></a>							<a><?php echo $servicios [0] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [0] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [0] ['id_serv']; ?>)" class="comparar">Agregar a comparacion</a>						<?php								} 							}						?>					</article>
+					<article class="servicios">						<label class="titulo"><?php echo $servicios [0] ['nom_serv'] . ' de ' . $servicios [0] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo $servicios [0] ['desc_serv']; ?></p>						<p class="tipo">							<a><?php echo $servicios [0] ['nom_scat']; ?></a>							<a><?php echo $servicios [0] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [0] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [0] ['id_serv']; ?>)" class="comparar">Agregar a Comparacion</a>						<?php								} 							}						?>					</article>
 					<div class="fb-like" data-href="<?php echo WEB_BASE.$_REQUEST['pagina'];?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 					
 						

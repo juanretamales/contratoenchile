@@ -1,5 +1,5 @@
-<section id="contenido" style="margin: 10px 0px 0px 250px;">Bienvenido operador, este es el panel de administracion.</section>
-<br><br>
+<section id="contenido">Bienvenido operador, este es el panel de administracion.
+
 <table class="">
 	<tr>
 		<td align="center">Resumen Contratos 2014</td>
@@ -42,4 +42,4 @@
 
 
 
-	</script>
+	</script></section>

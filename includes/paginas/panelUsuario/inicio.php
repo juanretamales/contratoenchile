@@ -1,80 +1,73 @@
 <html lang="es" dir="LTR" >
 <head>
 	<?php cc_head(); ?>
-	
 </head>
 <body>
 <?php cc_header(); ?>
-		<section>
-			<?php 
-			$pagina="";
-if(isset($_REQUEST['pagina']))
-{
-	$pagina=$_REQUEST['pagina'];
-}
-			cc_menu($pagina); ?>
-<section id="contenido" >Bienvenido operador, este es el panel de administracion.<br>
-<br>
+
+<?php 
+	$pagina="";
+	if(isset($_REQUEST['pagina']))
+	{
+		$pagina=$_REQUEST['pagina'];
+	}
+	cc_menu($pagina); 
+?>
+<section id="contenido" >
+Bienvenido operador, este es el panel de administracion.
 <?php
 if(isset($_SESSION['empresa']))
 {
 	$arg=array('id_ent'=>$_SESSION['empresa']);
 	$empresa=listarEntidad($arg);
 ?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=259290437609367&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<a class="boton" style="width: 300px; float: none; margin-top: 20px; margin-left: 0px;" href="<?php echo WEB_BASE.'in/'.$empresa [0] ['nom_ent'] ?>">Ir a la pagina de la empresa <?php echo $empresa [0] ['nom_ent'] ?></a><br>
-<div class="fb-like" data-href="<?php echo WEB_BASE.'in/'.$empresa [0] ['nom_ent'] ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=259290437609367&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<a class="boton" href="<?php echo WEB_BASE.'in/'.$empresa [0] ['nom_ent'] ?>">Ir a la pagina de la empresa <?php echo $empresa [0] ['nom_ent'] ?></a><br>
+	<div class="fb-like" data-href="<?php echo WEB_BASE.'in/'.$empresa [0] ['nom_ent'] ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 <?php
 }
 ?>
-</section>
 <div class="divActividades">
 	<div class="actHead">
 		<div>Resumenes de actividades</div>
-		<div>conf</div>
-		<div>act</div>
 	</div>
 	<div class="actBody">
 		<div>
 			<a>visitantes online</a>
 			<span>48</span>
-			<p>En los ultimos 30 minutos</p>
+			<p>En las ultimos 24 horas</p>
 		</div>
 		<div>
 			<a>Contratos activos</a>
 			<span>5</span>
-			<p>Por completar</p>
+			<p>Por finalizar</p>
 		</div>
 		<div>
 			<a>Contratos Completados</a>
 			<span>5</span>
-			<p>completados satisfactoriamente</p>
+			<p>Completados satisfactoriamente</p>
 		</div>
 		<div>
 			<a>Contratos Cancelados</a>
 			<span>5</span>
-			<p>Analizalos para tu negocio</p>
+			<p>Analizalos para mejorar negocio</p>
 		</div>
 	</div>
 </div>
 <div class="divPrincipal">
 	<div class="actHead">
 		<div>Contratos mensuales</div>
-		<div>conf</div>
-		<div>act</div>
 	</div>
 	<div class="actBody">
-		<div class="grafico" style="width:30%">
-			<div>
-				<canvas id="canvas" height="450" width="600"></canvas>
-			</div>
+		<div class="grafico">
+				<canvas id="canvas"></canvas>
 		</div>
 
 
