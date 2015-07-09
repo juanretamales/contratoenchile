@@ -303,19 +303,11 @@ li
 	background: rgba(255, 255, 255, 1);
 	width: 100%;
 }
-.boton
+.titulo
 {
-	background: #c6d5e1;
-	padding: 8px 26px 8px 20px;
-	margin: 0px 4px 0px 4px;
-	font-size: 1.1rem;
-	color: black;
-	float: left;
-	text-decoration: none;
-}
-.boton:hover
-{
-	background: #ecf2f6;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
 }
 /* - /(ininio) */
 #artComentarios, #artCelular
@@ -382,11 +374,6 @@ li
 	display: none;
 }
 /* - /administracion(ininio del panel de administracion) */
-#contenido > h1
-{
-	width: 100%;
-	text-align: center;
-}
 .actHead
 {
 	width: calc(100% - 2px);
@@ -550,7 +537,6 @@ canvas
 	background: silver;
 }
 /* - /Tabla (de la administracion) */
-
 .sortable 
 {
 	width: calc(100% - 2px); 

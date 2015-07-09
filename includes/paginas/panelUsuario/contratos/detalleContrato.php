@@ -1,6 +1,6 @@
 <html lang="es" dir="LTR" >
 <head>
-	<?php cc_head(); ?>
+	<?php cc_head(); ?>
 </head>
 <body>
 	<?php cc_header(); ?>
@@ -80,7 +80,7 @@ if(isset($_REQUEST['pagina']))
 				<?php
 					for($i=0;$i<count($servcon);$i++)
 					{
-						$arg=array ('id_sev'=>$contratos [$i] ['id_serv']);
+						$arg=array ('id_sev'=>$servcon [$i] ['id_serv']);
 						$servicio=listarServicio($arg);
 				?>
 				<tr>

@@ -54,7 +54,7 @@ function abrirChat(id,nombre)
 	//revisar localstorage y cargar chat si lo tiene
 	if (!document.getElementById('divMensajes'+id))
 	{
-		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div class="historial" id="historial'+id+'"></div><div class="escribir"><input type="text"></div></div>';
+		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div class="historial" id="historial'+id+'"></div><div class="escribir"><form onsubmit="return enviarMensaje(this)" method="post"><input id="txtCode" name="txtCode" type="hidden" required value="'+id+'"><input type="text" name="txtMensaje"></form></div></div>';
 		document.getElementById("historial"+id).innerHTML = "Cargando...";
 		/*if (typeof(Storage) != "undefined") 
 		{
@@ -117,6 +117,37 @@ function abrirChat(id,nombre)
         });
 	}
 }
+function enviarMensaje(form)
+{
+	var mensaje="";
+	if(form.txtCode.value!="" && form.txtMensaje.value!="" && form.txtMensaje.value.length<255)
+	{
+		$.ajax({
+                data:  
+					{
+						"agregarMensaje" : "txtCode="+form.txtCode.value+"&txtMensaje="+form.txtMensaje.value
+					},
+                url:   urlbase+'script/ajax.php',
+                type:  'post',
+                success:  function (response) {
+					if(response=="")
+					{
+						actualizarChat();
+						this.txtMensaje.value="";
+					}
+					else
+					{
+						//mostrar mensaje "no se pudo enviar el mensaje"
+					}
+                }
+        });
+	}
+	else
+	{
+		$('#error').html("Revise el formulario, "+mensaje);
+	}
+	return false;
+}
 function actualizarChat()
 {
 	console.log("Actualizando Chat:");
@@ -158,7 +189,7 @@ function escribirChat(id)
 	//revisar localstorage y cargar chat si lo tiene
 	if (!document.getElementById('divMensajes'+id))
 	{
-		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div id="historial'+id+'"></div><div class="escribir"><input type="text"></div></div>';
+		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div id="historial'+id+'"></div><div class="escribir"><input type="text">asd</div></div>';
 		document.getElementById("historial"+id).innerHTML = "Cargando...";
 		/*if (typeof(Storage) != "undefined") 
 		{
@@ -4012,6 +4043,7 @@ function agregarMensaje()
 	}
 	return false;
 }
+
 function modificarMensaje()
 {
 	var mensaje="";

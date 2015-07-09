@@ -77,9 +77,8 @@
 						echo "<div onclick='abrirChat(".$contratos[$i]['id_con'].", \" $nombre \")'>".$contratos[$i]['nom_ent'].'</div>';
 					}
 				}
-				echo '</div>'
 				?>
-					
+				<a  class="celular" onclick="verMenu('')">Volver</a></div>
 				
 				<div id="divChat" class="min">
 					

@@ -1,6 +1,12 @@
 <html lang="es" dir="LTR" >
 <head>
 	<?php cc_head(); ?>
+	<style>
+		.sortable tr td:nth-of-type(1):before { content: "Nombre: "; }
+		.sortable tr td:nth-of-type(2):before { content: "ver: "; }
+		.sortable tr td:nth-of-type(3):before { content: "Modificar: "; }
+		.sortable tr td:nth-of-type(4):before { content: "Borrar: "; }
+	</style>
 </head>
 <body>
 	<?php cc_header(); ?>
@@ -66,6 +72,7 @@ if(isset($_REQUEST['pagina']))
 				</tr>
 				<?php } ?>
 			</table>
+			
 		</section>
 
 	<?php  cc_footer(); ?>

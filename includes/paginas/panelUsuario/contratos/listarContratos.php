@@ -1,8 +1,8 @@
-<html lang="es" dir="LTR" >
-<head>
-	<?php cc_head(); ?>
+<html lang="es" dir="LTR" >
+<head>
+	<?php cc_head(); ?>	<style>		.sortable tr td:nth-of-type(1):before { content: "Fecha: "; }		.sortable tr td:nth-of-type(2):before { content: "Empresa: "; }		.sortable tr td:nth-of-type(3):before { content: "Acciones: "; }		@media (min-width: 1200px)		{			.sortable tr td:nth-of-type(n):before { content: ""; }		}	</style>
 </head>
-<body>
+<body>
 	<?php cc_header(); ?>
 	<section>
 		<?php 
