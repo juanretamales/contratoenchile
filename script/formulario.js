@@ -7,6 +7,9 @@ var intervaloTiempo=[5,10];
 var intervaloChat=new Array();
 
 //funciones del diseño
+$(window).resize(function() {
+   verMenu("reestablecer");
+});
 function verMenu(id)
 {
 	var elem = ["menuDescomprimido", "frmBuscar", "categorias", "divTwitter", "divFacebook", "contenido", "divContratos", "menuVertical"];
@@ -23,6 +26,13 @@ function verMenu(id)
 		$('#'+elem[i]).css('display', 'none');
 	}
 	$('#'+item).css('display', "inline");
+	if(id=="reestablecer")
+	{
+		for(var i=0; i<elem.length;i++)
+		{
+			$('#'+elem[i]).css('display', '');
+		}
+	}
 	/*for(var i=0; i<elem.length;i++)
 	{
 		$(elem[i]).css('display', '');
