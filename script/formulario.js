@@ -42,14 +42,17 @@ function verMenu(id)
 }
 function desplegarContratos()
 {
-	verMenu('divContratos');
-    if ($("#divContratos").hasClass('activo')){
+	if(document.width<700)
+	{
+		verMenu('divContratos');
+	}
+    if ($("#divContratos").hasClass('oculto')){
 		//actualizarChat=setInterval(actualizarChat(), 10000);
-        document.getElementById("divContratos").className="inactivo";
-		//console.log("header era: activo");
+        document.getElementById("divContratos").className="";
+		console.log("contratos: no oculto");
     }else{
-        document.getElementById("divContratos").className="activo";
-		//console.log("header era: inactivo");
+        document.getElementById("divContratos").className="oculto";
+		console.log("contratos: oculto");
     }
 }
 function abrirChat(id,nombre)
