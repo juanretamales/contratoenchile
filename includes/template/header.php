@@ -79,7 +79,7 @@
 				}
 				?>
 				<a  class="celular" onclick="verMenu('')">Volver</a></div>
-				
+				<div onclick="actualizarChat()" >actualizar chat</div>
 				<div id="divChat" class="min">
 					
 				</div>

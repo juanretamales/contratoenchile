@@ -135,10 +135,12 @@ function enviarMensaje(form)
 	var mensaje="";
 	if(form.txtCode.value!="" && form.txtMensaje.value!="" && form.txtMensaje.value.length<255)
 	{
+		var mensaje="txtCode="+form.txtCode.value+"&txtMensaje="+form.txtMensaje.value;
+		form.txtMensaje.value="";
 		$.ajax({
                 data:  
 					{
-						"agregarMensaje" : "txtCode="+form.txtCode.value+"&txtMensaje="+form.txtMensaje.value
+						"agregarMensaje" : mensaje
 					},
                 url:   urlbase+'script/ajax.php',
                 type:  'post',
@@ -146,7 +148,6 @@ function enviarMensaje(form)
 					if(response=="")
 					{
 						actualizarChat();
-						this.txtMensaje.value="";
 					}
 					else
 					{
@@ -166,14 +167,25 @@ function actualizarChat()
 	console.log("Actualizando Chat:");
 	var lista=document.getElementById("divChat");
 	var chatActivos = new Array;
+	console.log(lista.childNodes[0].id);
 	for(var i=0;i<lista.childNodes.length;i++)
 	{
-		var idChat = lista.childNodes[i].id;
-		console.log(idChat.substring(11));
-		chatActivos[chatActivos.length][0]=idChat.substring(11);
-		var listab = document.getElementById(idChat).childNodes;
-		console.log(listab.childNodes[listab.childNodes.length].id.substring(3));
-		chatActivos[chatActivos.length][1]=listab.childNodes[listab.childNodes.length].id.substring(3);
+		if(lista.childNodes[i].id)
+		{
+			var idChat = lista.childNodes[i].id;//obtiene el codigo del chat
+			console.log("id chat: "+idChat.substring(11));
+			//guarda en chatActivos la id del chat ex: 16
+			var largo=chatActivos.length;
+			chatActivos[largo][0]=idChat.substring(11);
+			//guarda en listab los elementos hijos de idChat ex: divChat16
+			var listab = document.getElementById(idChat).childNodes;
+			largo=listab.childNodes.length;
+			console.log(listab.childNodes[largo].id.substring(3));
+			//con esto rescato el ultimo mensaje del chat
+			chatActivos[chatActivos.length][1]=listab.childNodes[listab.childNodes.length].id.substring(3);
+			var mensaje=listab.childNodes[listab.childNodes.length].id.substring(3);
+			chatActivos=[idChat.substring(11), mensaje];
+		}
 	}
 	console.log(chatActivos);
 	var actualizacion= new Array;
