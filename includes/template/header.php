@@ -74,7 +74,7 @@
 					{
 						$nombre=$contratos[$i]['nom_ent'];
 						//echo '<div onclick="abrirChat('.$contratos[$i]['id_con'].','.$contratos[$i]['nom_ent'].')">'.$contratos[$i]['nom_ent'].'</div>';
-						echo "<div onclick='abrirChat(".$contratos[$i]['id_con'].", \" $nombre \")'>".$contratos[$i]['nom_ent'].'</div>';
+						echo "<div id='listChat".$contratos[$i]['id_con']."' onclick='abrirChat(".$contratos[$i]['id_con'].", \" $nombre \")'>".$contratos[$i]['nom_ent'].'</div>';
 					}
 				}
 				?>

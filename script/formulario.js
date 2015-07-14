@@ -145,7 +145,7 @@ function enviarMensaje(form)
                 url:   urlbase+'script/ajax.php',
                 type:  'post',
                 success:  function (response) {
-					if(response=="")
+					if(response=="Exito")
 					{
 						actualizarChat();
 					}
@@ -162,31 +162,35 @@ function enviarMensaje(form)
 	}
 	return false;
 }
+/*************************
+Obtiene una lista de los chats desplegados, luego busca el ultimo mensaje de ese chat y los envia por ajax
+
+
+**************************/
 function actualizarChat()
 {
 	console.log("Actualizando Chat:");
 	var lista=document.getElementById("divChat");
 	var chatActivos = new Array;
 	console.log(lista.childNodes[0].id);
-	for(var i=0;i<lista.childNodes.length;i++)
+	for(var i=0;i<(lista.childNodes.length);i++)
 	{
-		if(lista.childNodes[i].id)
+		if(lista.childNodes[i].id)//revisa si existe el id
 		{
 			var idChat = lista.childNodes[i].id;//obtiene el codigo del chat
 			console.log("id chat: "+idChat.substring(11));
 			//guarda en chatActivos la id del chat ex: 16
-			var largo=chatActivos.length;
-			chatActivos[largo][0]=idChat.substring(11);
-			//guarda en listab los elementos hijos de idChat ex: divChat16
-			var listab = document.getElementById(idChat).childNodes;
-			largo=listab.childNodes.length;
-			console.log(listab.childNodes[largo].id.substring(3));
+			//chatActivos[largo][0]=idChat.substring(11);//ahora se agregara el id del chat al final
+			//guarda en listab los elementos hijos de idChat(divChat16) para obtener el ultimo mensaje ex: 
+			//var listab = document.getElementById(idChat).childNodes;
 			//con esto rescato el ultimo mensaje del chat
-			chatActivos[chatActivos.length][1]=listab.childNodes[listab.childNodes.length].id.substring(3);
-			var mensaje=listab.childNodes[listab.childNodes.length].id.substring(3);
-			chatActivos=[idChat.substring(11), mensaje];
+			//var mensaje=listab[1].lastChild.id;
+			var mensaje=document.getElementById(idChat).childNodes[1].lastChild.id;
+			console.log("ultimo mensaje: "+mensaje.substring(3));
+			chatActivos.push=[idChat.substring(11), mensaje.substring(3)];
 		}
 	}
+	//aqui agrego los chats de las empresas
 	console.log(chatActivos);
 	var actualizacion= new Array;
 	$.ajax({
