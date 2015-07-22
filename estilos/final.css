@@ -170,58 +170,97 @@ li
 }
 #divChat
 {
-	position: fixed;
-	bottom: 0px;
-	right: 200px;
+	z-index: 99;
 }
-#divChat > div
-{
-	width: 200px;
-	max-height: 300px;
-	margin: 0 2px;
-	border: 2px solid black;
-	float: left;
+#divChat > div {
+  bottom: 0;
+  font: 100%/1.5em "Droid Sans", sans-serif;
+  font-size: 12px;
+  //right: 24px;
+  position: fixed;
+  width: 300px;
+  //float: left;
+  //background: #fff;
 }
-#divChat > div .cabecera
+#divChat > div > .cabecera
 {
-	background: lightblue;
-	font-size: 16px;
-	text-align: center;
+  background: #293239;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 24px;
 }
-#divChat > div .cabecera img
+#divChat > div > .cabecera > label
 {
-	width: 20px;
+  //nombre
+}
+#divChat > div > .cabecera > a
+{
 	float: right;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	padding: 8px 12px;
 }
-#divChat > div .historial
+#divChat > div > .cabecera > a:hover
 {
-	background: white;
-	padding: 2px;
+	//background: rgba(255, 255, 255, 0.5);
 }
-#divChat > div .historial .a
-{
-	background: lightblue;
-	text-align: left;
-	margin: 2px 15px 2px 3px;
-	padding: 0 6px;
-	border-radius: 0px 5px 5px 0px;
-	-moz-border-radius: 0px 5px 5px 0px;
-	-webkit-border-radius: 0px 5px 5px 0px;
-	
+#divChat > div > .cabecera > label:before {
+  background: #1a8a34;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin: 0 8px 0 0;
+  width: 8px;
 }
-#divChat > div .historial .b
+#divChat > div > .historial
 {
-	background: silver;
-	text-align: right;
-	margin: 2px 3px 2px 15px;
-	padding: 0 6px;
-	border-radius: 5px 0px 0px 5px;
-	-moz-border-radius: 5px 0px 0px 5px;
-	-webkit-border-radius: 5px 0px 0px 5px;
+  height: 252px;
+  overflow-y: scroll;
+  background: #6E6E6E;
 }
-#divChat > div .escribir input
+#divChat > div > .historial > p
 {
-	width: 100%;
+  width: 80%;
+  background: #FFFFFF;
+  margin: 5px 0px;
+  padding: 5px;
+}
+#divChat > div > .historial > .a
+{
+  float: left;
+  background: #086A87;
+  color: #fff;
+  border-radius: 0px 5px 5px 0;
+}
+#divChat > div > .historial > .b
+{
+  float: right;
+  border-radius: 5px 0px 0 5px;
+  color: #9a9a9a;
+}
+#divChat > div > .historial > .system
+{
+  margin-left: 10%;
+}
+#divChat > div > .escribir
+{
+  background: #FFF;
+}
+#divChat > div > .escribir form 
+{
+  padding: 12px 0px;
+}
+#divChat > div > .escribir > form > input[type="text"] 
+{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px;
+  outline: none;
+  width: 85%;
+  margin-left: calc(7% - 8px);
 }
 #divChat .inactivo div:nth-child(n+2)
 {

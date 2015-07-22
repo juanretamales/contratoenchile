@@ -3866,66 +3866,7 @@ if(isset($_POST['actualizarComparacion']))
 		echo '</tr>';
 	}
 }
-if(isset($_POST['abrirChat']))
-{
-	include_once('./transaccion.php');
-	$transaccion=new transaccion();
-	$arg=array (array('id_con'=>$_POST['abrirChat'], 'id_men'=>0));
-	$mensajes=$transaccion->listarMensajesChat($arg);
-	//print_r($mensajes);
-	/*Array ( 
-		[0] => Array ( 
-					[id_men] => 2 
-					[id_con] => 16 
-					[fecha_men] => 2015-03-20 12:04:10 
-					[emisor] => 18.293.138-1 
-					[nombreEmisor] => juan pablo 
-					[nom_ent] => Contrato en Chile2 
-					[mensaje] => test desde db 
-					) 
-			)*/ 
-	$contenido=array();
-	for($i=0;$i<count($mensajes);$i++)
-	{
-		if(!isset($contenido[$mensajes[$i]['id_con']]))
-		{
-			$contenido[$mensajes[$i]['id_con']]='';
-		}
-		$contenido[$mensajes[$i]['id_con']] .= '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
-		if($mensajes[$i]['emisor'] != $_SESSION['rut'])
-		{
-			$contenido[$mensajes[$i]['id_con']] .= 'a';
-		}
-		else
-		{
-			$contenido[$mensajes[$i]['id_con']] .= 'b';
-		}
-		$contenido[$mensajes[$i]['id_con']] .= '">'.$mensajes[$i]['mensaje'].'</p>';
-	}
-	echo json_encode($contenido);
-}
-if(isset($_POST['actualizarChat']))
-{
-	$arreglo=$_POST['actualizarChat'];
-	include_once('./transaccion.php');
-	$transaccion=new transaccion();
-	$arg=array ();
-	$mensajes=$transaccion->listarMensajesChat($arg);
-	$contenido='';
-	for($i=0;$i<count($mensajes);$i++)
-	{
-		$contenido[$mensajes[$i]['id_con']] += '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
-		if($mensajes[$i]['emisor']!= $_SESSION['rut'])
-		{
-			$contenido[$mensajes[$i]['id_con']] += 'a';
-		}
-		{
-			$contenido[$mensajes[$i]['id_con']] += 'b';
-		}
-		$contenido[$mensajes[$i]['id_con']] += '">'.$mensajes[$i]['mensaje'].'</p>';
-	}
-	echo "test";
-}
+
 if(isset($_POST['actualizarPaginaServicio']))
 {
 	include_once('./transaccion.php');
@@ -3979,4 +3920,128 @@ if(isset($_POST['actualizarPaginaServicio']))
 	fclose($file);
 	
 	
+}
+if(isset($_POST['abrirChat']))
+{
+	include_once('./transaccion.php');
+	$transaccion=new transaccion();
+	$arg=array (array('id_con'=>$_POST['abrirChat'], 'id_men'=>0));
+	$mensajes=$transaccion->listarMensajesChat($arg);
+	//print_r($mensajes);
+	/*Array ( 
+		[0] => Array ( 
+					[id_men] => 2 
+					[id_con] => 16 
+					[fecha_men] => 2015-03-20 12:04:10 
+					[emisor] => 18.293.138-1 
+					[nombreEmisor] => juan pablo 
+					[nom_ent] => Contrato en Chile2 
+					[mensaje] => test desde db 
+					) 
+			)*/ 
+	$contenido=array();
+	for($i=0;$i<count($mensajes);$i++)
+	{
+		if(!isset($contenido[$mensajes[$i]['id_con']]))
+		{
+			$contenido[$mensajes[$i]['id_con']]='';
+		}
+		$contenido[$mensajes[$i]['id_con']] .= '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
+		if($mensajes[$i]['emisor'] != $_SESSION['rut'])
+		{
+			$contenido[$mensajes[$i]['id_con']] .= 'a';
+		}
+		else
+		{
+			$contenido[$mensajes[$i]['id_con']] .= 'b';
+		}
+		$contenido[$mensajes[$i]['id_con']] .= '">'.$mensajes[$i]['mensaje'].'</p>';
+	}
+	echo json_encode($contenido);
+}
+if(isset($_POST['actualizarChat']))
+{
+	$arreglo=$_POST['actualizarChat'];
+	include_once('./transaccion.php');
+	$transaccion=new transaccion();
+	$arg=array ();
+	$mensajes=$transaccion->listarMensajesChat($arg);
+	$contenido='';
+	for($i=0;$i<count($mensajes);$i++)
+	{
+		$contenido[$mensajes[$i]['id_con']] += '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
+		if($mensajes[$i]['emisor']!= $_SESSION['rut'])
+		{
+			$contenido[$mensajes[$i]['id_con']] += 'a';
+		}
+		else
+		{
+			$contenido[$mensajes[$i]['id_con']] += 'b';
+		}
+		$contenido[$mensajes[$i]['id_con']] += '">'.$mensajes[$i]['mensaje'].'</p>';
+	}
+}
+if(isset($_POST['actualizarContratos']))
+{
+	if(isset($_SESSION['rol']))
+	{
+		if($_SESSION['rol']!=0)
+		{
+			$texto ="";
+			require_once "./webConfig.php";
+			require_once('./function.php');
+			$arg=array ('rut'=>$_SESSION['rut'], 'id_est'=>7);
+			$contratos=listarContactosSinDetalle($arg);
+			$texto += '<div>Comunicate con empresas</div>';
+			if(count($contratos)==0)
+			{
+				$texto += "<div>No tienes contratos activos en este momento.</div>";
+			}
+			else
+			{
+				for($i=0;$i<count($contratos);$i++)
+				{
+					$nombre=$contratos[$i]['nom_ent'];
+					$texto += "<div id='listChat".$contratos[$i]['id_con']."' onclick='abrirChat(".$contratos[$i]['id_con'].", \" $nombre \")'>".$contratos[$i]['nom_ent'].'</div>';
+				}
+			}
+			$texto +='<a  class="celular" onclick="verMenu()">Volver</a></div>';
+			if($_POST['actualizarContratos'] != $texto)
+			{
+				echo $texto;
+			}
+		}
+	}
+}
+if(isset($_POST['actualizarMensajes']))
+{
+	if(isset($_SESSION['rol']))
+	{
+		if($_SESSION['rol']!=0)
+		{
+			include_once('./transaccion.php');
+			$transaccion=new transaccion();
+			$arg=array('id_con'=>16, 'id_men'=>0);
+			$mensajes=$transaccion->listarMensajesChat($arg);
+			$contenido=array();
+			for($i=0;$i<count($mensajes);$i++)
+			{
+				if(!isset($contenido[$mensajes[$i]['id_con']]))
+				{
+					$contenido[$mensajes[$i]['id_con']]='';
+				}
+				$contenido[$mensajes[$i]['id_con']] .= '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
+				if($mensajes[$i]['emisor'] != $_SESSION['rut'])
+				{
+					$contenido[$mensajes[$i]['id_con']] .= 'a';
+				}
+				else
+				{
+					$contenido[$mensajes[$i]['id_con']] .= 'b';
+				}
+				$contenido[$mensajes[$i]['id_con']] .= '">'.$mensajes[$i]['mensaje'].'</p>';
+			}
+			echo json_encode($contenido);
+		}
+	}
 }

@@ -62,7 +62,7 @@ function abrirChat(id,nombre)
 {
 	if (!document.getElementById('divMensajes'+id))
 	{
-		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div class="historial" id="historial'+id+'"></div><div class="escribir"><form onsubmit="return enviarMensaje(this)" method="post"><input id="txtCode" name="txtCode" type="hidden" required value="'+id+'"><input type="text" name="txtMensaje"></form></div></div>';
+		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera" onclick="minimizarChat(\'divMensajes'+id+'\')"><label >'+nombre+'</label><a onclick="cerrarChat(divMensajes'+id+')" >X</a></div><div class="historial" id="historial'+id+'"></div><div class="escribir"><form onsubmit="return enviarMensaje(this)" method="post"><input id="txtCode" name="txtCode" type="hidden" required value="'+id+'"><input type="text" name="txtMensaje"></form></div></div>';
 		document.getElementById("historial"+id).innerHTML = "Cargando...";
 		if (typeof(Storage) != "undefined") 
 		{
@@ -134,19 +134,30 @@ function enviarMensaje(form)
 function actualizarChat()
 {
 	console.log("Actualizando Chat:");
-	var lista=document.getElementById("divContratos");
-	var chat = "";
-	
+	var chat = "";//aqui se asigna el contenido del localstorage
 	var chatActivos="";
-	//Separamos las funciones si tiene localstorage o si no lo ocupa
-	//si tiene localstorage mandaremos a pedir los mensajes actualizados de todos los chats activos (no solo los habiertos)
 	if (typeof(Storage) != "undefined") 
 	{
-		//1-actualizamos el localstorage
+		//el php se encargara de procesar la info para enviar los mensajes
 		
-		//1-1 comparamos y eliminamos los chat que ya no esten en el localstorage (actualizacion: ahora se actualizara en el abrirChat)
-		
-		//1-2 agregamos los nuevos chat (del menu vertical)
+		//1-primero actualizo los chats del menu
+		if(document.getElementById("divContratos"))
+		{
+			$.ajax({
+				data:  {"actualizarContratos" : document.getElementById("divContratos").innerHTML},
+				url:   urlbase+'script/ajax.php',
+				type:  'post',
+				success:  function (response) {
+					if(response!="")
+					{
+						document.getElementById("divContratos").innerHTML=response;
+					}
+				}
+			});
+		}
+		//2-Actualizo el localstorage (ahora es distinto por que los contratos ya estan actualizados
+		var lista=document.getElementById("divContratos");
+	var chatActualizado= [];
 		for(var i=0;i<(lista.childNodes.length);i++)
 		{
 			if(lista.childNodes[i].id)//revisa si existe el id
@@ -154,79 +165,47 @@ function actualizarChat()
 				if(lista.childNodes[i].id.indexOf("listChat")!=-1)
 				{
 					var id=lista.childNodes[i].id.substring(8);
-					if(chat.indexOf(id)<0)
+					//si existe en el localstorage (chat) asignara a la nueva variable el contenido, de no existir, lo dejara vario ""
+					if(chat[id])
 					{
-						chat.push=[lista.childNodes[i].id.substring(8), document.getElementById("historial"+lista.childNodes[i].id.substring(8)).innerHTML];
+						chatActualizado[id]=chat[id];
+					}
+					else
+					{
+						chatActualizado[id]="";
 					}
 				}
 			}
 		}
-		//2-buscamos el ultimo mensaje de todos los chats (se busca en la variable chat (que contiene lo mismo que el localstorage)
-		for(var i=0;i<(lista.childNodes.length);i++)
+		//3-buscamos el ultimo mensaje de todos los chats (se busca en la variable chat (que contiene lo mismo que el localstorage)
+		var mensajes= [];
+		//hay que enviar el id y el ultimo mensaje
+		for (var x in chatActualizado) 
 		{
-			if(lista.childNodes[i].id)//revisa si existe el id
+			var id=chatActualizado.indexOf(x);
+			var ultimomensaje="";
+			if(x!="")
 			{
-				if(lista.childNodes[i].id.indexOf("listChat")!=-1)
-				{
-					var id=lista.childNodes[i].id.substring(8);
-					if(chat.indexOf(id)<0)
-					{
-						chat.push=[lista.childNodes[i].id.substring(8), document.getElementById("historial"+lista.childNodes[i].id.substring(8)).innerHTML];
-					}
-				}
+				var arreglo=x.split('<p id="msg');
+				ultimomensaje=arreglo[arreglo.length-1].substring(0,1);
 			}
+			mensajes[mensajes.length]=[id,ultimomensaje];
 		}
-		
-		
-		for(var i=0;i<(lista.childNodes.length);i++)
-		{
-			if(lista.childNodes[i].id)//revisa si existe el id
-			{
-				if(lista.childNodes[i].id.indexOf("listChat")!=-1)
-				{
-					var id=lista.childNodes[i].id.substring(8);
-					if(chat.indexOf(id)<0)
-					{
-						chat.push=[lista.childNodes[i].id.substring(8), 0];
-					}			
-					var idChat = lista.childNodes[i].id;
-					console.log("id chat: "+idChat.substring(11));
-					var mensaje=document.getElementById(idChat).childNodes[1].lastChild.id;
-					console.log("ultimo mensaje: "+mensaje.substring(3));
-					chatActivos.push=[idChat.substring(11), mensaje.substring(3)];
-				}
-			}
-		}
-		//aqui agrego los chats de las empresas
-		console.log(chatActivos);
-		//aqui tiene que enviar [idchat][idultimomensaje]
-		//mientras que el localstorage almacena [idchat][contenidochat]
-		var actualizacion= new Array;
+		//ahora mensajes contiene la id y el ultimo mensaje de los chats del localstorage
+		//procederemos a hacer la peticion por ajax
 		$.ajax({
-			data:  {"actualizarChat" : chatActivos},
+			data:  {"actualizarMensajes" : mensajes},
 			url:   urlbase+'script/ajax.php',
 			type:  'post',
 			success:  function (response) {
-				actualizacion=response;
+				if(response!="")
+				{
+					document.getElementById("divContratos").innerHTML=response;
+				}
 			}
 		});
-		if (typeof(Storage) != "undefined") 
-		{
-			chat = JSON.parse(localStorage.getItem("chat"));
-			if(chat===null)
-			{
-				chat=[];
-			}
-			if(chat.indexOf(id)<0)
-			{
-				//chat[chat.length]=id;
-				//localStorage.setItem("Comparacion", JSON.stringify(chat));
-			}
-		}
-		else 
-		{
-			
-		}
+		
+		
 		//localStorage.setItem("Comparacion", JSON.stringify(chat));
 		for(var i=0;i<chatActivos.length;i++)
 		{
@@ -298,71 +277,18 @@ function actualizarChat2()
 		document.getElementById("historial"+chatActivos[i][0]).append = actualizacion[chatActivos[i][0]];
 	}
 }
-function escribirChat(id)
-{
-	/*if (!document.getElementById('divMensajes'+id))
-	{
-		document.getElementById("divChat").innerHTML += 
-			'<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+
-			id+'\')">nombre de usuario </label><img onclick="cerrarChat(divMensajes'+id
-			+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div class="historial"><p class="a">primer mensaje</p><p class="b">segundo mensaje</p><p class="a">tercer mensaje</p><p class="a">cuarto mensaje</p><p class="b">quinto mensaje</p></div><div class="escribir"><input type="text"></div></div>';
-	}*/
-	//revisar localstorage y cargar chat si lo tiene
-	if (!document.getElementById('divMensajes'+id))
-	{
-		document.getElementById("divChat").innerHTML +='<div id="divMensajes'+id+'" class="activo"><div class="cabecera"><label onclick="minimizarChat(\'divMensajes'+id+'\')">'+nombre+'</label><img onclick="cerrarChat(divMensajes'+id+')" src="'+urlbase+'imagenes/UI/incorrecto.png"></div><div id="historial'+id+'"></div><div class="escribir"><input type="text">asd</div></div>';
-		document.getElementById("historial"+id).innerHTML = "Cargando...";
-		/*if (typeof(Storage) != "undefined") 
-		{
-			var chat = JSON.parse(localStorage.getItem("Comparacion"));
-			if(carro===null)
-			{
-				carro=[];
-			}
-			if(carro.indexOf(id)<0)
-			{
-				carro[carro.length]=id;
-				localStorage.setItem("Comparacion", JSON.stringify(carro));
-				$.ajax({
-					data:  
-						{
-							"actualizarComp" : JSON.parse(localStorage.getItem("Carro"))
-						},
-					url:   urlbase+'script/ajax.php',
-					type:  'post',
-					success:  function (response) {
-						if(response!="Exito")
-						{
-							$('#error').html(response);
-						}
-					}
-				});
-			}
-		}
-		else 
-		{
-			console.log("Sorry, your browser does not support Web Storage...");
-			alert("Sorry, your browser does not support Web Storage...");
-		}*/
-		$.ajax({
-			data:  {"id_con" : id},
-			url:   urlbase+'script/ajax.php',
-			type:  'post',
-			success:  function (response) {
-				$('#historial'+id).html(response);
-				console.log(response);
-			}
-        });
-	}
-}
 function minimizarChat(id)
 {
 	console.log("minimizarChat("+id+") : ");
+	
+	
 	if ($('#'+id).hasClass('activo')){
         document.getElementById(id).className="inactivo";
+		$('#divMensajes'+id).slideToggle(300, 'swing');
 		//console.log("inactivo");
     }else{
         document.getElementById(id).className="activo";
+		$('#divMensajes'+id).fadeToggle(300, 'swing');
 		//console.log("activo");
     }
 }
