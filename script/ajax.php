@@ -3925,7 +3925,7 @@ if(isset($_POST['abrirChat']))
 {
 	include_once('./transaccion.php');
 	$transaccion=new transaccion();
-	$arg=array (array('id_con'=>$_POST['abrirChat'], 'id_men'=>0));
+	$arg=array('id_con'=>$_POST['abrirChat'], 'id_men'=>0);
 	$mensajes=$transaccion->listarMensajesChat($arg);
 	//print_r($mensajes);
 	/*Array ( 
@@ -3990,7 +3990,7 @@ if(isset($_POST['actualizarContratos']))
 			$texto ="";
 			require_once "./webConfig.php";
 			require_once('./function.php');
-			$arg=array ('rut'=>$_SESSION['rut'], 'id_est'=>7);
+			$arg=array (array('id_con'=>16, 'id_men'=>0));
 			$contratos=listarContactosSinDetalle($arg);
 			$texto += '<div>Comunicate con empresas</div>';
 			if(count($contratos)==0)
@@ -4019,29 +4019,42 @@ if(isset($_POST['actualizarMensajes']))
 	{
 		if($_SESSION['rol']!=0)
 		{
+			//print_r($_POST['actualizarMensajes']);
 			include_once('./transaccion.php');
 			$transaccion=new transaccion();
-			$arg=array('id_con'=>16, 'id_men'=>0);
-			$mensajes=$transaccion->listarMensajesChat($arg);
-			$contenido=array();
-			for($i=0;$i<count($mensajes);$i++)
+			//falta leer las [idchat][idultimomensaje] para devolver los que faltan
+			$msg = $_POST['actualizarMensajes'];
+			$devolver = array();
+			for($a=0;$a<sizeof($msg);$a++)
 			{
-				if(!isset($contenido[$mensajes[$i]['id_con']]))
+				$arg=array('id_con'=>$msg[$a][0], 'id_men'=>$msg[$a][1]);
+				$mensajes=$transaccion->listarMensajesChat($arg);
+				if(count($mensajes)>0)
 				{
-					$contenido[$mensajes[$i]['id_con']]='';
+					$contenido=array();
+					for($i=0;$i<count($mensajes);$i++)
+					{
+						
+						if(!isset($contenido[$mensajes[$i]['id_con']]))
+						{
+							$contenido[$mensajes[$i]['id_con']]='';
+						}
+						$contenido[$mensajes[$i]['id_con']] .= '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
+						if($mensajes[$i]['emisor'] != $_SESSION['rut'])
+						{
+							$contenido[$mensajes[$i]['id_con']] .= 'a';
+						}
+						else
+						{
+							$contenido[$mensajes[$i]['id_con']] .= 'b';
+						}
+						$contenido[$mensajes[$i]['id_con']] .= '">'.$mensajes[$i]['mensaje'].'</p>';
+					}
+					//print_r($contenido);
+					$devolver[sizeof($devolver)]=[$msg[$a][0],$contenido[$msg[$a][0]]];
 				}
-				$contenido[$mensajes[$i]['id_con']] .= '<p id="msg'.$mensajes[$i]['id_men'].'" title="mensaje enviado a las '.$mensajes[$i]['fecha_men'].'" class="';
-				if($mensajes[$i]['emisor'] != $_SESSION['rut'])
-				{
-					$contenido[$mensajes[$i]['id_con']] .= 'a';
-				}
-				else
-				{
-					$contenido[$mensajes[$i]['id_con']] .= 'b';
-				}
-				$contenido[$mensajes[$i]['id_con']] .= '">'.$mensajes[$i]['mensaje'].'</p>';
 			}
-			echo json_encode($contenido);
+			echo json_encode($devolver);
 		}
 	}
 }

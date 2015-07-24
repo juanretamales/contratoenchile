@@ -1488,10 +1488,7 @@ class transaccion
 		$condicion=0;
 		if($arg!='nada')
 		{
-			for($i=0;$i<count($arg);$i++)
-			{
-				$query = $query . ' and (m.id_men>"'.$arg[$i]['id_men'].'" and m.id_con="'.$arg[$i]['id_con'].'")';
-			}
+			$query = $query . ' and (m.id_men>"'.$arg['id_men'].'" and m.id_con="'.$arg['id_con'].'")';
 		}
 		else
 		{
@@ -1502,6 +1499,7 @@ class transaccion
 		$listar= array();
 		$mysqli=$this->conectar();
 		$mysqli->real_query($query);
+		//echo $query;
 		$resultado = $mysqli->use_result();
 		while($fila = $resultado -> fetch_assoc())
 		{
