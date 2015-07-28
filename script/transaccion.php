@@ -795,7 +795,45 @@ class transaccion
 		$mysqli->close();
 		return $listar;
 	}
-	
+	function listarResumenContacto($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query = "SELECT COUNT(DISTINCT c.`id_con`) AS Cantidad, c.`id_est` as Estado, MONTH(c.`fecha_con`) Mes FROM contacto c, servcon sc, servicio s, entidad e WHERE sc.`id_con`=c.`id_con` AND sc.`id_serv`=s.`id_serv` AND s.`id_ent`=e.`id_ent`";
+		if(isset($arg['id_ent']))
+		{
+			$query = $query. 'and e.id_ent='.$arg['id_ent'];
+		}
+		if(isset($arg['fecha']))
+		{
+			$query = $query. ' AND (MONTH(c.`fecha_con`)>(MONTH(c.`fecha_con`)-'.$arg['fecha'].'))';
+		}
+		if(isset($arg['year']))
+		{
+			$query = $query. ' AND YEAR(CURDATE())='.$arg['year'].'))';
+		}
+		else
+		{
+			$query = $query. ' AND YEAR(CURDATE())=YEAR(c.`fecha_con`)';
+		}
+		$query = $query. " GROUP BY c.`id_est` ORDER BY Mes";
+		//print_r($query);
+		$listar= array();
+		$mysqli=$this->conectar();
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$listar[] = array 
+			(
+				'cantidad'=>$fila['Cantidad'], 
+				'estado'=>$fila['Estado'],
+				'mes'=>$fila['Mes'],
+			);
+		}
+		$mysqli->close();
+		return $listar;
+	}
 	function listarDocumento($arg)
 	{
 		require_once('db.php');

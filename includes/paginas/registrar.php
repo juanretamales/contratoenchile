@@ -1,3 +1,10 @@
+<?php
+	$pagina="";
+	if(isset($_REQUEST['pagina']))
+	{
+		$pagina=$_REQUEST['pagina'];
+	}
+?>
 <html lang="es" dir="LTR" >
 <head>
 	<?php cc_head(); ?>
@@ -7,11 +14,6 @@
 			<?php cc_menu($pagina); ?>
 		<section id="contenido">
 			<?php
-			$pagina="";
-			if(isset($_REQUEST['pagina']))
-			{
-				$pagina=$_REQUEST['pagina'];
-			}
 			$page=explode("/",$pagina);
 			if(isset($page[1]) && $page[0]=='registrar')
 			{

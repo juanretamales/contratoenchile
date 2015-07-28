@@ -611,12 +611,17 @@
 		$transaccion=new transaccion($arg);
 		return $transaccion->listarContacto($arg);
 	}
-	
-	function listarCss($arg)
+	/**
+	* Lista los Contactos o Contratos
+	*
+	* @param array $arg
+	* @return array
+	*/
+	function listarResumenContacto($arg)
 	{
 		require_once "transaccion.php";
 		$transaccion=new transaccion($arg);
-		return $transaccion->listarCss($arg);
+		return $transaccion->listarResumenContacto($arg);
 	}
 	/**
 	* Lista los Documentos
