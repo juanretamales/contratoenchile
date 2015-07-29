@@ -1,8 +1,6 @@
 <?php
 	function cc_contenido($pag)
 	{
-		$url_pag=$pag;
-		escribirLog($pag);
 		require_once "script/transaccion.php";
 		$transaccion=new transaccion();
 		$page=explode("/",$pag);
@@ -94,6 +92,7 @@
 			{
 				
 				include($paginas[0]['url_real']);
+				escribirLog($paginas[0]['id_pag']);
 			}
 			else
 			{
@@ -111,10 +110,19 @@
 			<body>
 			<?php cc_header(); ?>
 					<section>
-						<?php cc_menu($pagina); ?>
+						<?php 
+						$pagina="";
+						if(isset($_REQUEST['pagina']))
+						{
+							$pagina=$_REQUEST['pagina'];
+						}
+						cc_menu($pagina); ?>
 						<section id="contenido">
-							<h1 class="titulo2">No se encuentra la pagina</h1>
-							<p>La pagina solicitada no pudo ser encontrada o no cumple los requerimientos para acceder a ella.</p>
+							<div class="mensaje alerta">
+							<em></em>
+							<p>No se encuentra la pagina. La pagina solicitada no pudo ser encontrada o no cumple los requerimientos para acceder a ella.</p>
+							<a onclick="this.parentNode.remove()">X</a>
+							</div>
 						</section>
 					</section>
 					<?php cc_footer(); ?>
@@ -403,7 +411,7 @@
 		
 	}
 	
-	function escribirLog($pagina)
+	function escribirLog($id_pag)
 	{
 		/*
 		offline
@@ -432,27 +440,18 @@
 		*/
 		require_once "transaccion.php";
 		$transaccion=new transaccion();
-		$arg=array ('url_pag'=>$pagina, 'id_tu'=>$_SESSION['rol']);
-		$paginas=$transaccion->listarPagina($arg);
-		if(isset($paginas[0]['id_pag']))
+		$rol="Visitante";
+		$rut="Anonimo";
+		if(isset($_SESSION['rol']))
 		{
-			$rol="Visitante";
-			$rut="Anonimo";
-			if(isset($_SESSION['rol']))
-			{
-				$rol=$_SESSION['rol'];
-			}
-			if(isset($_SESSION['rut']))
-			{
-				$rut=$_SESSION['rut'];
-			}
-			$arg=['ip'=>$_SERVER['REMOTE_ADDR'],'id_pag'=>$paginas[0]['id_pag'], 'id_tu'=>$rol, 'usuario'=>$rut];
-			$insertar=$transaccion->insertarLog($arg);
+			$rol=$_SESSION['rol'];
 		}
-		else
+		if(isset($_SESSION['rut']))
 		{
-			echo "Error al obtener la id de pagina (escribirLog)";
+			$rut=$_SESSION['rut'];
 		}
+		$arg=['ip'=>$_SERVER['REMOTE_ADDR'],'id_pag'=>$id_pag, 'id_tu'=>$rol, 'usuario'=>$rut];
+		$insertar=$transaccion->insertarLog($arg);
 	}
 	function reemplazarWeb($fecha)
 	{

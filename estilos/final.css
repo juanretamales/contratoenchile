@@ -302,15 +302,25 @@ li
 	width: 100%;
 	padding: 10px 0px;
 }
-#menuVertical .seleccionado
-{
-	background: yellow;
-}
 #menuVertical li > a:hover
 {
-	background: rgba(0, 0, 0, 0.8);
+	background: #E9ECF2;
+	//color: white;
+}
+#menuVertical .tipo
+{
+	color: #F2A01E;
+}
+#menuVertical .seleccionado
+{
+	background: #30A5FF;
 	color: white;
 }
+#menuVertical .seleccionado:hover
+{
+	color: #30A5FF;
+}
+
 /* - Panel de control */
 #menuVertical li > span
 {

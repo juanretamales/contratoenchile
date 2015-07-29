@@ -34,7 +34,13 @@
 				$servicios=listarServiciosSinDetalle($arg);
 				if(count($servicios)==0)
 				{
-					echo '<h1 class="titulo2">No se encontraros servicios con estas caracteristicas, ¿Deseas intentar crearlo tu?</h1>';
+					?>
+					<div class="mensaje informativo">
+					<em></em>
+					<p>No se encontraros servicios con estas caracteristicas, ¿Deseas ser el primero en ofrecer servicios?</p>
+					<a onclick="this.parentNode.remove()">X</a>
+					</div>
+				<?php
 				}
 				for($i=0;$i<count($servicios) && $i<5;$i++)
 				{
