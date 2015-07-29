@@ -92,7 +92,7 @@
 			{
 				
 				include($paginas[0]['url_real']);
-				escribirLog($paginas[0]['id_pag']);
+				escribirLog($paginas[0]['id_pag'], $pag);
 			}
 			else
 			{
@@ -411,7 +411,7 @@
 		
 	}
 	
-	function escribirLog($id_pag)
+	function escribirLog($id_pag, $pag)
 	{
 		/*
 		offline
@@ -450,7 +450,7 @@
 		{
 			$rut=$_SESSION['rut'];
 		}
-		$arg=['ip'=>$_SERVER['REMOTE_ADDR'],'id_pag'=>$id_pag, 'id_tu'=>$rol, 'usuario'=>$rut];
+		$arg=['ip'=>$_SERVER['REMOTE_ADDR'],'id_pag'=>$id_pag, 'url'=>$pag, 'id_tu'=>$rol, 'usuario'=>$rut];
 		$insertar=$transaccion->insertarLog($arg);
 	}
 	function reemplazarWeb($fecha)
@@ -493,6 +493,12 @@
 		require_once "transaccion.php";
 		$transaccion=new transaccion($arg);
 		return $transaccion->listarEntidadPorPersona($arg);
+	}
+	function contadorVisitas($arg)
+	{
+		require_once "transaccion.php";
+		$transaccion=new transaccion($arg);
+		return $transaccion->contadorVisitas($arg);
 	}
 	function listarServiciosSinDetalle($arg)
 	{

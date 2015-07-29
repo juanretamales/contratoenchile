@@ -3380,6 +3380,35 @@ class transaccion
 		$mysqli->close();
 		return $listar;
 	}
+	
+	function contadorVisitas($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query = "SELECT COUNT(id_log) AS visitas FROM `log` WHERE url LIKE '%".$arg['nom_ent']."%'";
+		if(!isset($arg['mes']) || !isset($arg['ano']))
+		{
+			$query = $query. " AND MONTH(`fecha`)=MONTH(CURDATE()) AND YEAR(CURDATE())=YEAR(`fecha`)";
+		}
+		if(isset($arg['mes']))
+		{
+			$query = $query. " AND MONTH(`fecha`)=MONTH('".$arg['mes']."')";
+		}
+		if(isset($arg['ano']))
+		{
+			$query = $query. " AND YEAR(`fecha`)=YEAR('".$arg['ano']."')";
+		}
+		$mysqli=$this->conectar();
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		$contador=0;
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$contador=$fila['visitas'];
+		}
+		$mysqli->close();
+		return $contador;
+	}
 	////////////////////////////////////////
 	// Insertar ////////////////////////////
 	////////////////////////////////////////
@@ -3626,7 +3655,7 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "INSERT INTO `log`(`ip`, `id_pag`, `id_tu`, `usuario`) VALUES ('".$arg['ip']."', '".$arg['id_pag']."', '".$arg['id_tu']."', '".$arg['usuario']."')";
+		$query = "INSERT INTO `log`(`ip`, `id_pag`,  `url`, `id_tu`, `usuario`) VALUES ('".$arg['ip']."', '".$arg['id_pag']."', '".$arg['url']."','".$arg['id_tu']."', '".$arg['usuario']."')";
 		$mysqli=$this->conectar();
 		//echo $query;
 		$resultado = $mysqli->real_query($query);

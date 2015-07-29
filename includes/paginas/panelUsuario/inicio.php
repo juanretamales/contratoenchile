@@ -92,7 +92,10 @@ for($i=0;$i<count($contratos);$i++)
 						<em></em>
 					</div>
 					<div>
-						<div>120</div>
+						<div><?php
+						$entidad=listarEntidad(['id_ent'=>$_SESSION['empresa']]);
+						echo contadorVisitas(['nom_ent'=>$entidad[0]['nom_ent']]);
+						?></div>
 						<div>Visitantes</div>
 					</div>
 				</div>
