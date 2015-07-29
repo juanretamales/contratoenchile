@@ -3622,7 +3622,21 @@ class transaccion
 		$mysqli->close();
 		return $resultado;
 	}
-	
+	function insertarLog($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query = "INSERT INTO `log`(`ip`, `id_pag`, `id_tu`, `usuario`) VALUES ('".$arg['ip']."', '".$arg['id_pag']."', '".$arg['id_tu']."', '".$arg['usuario']."')";
+		$mysqli=$this->conectar();
+		//echo $query;
+		$resultado = $mysqli->real_query($query);
+		if(isset($arg['insert_id']))
+		{
+			$resultado=$mysqli->insert_id;
+		}
+		$mysqli->close();
+		return $resultado;
+	}
 	function insertarMedia($arg)
 	{
 		require_once('db.php');

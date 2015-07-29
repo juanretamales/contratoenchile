@@ -405,6 +405,8 @@
 	
 	function escribirLog($pagina)
 	{
+		/*
+		offline
 		$registro="";
 		$time=time();
 		$fecha=date( "Y-m-d H:i:s" , $time);
@@ -427,6 +429,30 @@
 		$file = fopen($archivo,"a");
 		fwrite($file,$registro);
 		fclose($file);
+		*/
+		require_once "transaccion.php";
+		$transaccion=new transaccion();
+		$arg=array ('url_pag'=>$pagina, 'id_tu'=>$_SESSION['rol']);
+		$paginas=$transaccion->listarPagina($arg);
+		if(isset($paginas[0]['id_pag']))
+		{
+			$rol="Visitante";
+			$rut="Anonimo";
+			if(isset($_SESSION['rol']))
+			{
+				$rol=$_SESSION['rol'];
+			}
+			if(isset($_SESSION['rut']))
+			{
+				$rut=$_SESSION['rut'];
+			}
+			$arg=['ip'=>$_SERVER['REMOTE_ADDR'],'id_pag'=>$paginas[0]['id_pag'], 'id_tu'=>$rol, 'usuario'=>$rut];
+			$insertar=$transaccion->insertarLog($arg);
+		}
+		else
+		{
+			echo "Error al obtener la id de pagina (escribirLog)";
+		}
 	}
 	function reemplazarWeb($fecha)
 	{

@@ -16,7 +16,7 @@
 <section id="contenido" >
 <div class="mensaje informativo">
 <em></em>
-<p>Bienvenido <?php echo $_SESSION['nombre'];?>, este es el panel de administracion.</p>
+<p>Bienvenido <?php echo $_SESSION['nombre'];?>, este es el panel de administracion. El personal de Contrato en Chile desea que tu estancia en el sitio sea lo mas agradable posible.</p>
 <a onclick="this.parentNode.remove()">X</a>
 </div>
 <?php
