@@ -1,8 +1,9 @@
 <html lang="es" dir="LTR" >
 <head>
 	<?php cc_head(); ?>
-	<LINK href="<?php echo WEB_BASE; ?>estilos/editor.css" rel="stylesheet" type="text/css">
-	<script src="<?php echo WEB_BASE; ?>script/ckeditor/ckeditor.js"></script>
+	
+			<link rel="stylesheet" type="text/css" href="<?php echo WEB_BASE; ?>estilos/quill/quill.snow.css">
+	
 </head>
 <body>
 	<?php cc_header(); ?>
@@ -34,7 +35,11 @@ if(isset($_REQUEST['pagina']))
 					}
 				?>
 		<h1>Agregar un servicio</h1>
-		<p class="instrucciones">Primero seleccione una categoria</p>
+		<div class="mensaje informativo">
+		<em></em>
+		<p>Primero seleccione una categoria</p>
+		<a onclick="this.parentNode.remove()">X</a>
+		</div>
 		<div class="formulario">
 			<div>
 				<label>Categoria</label>
@@ -52,13 +57,18 @@ if(isset($_REQUEST['pagina']))
 				</select>
 			</div>
 		</div>
+		<div class="mensaje informativo">
+		<em></em>
+		<p>Luego seleccione la imagen a mostrar, la subcategoria y el tipo.</p>
+		<a onclick="this.parentNode.remove()">X</a>
+		</div>
 		<p class="instrucciones">Previzualizacion del servicio</p>
 		<article class="servicios">
-			<img  style="background: url('<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar_imagen'); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
+			<a onclick="cambiarImagen()"><img  style="background: url('<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg'); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
 			<input type="hidden" id="txtimagenDescripcion" name="txtimagenDescripcion" value="<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar imagen">
 			
 			<label class="titulo"><input required x-moz-errormessage="Debe ingresar el nombre del servicio" type="text" id="txtNombre" name="txtNombre" required maxlength="255"> de <?php echo $_SESSION['empresa'];?></label>
-			<p class="descripcion">Esta seccion se llenara con el bloque de abajo</p>
+			<p class="descripcion">La descripcion se llenara con el bloque de abajo</p>
 			<p class="tipo">
 				<a><select required x-moz-errormessage="Debe seleccionar un Tipo" id="txtSubcategoria" name="txtSubcategoria" required>
 						<option value="" disabled selected></option>
@@ -80,12 +90,144 @@ if(isset($_REQUEST['pagina']))
 			
 			
 			
-			
+			</a>
 		</article>
+		<div class="mensaje informativo">
+		<em></em>
+		<p>Ahora agregue la descripcion del servicio.</p>
+		<a onclick="this.parentNode.remove()">X</a>
+		</div>
 		<article class="servicios">
-		<textarea rows="4" cols="22" spellcheck="false" wrap="off" autofocus placeholder="Describe tu servicio..." required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255">
-			Modifique este texto y cree la descripcion para su servicio
-		</textarea>
+			
+			<div id="content-container">
+			  <div class="advanced-wrapper">
+				<div class="toolbar-container"><span class="ql-format-group">
+					<select title="Font" class="ql-font">
+					  <option value="sans-serif" selected>Sans Serif</option>
+					  <option value="Georgia, serif">Serif</option>
+					  <option value="Monaco, 'Courier New', monospace">Monospace</option>
+					</select>
+					<select title="Size" class="ql-size">
+					  <option value="10px">Small</option>
+					  <option value="13px" selected>Normal</option>
+					  <option value="18px">Large</option>
+					  <option value="32px">Huge</option>
+					</select></span><span class="ql-format-group"><span title="Bold" class="ql-format-button ql-bold"></span><span class="ql-format-separator"></span><span title="Italic" class="ql-format-button ql-italic"></span><span class="ql-format-separator"></span><span title="Underline" class="ql-format-button ql-underline"></span></span><span class="ql-format-group">
+					<select title="Text Color" class="ql-color">
+					  <option value="rgb(0, 0, 0)" selected></option>
+					  <option value="rgb(230, 0, 0)"></option>
+					  <option value="rgb(255, 153, 0)"></option>
+					  <option value="rgb(255, 255, 0)"></option>
+					  <option value="rgb(0, 138, 0)"></option>
+					  <option value="rgb(0, 102, 204)"></option>
+					  <option value="rgb(153, 51, 255)"></option>
+					  <option value="rgb(255, 255, 255)"></option>
+					  <option value="rgb(250, 204, 204)"></option>
+					  <option value="rgb(255, 235, 204)"></option>
+					  <option value="rgb(255, 255, 204)"></option>
+					  <option value="rgb(204, 232, 204)"></option>
+					  <option value="rgb(204, 224, 245)"></option>
+					  <option value="rgb(235, 214, 255)"></option>
+					  <option value="rgb(187, 187, 187)"></option>
+					  <option value="rgb(240, 102, 102)"></option>
+					  <option value="rgb(255, 194, 102)"></option>
+					  <option value="rgb(255, 255, 102)"></option>
+					  <option value="rgb(102, 185, 102)"></option>
+					  <option value="rgb(102, 163, 224)"></option>
+					  <option value="rgb(194, 133, 255)"></option>
+					  <option value="rgb(136, 136, 136)"></option>
+					  <option value="rgb(161, 0, 0)"></option>
+					  <option value="rgb(178, 107, 0)"></option>
+					  <option value="rgb(178, 178, 0)"></option>
+					  <option value="rgb(0, 97, 0)"></option>
+					  <option value="rgb(0, 71, 178)"></option>
+					  <option value="rgb(107, 36, 178)"></option>
+					  <option value="rgb(68, 68, 68)"></option>
+					  <option value="rgb(92, 0, 0)"></option>
+					  <option value="rgb(102, 61, 0)"></option>
+					  <option value="rgb(102, 102, 0)"></option>
+					  <option value="rgb(0, 55, 0)"></option>
+					  <option value="rgb(0, 41, 102)"></option>
+					  <option value="rgb(61, 20, 102)"></option>
+					</select><span class="ql-format-separator"></span>
+					<select title="Background Color" class="ql-background">
+					  <option value="rgb(0, 0, 0)"></option>
+					  <option value="rgb(230, 0, 0)"></option>
+					  <option value="rgb(255, 153, 0)"></option>
+					  <option value="rgb(255, 255, 0)"></option>
+					  <option value="rgb(0, 138, 0)"></option>
+					  <option value="rgb(0, 102, 204)"></option>
+					  <option value="rgb(153, 51, 255)"></option>
+					  <option value="rgb(255, 255, 255)" selected></option>
+					  <option value="rgb(250, 204, 204)"></option>
+					  <option value="rgb(255, 235, 204)"></option>
+					  <option value="rgb(255, 255, 204)"></option>
+					  <option value="rgb(204, 232, 204)"></option>
+					  <option value="rgb(204, 224, 245)"></option>
+					  <option value="rgb(235, 214, 255)"></option>
+					  <option value="rgb(187, 187, 187)"></option>
+					  <option value="rgb(240, 102, 102)"></option>
+					  <option value="rgb(255, 194, 102)"></option>
+					  <option value="rgb(255, 255, 102)"></option>
+					  <option value="rgb(102, 185, 102)"></option>
+					  <option value="rgb(102, 163, 224)"></option>
+					  <option value="rgb(194, 133, 255)"></option>
+					  <option value="rgb(136, 136, 136)"></option>
+					  <option value="rgb(161, 0, 0)"></option>
+					  <option value="rgb(178, 107, 0)"></option>
+					  <option value="rgb(178, 178, 0)"></option>
+					  <option value="rgb(0, 97, 0)"></option>
+					  <option value="rgb(0, 71, 178)"></option>
+					  <option value="rgb(107, 36, 178)"></option>
+					  <option value="rgb(68, 68, 68)"></option>
+					  <option value="rgb(92, 0, 0)"></option>
+					  <option value="rgb(102, 61, 0)"></option>
+					  <option value="rgb(102, 102, 0)"></option>
+					  <option value="rgb(0, 55, 0)"></option>
+					  <option value="rgb(0, 41, 102)"></option>
+					  <option value="rgb(61, 20, 102)"></option>
+					</select><span class="ql-format-separator"></span>
+					<select title="Text Alignment" class="ql-align">
+					  <option value="left" selected></option>
+					  <option value="center"></option>
+					  <option value="right"></option>
+					  <option value="justify"></option>
+					</select></span><span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span></span></div>
+				<div id="editor" class="editor-container">Modifique este texto y cree la descripcion para su servicio</div>
+				<textarea class="oculto"  rows="4" cols="22" spellcheck="false" wrap="off" autofocus placeholder="Describe tu servicio..." required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255">
+				asdasd
+				</textarea>
+			  </div>
+			</div>
+			<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+			<script type="text/javascript" src="http://cdn.quilljs.com/0.20.0/quill.js"></script>
+			<script type="text/javascript">
+				var fullEditor = new Quill('.editor-container', {
+				  modules: {
+					'multi-cursor': true,
+					'toolbar': { container: '.toolbar-container' },
+					'link-tooltip': true
+				  },
+				  theme: 'snow'
+				});
+				var authorship = fullEditor.getModule('authorship');
+				var cursorManager = fullEditor.getModule('multi-cursor');
+				fullEditor.on('text-change', function(delta, source) {
+				  if (source === 'user') {
+					basicEditor.updateContents(delta);
+				  }
+				});
+				basicEditor.on('text-change', function(delta, source) {
+				  if (source === 'user') {
+					fullEditor.updateContents(delta);
+				  }
+				});
+				
+				function actualizarDescripcion()
+				{
+					document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
+				}
+			</script>
 		</article>
 		<article class="servicios" >
 				<div>
@@ -140,13 +282,8 @@ if(isset($_REQUEST['pagina']))
 			</div>
 		</div>
 		<script>
-		CKEDITOR.inline('txtDescripcion');
-		//var boton = $(".cke_button_icon .cke_button__image_icon");
-		//boton.addEventListener("click", cambiarImagen());
 		function cambiarImagen()
 		{
-				var data = CKEDITOR.instances.txtDescripcion.getData();
-				console.log(data);
 			if ($("#seleccionarImagen").hasClass('divMultimedia activo')){
 				//actualizarChat=setInterval(actualizarChat(), 10000);
 				document.getElementById("seleccionarImagen").className="divMultimedia inactivo";
@@ -162,13 +299,17 @@ if(isset($_REQUEST['pagina']))
 			{
 				//console.log("seleccionarImagen Imagen");
 				document.getElementById("imagenDescripcion").src = imagen;
-				document.getElementById("txtimagenDescripcion").value = imagen;
+				document.getElementById("txtimagen").value = imagen;
 				cambiarImagen()
 			}
 			if ($("#seleccionarImagen").hasClass('divMultimedia activo2'))
 			{
 				
 			}
+		}
+		function actualizarEditor(editor)
+		{
+			
 		}
 	</script>
 	</form>

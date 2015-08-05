@@ -363,12 +363,8 @@ li
 	background: rgba(255, 255, 255, 1);
 	width: 100%;
 }
-.titulo
-{
-	width: 100%;
-	text-align: center;
-	margin-top: 10px;
-}
+
+
 /* - /(ininio) */
 #artComentarios, #artCelular
 {
@@ -434,48 +430,120 @@ li
 	display: none;
 }
 /* - /administracion(ininio del panel de administracion) */
-.actHead
+.divPrincipal > .actBody > .grafico >canvas
 {
-	width: calc(100% - 2px);
-	border: 1px solid black;
-	float: left;
-	color: white;
-	background: black;
+	margin-left: 5%;
 }
-.actHead > div
+#widgets
+{
+	width: 100%;
+	float: left;
+}
+#widgets > div
+{
+	width: 18%;
+	margin: 10px 3.5%;
+	float: left;
+	box-sizing: border-box;
+}
+#widgets > div > div
+{
+	border-radius: 4px;
+	background: #FFF;
+}
+#widgets > div > div > div
+{
+	text-align: center;
+	height: 50px;
+	padding: 9px 0px 1px;
+}
+#widgets > div > div > div > div > em
+{
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+}
+#widgets > div > div > div > div > em:before {
+
+	font-size: 40px;
+	color: white;
+	width: 50%;
+	float: left;
+	margin-top: -10px;
+	padding-top: 10px;
+	border-radius: 4px 0 0 4px;
+	height: 50px;
+}
+#widgets > div:nth-child(1) > div > div > div > em:before
+{
+	content: "\e605";
+	background: #30A5FF;
+}
+#widgets > div:nth-child(2) > div > div > div > em:before
+{
+	content: "\e601";
+	background: #FFB53E;
+}
+#widgets > div:nth-child(3) > div > div > div > em:before
+{
+	content: "\f087";
+	background: #1EBFAE;
+}
+#widgets > div:nth-child(4) > div > div > div > em:before
+{
+	content: "\f088";
+	background: #F9243F;
+}
+#widgets > div > div > div > div > div:nth-child(1)
+{
+	font-size: 20px;
+}
+#widgets > div > div > div > div > div:nth-child(2)
+{
+	color: #9FADBB;
+	font-size: 14px;
+}
+//.divActividades
 {
 	float: left;
+}
+.divActividades > .actHead, .divPrincipal > .actHead
+{
 	width: 100%;
+	background: black;
+	color: white;
+	float: left;
 	text-align: center;
 }
-.divActividades > .actBody > div
+.divPrincipal >.actBody
 {
-	width: 100%;
-	margin: 10px 0;
-}
-.divActividades > .actBody > div:nth-child(2n+1)
-{
-	background: rgba(0, 0, 255, 0.5);
-	margin: 10px 0;
-}
-.actBody > div > a
-{
+	height: 200px;
 	float: left;
 }
-.actBody > div > span
+/* - General - */
+#contenido > .titulo
 {
 	float: left;
-	margin: 0 10px;
+	text-align: left;
+	width: auto;
+	margin: 15px 0 10 15;
 }
-.actBody > div > p
+#contenido > .boton
 {
-	float: left;
-}
-canvas
-{
-	float: left;
-	//position: absolute;
-	width: 90%;
+	background-color: #30a5ff;
+  border-color: #30a5ff;
+	padding: 6px 12px;
+	color: white;
+	font-size: 14px;
+	font-weight: 400;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	text-decoration: none;
+	float: right;
+	margin: 10px;
 }
 /* - FORMULARIOS */
 #contenido form
@@ -622,11 +690,11 @@ canvas
 	border-left:1px solid #c6d5e1; 
 	border-top:1px solid #c6d5e1; 
 	font:10px Verdana,Arial; 
-	background:#fff url(../imagenes/tabla/bg.gif) repeat-x; 
+	background:#F1F4F7; 
 	color:#091f30;
 }
 .sortable th {
-	background:url(../imagenes/tabla/header-bg.gif); 
+	background: #428BCA; 
 	text-align:left; 
 	color:#cfdce7; 
 	border:1px solid #fff; 
@@ -776,6 +844,74 @@ canvas
 #masdetalles > div > h5
 {
 	font-size: 20px;
+}
+
+/* Ventanas */
+.mensaje
+{
+	width: 80%;
+	margin: 20px 0;
+	margin-left: 10%;
+	float: left;
+	border-radius: 4px;
+	color: #FFF;
+}
+.mensaje>em
+{
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+}
+.mensaje>em:before
+{
+	font-size: 20px;
+	float: left;
+	margin: 10px;
+}
+.mensaje >p
+{
+	width: calc(100% - 80px);
+	float: left;
+	margin-top: 10px;
+}
+.mensaje>a
+{
+	float: right;
+	padding: 10px;
+}
+
+.informativo
+{
+	background: #6FC0FE;
+}
+.informativo>em:before
+{
+	content: "\f05a";
+}
+.exito
+{
+	background: #8ad919;
+}
+.exito>em:before
+{
+	content: "\f044";
+}
+.alerta
+{
+	background: #F9243F;
+}
+.alerta>em:before
+{
+	content: "\f071";
+}
+.titulo
+{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
 }
 /* Móviles en horizontal o tablets en vertical*/
 @media (min-width: 768px) {

@@ -34,9 +34,11 @@ if(isset($_REQUEST['pagina']))
 			<form id="frmModificar" method="post" name="frmModificar" action="<?php echo WEB_BASE; ?><?php echo $pagina; ?>/modificar">
 				<input type="hidden" id="txtCode" name="txtCode">
 			</form>
-			<section id="descripcion">
-				Los servicios son todas las actividades de un individuo o una empresa realizan para recibir un bien a cambio.
-			</section>
+			<div class="mensaje informativo">
+				<em></em>
+				<p>Los servicios son todas las actividades de un individuo o una empresa realizan para recibir un bien a cambio.</p>
+				<a onclick="this.parentNode.remove()">X</a>
+			</div>
 			<div id="error"></div>
 			<table class="sortable" id="anyid" cellpadding="0" cellspacing="0">
 				<tr>
@@ -70,9 +72,9 @@ if(isset($_REQUEST['pagina']))
 						<img title="Eliminar" width="40px" src="<?php echo WEB_BASE; ?>imagenes/UI/borrar.png">
 					</a></td>
 				</tr>
-				<?php } ?>
+				<?php }	?>
 			</table>
-			
+			<?php table_footer()	?>
 		</section>
 
 	<?php  cc_footer(); ?>

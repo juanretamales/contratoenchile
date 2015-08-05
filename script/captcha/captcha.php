@@ -55,6 +55,7 @@
 	$texto = strtoupper($texto);
 	$texto = str_replace("O","B", $texto);
 	$texto = str_replace("0","C", $texto);
+	$texto = str_replace("I","L", $texto);
 	session_start();
 	$_SESSION[$session]=$texto;
 	$letras =  str_split($texto);

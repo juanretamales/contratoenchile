@@ -146,8 +146,5 @@
 			?>
 			</section>
 		<?php cc_footer(); ?>
-		<style>
-			.fbConnectWidgetFooter { display: none }
-		</style>
 	</body>
 </html>

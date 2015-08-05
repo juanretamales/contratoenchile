@@ -147,7 +147,7 @@ for($i=0;$i<count($contratos);$i++)
 		<div>Ultimos Contratos mensuales</div>
 	</div>
 	<div class="actBody">
-		<div class="grafico" style="width: 90%; height: 200px;">
+		<div class="grafico" style="width: 90%; height: 300px; float: left;">
 				<canvas id="canvas" ></canvas>
 		</div>
 	<script>

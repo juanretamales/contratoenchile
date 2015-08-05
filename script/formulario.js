@@ -2058,6 +2058,7 @@ function agregarServicio()
 	}
 	if ( document.getElementById( 'txtDescripcion'))
 	{
+		document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
 		if(!comprobador('Descripcion', 0, 1000))
 		{
 			mensaje="error con la Descripcion";
