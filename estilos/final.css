@@ -531,7 +531,11 @@ li
 	width: auto;
 	margin: 15px 0 10 15;
 }
-#contenido > .boton
+#editor
+{
+	text-align: left;
+}
+.boton
 {
 	background-color: #30a5ff;
   border-color: #30a5ff;
@@ -542,6 +546,9 @@ li
 	border: 1px solid transparent;
 	border-radius: 4px;
 	text-decoration: none;
+}
+#contenido > .boton
+{
 	float: right;
 	margin: 10px;
 }
@@ -586,6 +593,24 @@ li
 {
 	background: #156FB4;
 }
+.toolbar-container
+{
+	width: 100%;
+	background: white;
+}
+.submit
+	{
+		margin-left: 30%;
+		float: left;
+	}
+	
+	.cancel
+	{
+		float: lefT;
+		background: red;
+		margin-left: 20px;
+		margin-bottom: 30px;
+	}
 /* - SERVICIOS (LISTA) */
 .servicios
 {

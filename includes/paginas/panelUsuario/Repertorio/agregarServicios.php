@@ -192,7 +192,9 @@ if(isset($_REQUEST['pagina']))
 					  <option value="center"></option>
 					  <option value="right"></option>
 					  <option value="justify"></option>
-					</select></span><span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span></span></div>
+					</select></span>
+					<!--<span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span></span>-->
+					</div>
 				<div id="editor" class="editor-container">Modifique este texto y cree la descripcion para su servicio</div>
 				<textarea class="oculto"  rows="4" cols="22" spellcheck="false" wrap="off" autofocus placeholder="Describe tu servicio..." required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255">
 				asdasd
@@ -230,23 +232,23 @@ if(isset($_REQUEST['pagina']))
 			</script>
 		</article>
 		<article class="servicios" >
-				<div>
-					
-					<a style="color: black;" href="
-				<?php 
-					echo WEB_BASE.$back;
-				?>
-				">Contrato en chile le recomienda leer las recomendaciones de nuestro panel de especialistas</a>
-				</div>
-				<div>
-					<input type="submit" value="Añadir"><a style="color: black;" href="
+		<div class="mensaje informativo">
+		<em></em>
+		<p><a style="color: black;" href="<?php echo WEB_BASE.$back; ?>">Contrato en chile le recomienda leer las recomendaciones de nuestro panel de especialistas</a></p>
+		<a onclick="this.parentNode.remove()">X</a>
+		</div>
+			<div>
+					<input class="boton submit" type="submit" value="Añadir Servicio">
+			</div>
+			</div>
+				<a class="boton cancel" href="
 				<?php 
 					echo WEB_BASE.$back;
 				?>
 				">Cancelar</a>
 				</div>
 		</article>
-		<div id="seleccionarMultimedia" class="divMultimedia inactivo">
+		<div id="seleccionarMultimedia" class="divMultimedia oculto">
 			<a class="boton">Agregar mas multimedia</a>
 			<div class="listado">
 				<?php
@@ -264,32 +266,15 @@ if(isset($_REQUEST['pagina']))
 				?>
 			</div>
 		</div>
-		<div id="seleccionarImagen" class="divMultimedia inactivo">
-			<a class="boton">Agregar mas multimedia</a>
-			<div class="listado">
-				<?php
-					for($i=0;$i<count($media);$i++)
-					{
-						if($media[$i]['id_tm']==3 || $media[$i]['id_tm']==4)
-						{
-						?><div onclick="seleccionarImagen('<?php echo $media[$i]['url_med']; ?>')">
-									<img src="<?php echo $media[$i]['url_med']; ?>">
-							</div>
-						<?php
-						}
-					}
-				?>
-			</div>
-		</div>
 		<script>
 		function cambiarImagen()
 		{
-			if ($("#seleccionarImagen").hasClass('divMultimedia activo')){
+			if ($("#seleccionarImagen").hasClass('divMultimedia')){
 				//actualizarChat=setInterval(actualizarChat(), 10000);
-				document.getElementById("seleccionarImagen").className="divMultimedia inactivo";
+				document.getElementById("seleccionarImagen").className="divMultimedia oculto";
 				//console.log("header era: activo");
 			}else{
-				document.getElementById("seleccionarImagen").className="divMultimedia activo";
+				document.getElementById("seleccionarImagen").className="divMultimedia";
 				//console.log("header era: inactivo");
 			}
 		}
