@@ -64,8 +64,8 @@ if(isset($_REQUEST['pagina']))
 		</div>
 		<p class="instrucciones">Previzualizacion del servicio</p>
 		<article class="servicios">
-			<a onclick="cambiarImagen()"><img  style="background: url('<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg'); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
-			<input type="hidden" id="txtimagenDescripcion" name="txtimagenDescripcion" value="<?php echo WEB_BASE; ?>script/holder.js/120x95/text:Agregar imagen">
+			<a id="imagenDescripcion" ><img onclick="cambiarImagen()" style="background: url('<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg'); " src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
+			<input type="hidden" id="txtimagenDescripcion" name="txtimagenDescripcion" value="<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg">
 			
 			<label class="titulo"><input required x-moz-errormessage="Debe ingresar el nombre del servicio" type="text" id="txtNombre" name="txtNombre" required maxlength="255"> de <?php echo $_SESSION['empresa'];?></label>
 			<p class="descripcion">La descripcion se llenara con el bloque de abajo</p>
@@ -269,28 +269,27 @@ if(isset($_REQUEST['pagina']))
 		<script>
 		function cambiarImagen()
 		{
-			if ($("#seleccionarImagen").hasClass('divMultimedia')){
+			if ($("#seleccionarMultimedia").hasClass('oculto')){
 				//actualizarChat=setInterval(actualizarChat(), 10000);
-				document.getElementById("seleccionarImagen").className="divMultimedia oculto";
+				document.getElementById("seleccionarMultimedia").className="divMultimedia";
 				//console.log("header era: activo");
 			}else{
-				document.getElementById("seleccionarImagen").className="divMultimedia";
+				document.getElementById("seleccionarMultimedia").className="divMultimedia oculto";
 				//console.log("header era: inactivo");
 			}
 		}
 		function seleccionarImagen(imagen)
 		{
-			if ($("#seleccionarImagen").hasClass('divMultimedia activo'))
-			{
-				//console.log("seleccionarImagen Imagen");
-				document.getElementById("imagenDescripcion").src = imagen;
-				document.getElementById("txtimagen").value = imagen;
-				cambiarImagen()
-			}
-			if ($("#seleccionarImagen").hasClass('divMultimedia activo2'))
-			{
-				
-			}
+			//console.log("seleccionarImagen Imagen");
+			document.getElementById("imagenDescripcion").firstChild.style.background = "url('"+imagen+"')";
+			document.getElementById("imagenDescripcion").firstChild.style.backgroundRepeat = "no-repeat";
+			
+			document.getElementById("imagenDescripcion").firstChild.style.backgroundPosition  = "left";
+			
+			document.getElementById("imagenDescripcion").firstChild.style.backgroundSize  = "100% 100%";
+			//console.log(imagen);
+			document.getElementById("txtimagenDescripcion").value = imagen;
+			cambiarImagen();
 		}
 		function actualizarEditor(editor)
 		{
