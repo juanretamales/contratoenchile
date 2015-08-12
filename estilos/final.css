@@ -718,6 +718,57 @@ li
 {
 	background: silver;
 }
+/* - - /Navegacion de los servicios */
+#contenido > .navegacion
+{
+	width: 100%;
+}
+#contenido > .navegacion > li
+{
+	float: left;
+	margin: 20px 10px;
+}
+#contenido > .navegacion > li > a
+{
+	font-size: 15px;
+	text-decoration: none;
+	color: black;
+	float: left;
+	padding: 10px;
+	border-radius: 4px;
+	//background: #E9ECF2;
+	background: white;
+}
+#contenido > .navegacion > li > a:hover
+{
+	background: #D1D4DB;
+	color: blue;
+}
+#contenido > .navegacion > li > .seleccionado
+{
+	background: #81DAF5;
+	color: white;
+}
+#contenido > .navegacion > li:nth-child(1) > a >em:before
+{
+	content: "\f048";
+	background: #FFF;
+}
+#contenido > .navegacion > li:nth-child(2) > a >em:before
+{
+	content: "\f049";
+	background: #FFF;
+}
+#contenido > .navegacion > li:nth-child(3) > a >em:before
+{
+	content: "\f04e";
+	background: #FFF;
+}
+#contenido > .navegacion > li:nth-child(4) > a >em:before
+{
+	content: "\f050";
+	background: #FFF;
+}
 /* - /Tabla (de la administracion) */
 .sortable 
 {

@@ -22,7 +22,7 @@
 				cc_menu($pagina); ?>
 		</section>
 		<section id="contenido">
-		<?php
+		<?php
 		require_once('script/function.php');		$archivo="./in/".urlencode($pagina).".php";		$servicios=array();		if(file_exists($archivo))		{			require_once($archivo);		}		else		{
 			$page=explode("/",$pagina);			/*codigo para guardar cache de servicio								$archivo= "./in/".urlencode($pagina).".php";			$registro="<?php test1123 ?>";			$file = fopen($archivo,"w");			fwrite($file,$registro);			fclose($file);*/
 			if(count($page)>2)
@@ -45,7 +45,7 @@
 					);
 				?>			<article class="servicios">
 				<h2>Reputacion: Aqui esta un resumen de las calificaciones hechos por otros usuarios.</h2>
-				<ul class="reputacion">						<?php							$promedio=listarPromedioCalificacionserv($arg);
+				<ul class="reputacion">						<?php							$promedio=listarPromedioCalificacionserv($arg);							print_r($promedio);
 							if(count($promedio)>0)
 							{
 								for($i=0;$i<count($promedio);$i++)

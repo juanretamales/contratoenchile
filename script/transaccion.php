@@ -2386,7 +2386,96 @@ class transaccion
 		$mysqli->close();
 		return $listar;
 	}
-	
+	function listarCantidadServicio($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query="SELECT
+			count(s.id_serv) as cantidad
+		FROM
+			servicio s,
+			tiposervicio ts,
+			categoria c,
+			subcategoria sc,
+			entidad ent,
+			estado est,
+			media m
+		WHERE
+			s.id_ent=ent.id_ent AND
+			s.id_est=est.id_est AND
+			s.id_ts=ts.id_ts AND
+			s.id_scat=sc.id_scat AND
+			sc.id_cat=c.id_cat AND
+			m.`id_med`=s.`desc_img`";
+		
+		if(isset($arg['id_ent']))
+		{
+			$query = $query. " and s.id_ent='".$arg['id_ent']."'";
+		}
+		if(isset($arg['nom_serv']))
+		{
+			$query = $query. " and s.nom_serv='".$arg['nom_serv']."'";
+		}
+		if(isset($arg['nom_ent']))
+		{
+			$query = $query. " and ent.nom_ent='".$arg['nom_ent']."'";
+		}
+		if(isset($arg['id_serv']))
+		{
+			$query = $query. " and s.id_serv='".$arg['id_serv']."'";
+		}
+		if(isset($arg['id_est']))
+		{
+			$query = $query. " and s.id_est='".$arg['id_est']."'";
+		}
+		if(isset($arg['id_ts']))
+		{
+			$query = $query. " and s.id_ts='".$arg['id_ts']."'";
+		}
+		if(isset($arg['nom_ts']))
+		{
+			$query = $query. " and ts.nom_ts='".$arg['nom_ts']."'";
+		}
+		if(isset($arg['nom_scat']))
+		{
+			$query = $query. " and sc.nom_scat='".$arg['nom_scat']."'";
+		}
+		if(isset($arg['id_scat']))
+		{
+			$query = $query. " and s.id_scat='".$arg['id_scat']."'";
+		}
+		if(isset($arg['id_cat']))
+		{
+			$query = $query. " and c.id_cat='".$arg['id_cat']."'";
+		}
+		if(isset($arg['nom_cat']))
+		{
+			$query = $query. " and c.nom_cat='".$arg['nom_cat']."'";
+		}
+		else
+		{
+			$query = $query." order by puntaje";
+		}
+		if(isset($arg['limit']))
+		{
+			$query = $query. " limit '".$arg['limit']."'";
+		}
+		$listar= array();
+		$mysqli=$this->conectar();
+		//echo $query;
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$listar[] = array 
+			(
+				'cantidad'=>$fila['cantidad']
+			);
+		}
+		//print_r($resultado);
+		$mysqli->close();
+		return$listar[0]['cantidad'];
+	}
 	function listarServicio($arg)
 	{
 		require_once('db.php');
@@ -3141,7 +3230,8 @@ class transaccion
 			sc.nom_scat,
 			est.nom_est,
 			s.desc_serv,
-			m.`url_med`
+			m.`url_med`,
+			s.`puntaje`
 		FROM
 			servicio s,
 			tiposervicio ts,
@@ -3208,11 +3298,11 @@ class transaccion
 		}
 		else
 		{
-			$query = $query." order by id_serv";
+			$query = $query." order by puntaje";
 		}
 		if(isset($arg['limit']))
 		{
-			$query = $query. " limit '".$arg['limit']."'";
+			$query = $query. " limit ".$arg['limit'];
 		}
 		//echo $query;
 		$mysqli=$this->conectar();
@@ -3231,7 +3321,8 @@ class transaccion
 				'nom_scat'=>$fila['nom_scat'], 
 				'nom_est'=>$fila['nom_est'], 
 				'desc_serv'=>$fila['desc_serv'],
-				'desc_img'=>$fila['url_med']
+				'desc_img'=>$fila['url_med'],
+				'puntaje'=>$fila['puntaje']
 			);
 		}
 		$mysqli->close();

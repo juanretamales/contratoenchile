@@ -368,6 +368,14 @@
 					$arg=array('id_cat'=>$categorias[0]['id_cat']);
 					//print_r($arg);
 					$subcategorias=$transaccion->listarSubcategorias($arg);
+					if(!isset($page[2]))
+					{
+						$page[2]="Todos";
+					}
+					if(!isset($page[3]))
+					{
+						$page[3]="Todos";
+					}
 					//print_r($subcategorias);
 					for($i=0;$i<count($subcategorias);$i++)
 					{
@@ -377,16 +385,19 @@
 							{
 								if(isset($page[3]))
 								{
-									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+									//echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/Todos/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
 								}
 								else
 								{
-									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+									//echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/Todos/Todos">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
 								}							
 								continue;
 							}
 						}
-						echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+						//echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+						echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/Todos">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
 						
 					}
 					$tp=$transaccion->listarTiposervicio($arg);
@@ -396,7 +407,7 @@
 						{
 							if($page[3]==$tp [$i] ['nom_ts'])
 							{
-								echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/'.$tp [$i] ['nom_ts'].'">'.$tp [$i] ['nom_ts'].'</a></li>';
+								echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/Todos">'.$tp [$i] ['nom_ts'].'</a></li>';
 								continue;
 							}
 						}
@@ -408,9 +419,60 @@
 			
 			echo '</ul></nav>';
 		}
-		
 	}
-	
+	function cacheServicios($id_serv)
+	{
+		require_once "transaccion.php";
+		$transaccion=new transaccion();
+		$habilitado = 'Habilitado';
+		$arg['id_serv']=$id_Serv;
+		$servicios=listarServiciosSinDetalle($arg);
+		$pagna="detalle/".$servicios[0]['nom_ent']."/".$servicios[0]['nom_serv'];
+		$archivo="./in/".urlencode($pagna).".php";
+		$registro+="<?php ";
+		if($servicios[0]['nom_est']==$habilitado)
+		{
+			/*codigo para guardar cache de servicio*/
+			$registro+="$servicios [0] = Array 
+			( 
+				'id_serv' => 1,
+				'nom_serv' => 'hola servicio ',
+				'nom_ent' => 'hola empresa ',
+				'nom_ts' => 'Solo Presencial ',
+				'nom_cat' => 'Belleza ',
+				'nom_scat' => 'Cosmetología ',
+				'nom_est' => 'Habilitado ',
+				'desc_serv' => 'probando metodo',
+				'desc_img' => 'http://www.baka-tsuki.org/project/images/2/23/Mushoku3_01.jpg'
+			); ";
+			$promedio=listarPromedioCalificacionserv($arg);
+			$registro+=" $promedio  = Array (";
+			for($i=0;$i<count($promedio);$i++)
+			{
+				$registro+=" Array (
+				'id_serv'=>".$promedio [$i] ['id_serv'].",
+				'nom_ec'=>".$promedio [$i] ['nom_ec'].",
+				'desc_tc'=>".$promedio [$i] ['desc_tc'].",
+				'valor'=>".$promedio [$i] ['valor'].")";
+				if($i!=count($promedio))
+				{
+					$registro+=",";
+				}
+			}
+			$registro+="); ";
+			$registro+=" ?>";
+			$file = fopen($archivo,"w");
+			fwrite($file,$registro);
+			fclose($file);
+		}
+		else
+		{
+			if(file_exists($archivo))
+			{
+				unlink($archivo);
+			}
+		}
+	}
 	function escribirLog($id_pag, $pag)
 	{
 		/*
@@ -488,6 +550,12 @@
 		return false;
 	}
 	
+	function listarCantidadServicio($arg)
+	{
+		require_once "transaccion.php";
+		$transaccion=new transaccion($arg);
+		return $transaccion->listarCantidadServicio($arg);
+	}
 	function listarEntidadPorPersona($arg)
 	{
 		require_once "transaccion.php";
