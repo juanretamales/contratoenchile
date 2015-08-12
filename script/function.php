@@ -332,7 +332,7 @@
 					$categorias=$transaccion->listarCategorias($arg);
 					for($i=0;$i<count($categorias);$i++)
 					{
-						echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
+						echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
 					}
 				}
 				else
@@ -379,37 +379,24 @@
 					//print_r($subcategorias);
 					for($i=0;$i<count($subcategorias);$i++)
 					{
-						if(isset($page[2]))
+						if($page[2]==$subcategorias [$i] ['nom_scat'])
 						{
-							if($page[2]==$subcategorias [$i] ['nom_scat'])
+							if(isset($page[3]))
 							{
-								if(isset($page[3]))
-								{
-									//echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
-									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/Todos/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
-								}
-								else
-								{
-									//echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
-									echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/Todos/Todos">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
-								}							
-								continue;
-							}
+								echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/Todos/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+							}						
+							continue;
 						}
-						//echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
-						echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/Todos">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
+						echo '<li><a class="menu subcat" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$subcategorias[$i]['nom_scat'].'/'.$page[3].'">'.$subcategorias [$i] ['nom_scat'].'</a></li>';
 						
 					}
 					$tp=$transaccion->listarTiposervicio($arg);
 					for($i=0;$i<count($tp);$i++)
 					{
-						if(isset($page[3]))
+						if($page[3]==$tp [$i] ['nom_ts'])
 						{
-							if($page[3]==$tp [$i] ['nom_ts'])
-							{
-								echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/Todos">'.$tp [$i] ['nom_ts'].'</a></li>';
-								continue;
-							}
+							echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/Todos">'.$tp [$i] ['nom_ts'].'</a></li>';
+							continue;
 						}
 						echo '<li><a class="menu tipo" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/'.$tp [$i] ['nom_ts'].'">'.$tp [$i] ['nom_ts'].'</a></li>';
 					}
