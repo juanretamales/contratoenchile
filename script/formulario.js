@@ -388,7 +388,7 @@ function actualizarPermiso(pagina, tipousuario, estado)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
 				}
 			});
@@ -396,7 +396,7 @@ function actualizarPermiso(pagina, tipousuario, estado)
 	}
 	else
 	{
-		$('#error').html("ha ocurrido un error inesperado, recargue la pagina");
+		alerta("ha ocurrido un error inesperado, recargue la pagina");
 	}
 	return false;
 }
@@ -421,7 +421,7 @@ function actualizarPermisos()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
 				}
 			});
@@ -429,7 +429,7 @@ function actualizarPermisos()
 	}
 	else
 	{
-		$('#error').html("ha ocurrido un error inesperado, recargue la pagina");
+		alerta("ha ocurrido un error inesperado, recargue la pagina");
 	}
 	return false;
 }
@@ -665,7 +665,7 @@ function validarFormularioLogin()
 		if(comprobador(elements[i])==false)
 		{
 			mensaje="error con el "+elements[i];
-			$('#error').html('Error:'+elements[i]);
+			alerta('Error:'+elements[i]);
 			return false;
 		}
 	}
@@ -684,12 +684,12 @@ function validarFormularioLogin()
 					{
 						//alert(response);
 						window.location=urlbase;
-						//$('#error').html(response);
+						//alerta(response);
 					}
 					else
 					{
 						mensaje="Revise el formulario, "+response;
-						$('#error').html(response);
+						alerta(response);
 						//alert("Revise el formulario, "+response);
 						d = new Date();
 						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
@@ -703,8 +703,8 @@ function validarFormularioLogin()
 	{
 		d = new Date();
 		$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
-		//$('#error').html("Revise el formulario, "+mensaje);
-		$('#error').html(mensaje);
+		//alerta("Revise el formulario, "+mensaje);
+		alerta(mensaje);
 	}
 	return false;
 }
@@ -732,7 +732,7 @@ function eliminarCategoria(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -753,7 +753,7 @@ function eliminarCobertura(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -774,7 +774,7 @@ function eliminarComuna(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -795,7 +795,7 @@ function eliminarContacto(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -816,7 +816,7 @@ function eliminarDocumento(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -836,7 +836,7 @@ function eliminarDocumento(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -857,7 +857,7 @@ function eliminarEstado(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -877,7 +877,7 @@ function eliminarEstado(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -898,7 +898,7 @@ function eliminarMultimedia(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -919,7 +919,7 @@ function eliminarMensajes(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -939,7 +939,7 @@ function eliminarMensajes(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -959,7 +959,7 @@ function eliminarMensajes(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -979,7 +979,7 @@ function eliminarMensajes(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -999,7 +999,7 @@ function eliminarMensajes(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1020,7 +1020,7 @@ function eliminarPersona(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1041,7 +1041,7 @@ function eliminarPersonaEntidad(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1062,7 +1062,7 @@ function eliminarProvincia(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1083,7 +1083,7 @@ function eliminarRegion(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1104,7 +1104,7 @@ function eliminarServcon(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1125,7 +1125,7 @@ function eliminarServicio(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1146,7 +1146,7 @@ function borrarServicio(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1167,7 +1167,7 @@ function eliminarSubcategoria(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1188,7 +1188,7 @@ function eliminarTipoCalificacion(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1209,7 +1209,7 @@ function eliminarTipodocumento(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1230,7 +1230,7 @@ function eliminarTipomultimedia(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1251,7 +1251,7 @@ function eliminarTipopagina(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1272,7 +1272,7 @@ function eliminarTiposervicio(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1293,7 +1293,7 @@ function eliminarTipousuario(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -1334,7 +1334,7 @@ function modificarContrasena()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 						d = new Date();
 						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 					}
@@ -1378,7 +1378,7 @@ function modificarPerfil()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 						d = new Date();
 						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 					}
@@ -1387,7 +1387,7 @@ function modificarPerfil()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 		d = new Date();
 		$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 	}
@@ -1440,14 +1440,14 @@ function modificarEmpresa()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html('Revise el formulario');
+		alerta('Revise el formulario');
 	}
 	return false;
 }
@@ -1626,14 +1626,14 @@ function agregarEmpresa()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1665,14 +1665,14 @@ function agregarPais()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1704,14 +1704,14 @@ function modificarPais()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1784,7 +1784,7 @@ function seleccionarEmpresa()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 	});
@@ -1852,14 +1852,14 @@ function modificarRegion()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1891,14 +1891,14 @@ function agregarRegion()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1930,14 +1930,14 @@ function agregarProvincia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -1969,14 +1969,14 @@ function modificarProvincia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2008,14 +2008,14 @@ function agregarComuna()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2047,14 +2047,14 @@ function modificarComuna()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2086,14 +2086,14 @@ function agregarCategoria()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2125,27 +2125,40 @@ function agregarSubcategoria()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
-
+function alerta(mensaje)
+{
+	document.getElementById("contenido").innerHTML = '<div class="mensaje alerta"><em></em><p>'+mensaje+'</p><a onclick="this.parentNode.remove()">X</a></div>'+document.getElementById("contenido").innerHTML;
+}
 function agregarServicio()
 {
 	var mensaje="";
+	var serv="";
 	var elements = ["Nombre", "Categoria", "Subcategoria", "TipoServicio"];
 	for (i = 0; i < elements.length; i++)
 	{
 		if(!comprobador(elements[i]))
 		{
 			mensaje="error con el "+elements[i];
+		}
+		else
+		{
+			if(serv!="")
+			{
+				serv+="&&";
+			}
+			serv+="txt"+elements[i]+"="+document.getElementById("txt"+elements[i]).value;
 		}
 	}
 	if ( document.getElementById( 'txtEmpresa'))
@@ -2154,6 +2167,10 @@ function agregarServicio()
 		{
 			mensaje="error con la empresa";
 		}
+		else
+		{
+			serv+="&&txtEmpresa="+document.getElementById("txtEmpresa").value;
+		}
 	}
 	if ( document.getElementById( 'txtEstado'))
 	{
@@ -2161,13 +2178,21 @@ function agregarServicio()
 		{
 			mensaje="error con la Estado";
 		}
+		else
+		{
+			serv+="&&txtEstado="+document.getElementById("txtEstado").value;
+		}
 	}
 	if ( document.getElementById( 'txtDescripcion'))
 	{
-		document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
+		//document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
 		if(!comprobador('Descripcion', 0, 1000))
 		{
 			mensaje="error con la Descripcion";
+		}
+		else
+		{
+			serv+="&&txtDescripcion="+urlencode(document.getElementById("txtDescripcion").value);
 		}
 	}
 	if(mensaje=="")
@@ -2175,7 +2200,8 @@ function agregarServicio()
 		$.ajax({
                 data:  
 					{
-						"agregarServicio" : $('.formulario').serialize()
+						//"agregarServicio" : $('.formulario').serialize()
+						"agregarServicio" : serv
 					},
                 url:   urlbase+'script/ajax.php',
                 type:  'post',
@@ -2193,14 +2219,14 @@ function agregarServicio()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2223,7 +2249,7 @@ function desconectarse()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 	});
@@ -2256,14 +2282,14 @@ function agregarEscalacal()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2295,14 +2321,14 @@ function agregarEstado()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2334,14 +2360,14 @@ function agregarTipocal()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2373,14 +2399,14 @@ function agregarTipodoc()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2412,14 +2438,14 @@ function modificarTipodoc()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2451,14 +2477,14 @@ function agregarTipomedia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2490,14 +2516,14 @@ function modificarTipomedia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2529,14 +2555,14 @@ function agregarTipopag()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2568,14 +2594,14 @@ function modificarTipopag()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2607,14 +2633,14 @@ function agregarTiposerv()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2646,14 +2672,14 @@ function agregarTipousuario()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2685,14 +2711,14 @@ function modificarTipousuario()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2735,7 +2761,7 @@ function agregarPermiso()
 							}
 							else
 							{
-								$('#error').html(response);
+								alerta(response);
 							}
 						}
 				});
@@ -2749,7 +2775,7 @@ function agregarPermiso()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2788,14 +2814,14 @@ function agregarDocumento()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2836,7 +2862,7 @@ function modificarDocumento()
 						}
 						else
 						{
-							$('#error').html(response);
+							alerta(response);
 						}
 					}
 			});
@@ -2857,7 +2883,7 @@ function modificarDocumento()
 						}
 						else
 						{
-							$('#error').html(response);
+							alerta(response);
 						}
 					}
 			});
@@ -2865,7 +2891,7 @@ function modificarDocumento()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2897,14 +2923,14 @@ function agregarPagina()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -2936,14 +2962,14 @@ function modificarPagina()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3020,7 +3046,7 @@ function agregarAlCarro(id)
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3056,7 +3082,7 @@ function eliminarCarro(id)
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3083,7 +3109,7 @@ function vaciarCarro()
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3117,7 +3143,7 @@ function agregarAComparacion(id)
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3149,7 +3175,7 @@ function eliminarComparacion(id)
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3176,7 +3202,7 @@ function vaciarComparacion()
                 success:  function (response) {
                     if(response!="Exito")
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
 			});
@@ -3336,14 +3362,14 @@ function agregarMultimedia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3478,14 +3504,14 @@ function modificarMultimedia()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3597,7 +3623,7 @@ function agregarUsuario()
 		if(comprobador(elements[i])==false)
 		{
 			mensaje="error con el "+elements[i];
-			$('#error').html("error:"+elements[i]);
+			alerta("error:"+elements[i]);
 			return false;
 		}
 	}
@@ -3638,7 +3664,7 @@ function agregarUsuario()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 						d = new Date();
 						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 					}
@@ -3647,7 +3673,7 @@ function agregarUsuario()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3696,7 +3722,7 @@ function modificarUsuario()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3733,7 +3759,7 @@ function registrarse()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 						d = new Date();
 						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 					}
@@ -3742,7 +3768,7 @@ function registrarse()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3773,7 +3799,7 @@ function verificarCodigo()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -3786,7 +3812,7 @@ function verificarCodigo()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -3829,7 +3855,7 @@ function actualizarCanasta(id)
 	}
 	else
 	{
-		$('#error').html("El bloque no existe");
+		alerta("El bloque no existe");
 	}
 }
 
@@ -3879,7 +3905,7 @@ function actualizarComparacion(id)
 	}
 	else
 	{
-		$('#error').html("El bloque no existe");
+		alerta("El bloque no existe");
 	}
 }
 
@@ -3927,7 +3953,7 @@ function cargarDatos(id)
 	}
 	else
 	{
-		$('#error').html("El bloque no existe");
+		alerta("El bloque no existe");
 		return false;
 	}
 	return false;
@@ -3941,7 +3967,7 @@ function contratar()
 		if(carro===null)
 		{
 			console.log("No tienes ningun articulo en la canasta...");
-			$('#error').html("No tienes ningun articulo en la canasta...");
+			alerta("No tienes ningun articulo en la canasta...");
 		}
 		else
 		{
@@ -3971,7 +3997,7 @@ function confirmarContrato()
 		if(carro===null)
 		{
 			console.log("No tienes ningun articulo en la canasta...");
-			$('#error').html("No tienes ningun articulo en la canasta...");
+			alerta("No tienes ningun articulo en la canasta...");
 		}
 		else
 		{
@@ -3994,14 +4020,14 @@ function confirmarContrato()
 							}
 							else
 							{
-								$('#error').html(response);
+								alerta(response);
 							}
 						}
 				});
 			}
 			else
 			{
-				$('#error').html("Debes ingresar el texto de la imagen");
+				alerta("Debes ingresar el texto de la imagen");
 			}
 		}
 	}
@@ -4038,7 +4064,7 @@ function modificarContacto()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4072,14 +4098,14 @@ function modificarTiposerv()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4110,14 +4136,14 @@ function modificarSubcategoria()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4148,14 +4174,14 @@ function modificarCategoria()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4186,14 +4212,14 @@ function agregarMensaje()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4225,14 +4251,14 @@ function modificarMensaje()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4269,14 +4295,14 @@ function agregarPregunta()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4307,14 +4333,14 @@ function modificarPregunta()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4345,14 +4371,14 @@ function agregarMetrica()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4383,14 +4409,14 @@ function modificarMetrica()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4409,7 +4435,7 @@ function eliminarPregunta(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4430,7 +4456,7 @@ function eliminarMetrica(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4484,14 +4510,14 @@ function modificarServicio()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4533,7 +4559,7 @@ function agregarAutoridad()
 							}
 							else
 							{
-								$('#error').html(response);
+								alerta(response);
 							}
 						}
 				});
@@ -4547,7 +4573,7 @@ function agregarAutoridad()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4566,7 +4592,7 @@ function eliminarAutoridad(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4599,14 +4625,14 @@ function agregarMenu()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4637,14 +4663,14 @@ function modificarMenu()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
 	} 
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4663,7 +4689,7 @@ function eliminarMenu(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4707,7 +4733,7 @@ function agregarItem()
 							}
 							else
 							{
-								$('#error').html(response);
+								alerta(response);
 							}
 						}
 				});
@@ -4721,7 +4747,7 @@ function agregarItem()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4740,7 +4766,7 @@ function eliminarItem(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4777,7 +4803,7 @@ function recuperarContrasena()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 					d = new Date();
 					$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 				}
@@ -4786,7 +4812,7 @@ function recuperarContrasena()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -4805,7 +4831,7 @@ function finalizarContacto(id)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4837,7 +4863,7 @@ function calificarCon()
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4859,7 +4885,7 @@ function borrarContacto(id)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4880,7 +4906,7 @@ function eliminarContacto(id)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -4923,7 +4949,7 @@ function modificarConfiguracion()
 						}
 						else
 						{
-							$('#error').html(response);
+							alerta(response);
 							d = new Date();
 							$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 						}
@@ -4933,7 +4959,7 @@ function modificarConfiguracion()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 	
@@ -4965,14 +4991,14 @@ function agregarPlan()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 		});
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -5010,14 +5036,14 @@ function agregarBoleta()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 		});
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -5034,7 +5060,7 @@ function agregarBoletas()
 			type:  'post',
 			success:  function (response) {
 				$('#merchant_transaction_id').val(response);
-				$('#error').html(response);
+				alerta(response);
 				//alert(response);
 			}
 		});
@@ -5072,14 +5098,14 @@ function modificarPlan()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 		});
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -5110,14 +5136,14 @@ function modificarBoleta()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 				}
 			}
 		});
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -5210,7 +5236,7 @@ function enviarCorreo()
 				}
 				else
 				{
-					$('#error').html(response);
+					alerta(response);
 					d = new Date();
 					$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
 				}
@@ -5219,7 +5245,7 @@ function enviarCorreo()
 	}
 	else
 	{
-		$('#error').html("Revise el formulario, "+mensaje);
+		alerta("Revise el formulario, "+mensaje);
 	}
 	return false;
 }
@@ -5238,7 +5264,7 @@ function eliminarPlan(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });
@@ -5259,7 +5285,7 @@ function eliminarBoleta(id, nombre)
 					}
 					else
 					{
-						$('#error').html(response);
+						alerta(response);
 					}
                 }
         });

@@ -258,7 +258,7 @@ if(isset($_REQUEST['pagina']))
 					$media=listarMedia($arg);
 					for($i=0;$i<count($media);$i++)
 					{
-						?>'<div onclick="seleccionarImagen('<?php echo $media[$i]['url_med']; ?>')">
+						?>'<div onclick="seleccionarImagen('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
 									<img src="<?php echo $media[$i]['url_med']; ?>">
 							</div>
 						<?php
@@ -278,10 +278,10 @@ if(isset($_REQUEST['pagina']))
 				//console.log("header era: inactivo");
 			}
 		}
-		function seleccionarImagen(imagen)
+		function seleccionarImagen(imagen, url)
 		{
 			//console.log("seleccionarImagen Imagen");
-			document.getElementById("imagenDescripcion").firstChild.style.background = "url('"+imagen+"')";
+			document.getElementById("imagenDescripcion").firstChild.style.background = "url('"+url+"')";
 			document.getElementById("imagenDescripcion").firstChild.style.backgroundRepeat = "no-repeat";
 			
 			document.getElementById("imagenDescripcion").firstChild.style.backgroundPosition  = "left";

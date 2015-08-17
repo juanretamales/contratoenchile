@@ -4,7 +4,6 @@
 </head>
 <body>
 		<?php cc_header(); ?>
-		<section>
 			<?php 
 			if(isset($_REQUEST['pagina']))
 			{
@@ -51,7 +50,6 @@
 					</div>
 				</article>
 			</section>
-		</section>
 		<?php cc_footer(); ?>
 </body>
 </html>

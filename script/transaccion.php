@@ -930,7 +930,7 @@ class transaccion
 		require_once('db.php');
 		$db=new db();
 		$query = "SELECT `id_ent`, `id_est`, `subscripcion`, `rut_sii`, `nom_ent`, `sitio`, 
-		`seo_ent`, `desc_ent`, `email_ent`, `tel_ent`, `auth_key`, `banner`, `footer` FROM `entidad`";
+		 `desc_ent`, `email_ent`, `tel_ent`, `auth_key` FROM `entidad`";
 		$condicion=0;
 		if(isset($arg['id_ent']))
 		{
@@ -1101,32 +1101,6 @@ class transaccion
 			}
 			$query = $query. " cssmenu='".$arg['cssmenu']."'";
 		}
-		if(isset($arg['csscontacto']))
-		{
-			if($condicion!=0)
-			{
-				$query = $query . " and";
-			}
-			else
-			{
-				$query = $query . " where ";
-				$condicion++;
-			}
-			$query = $query. " csscontacto='".$arg['csscontacto']."'";
-		}
-		if(isset($arg['footer']))
-		{
-			if($condicion!=0)
-			{
-				$query = $query . " and";
-			}
-			else
-			{
-				$query = $query . " where ";
-				$condicion++;
-			}
-			$query = $query. " footer='".$arg['footer']."'";
-		}
 		if(isset($arg['where']))
 		{
 			if($condicion!=0)
@@ -1166,13 +1140,10 @@ class transaccion
 				'rut_sii'=>$fila['rut_sii'], 
 				'nom_ent'=>$fila['nom_ent'], 
 				'sitio'=>$fila['sitio'], 
-				'seo_ent'=>$fila['seo_ent'], 
 				'desc_ent'=>$fila['desc_ent'], 
 				'email_ent'=>$fila['email_ent'], 
 				'tel_ent'=>$fila['tel_ent'], 
-				'auth_key'=>$fila['auth_key'], 
-				'banner'=>$fila['banner'],
-				'footer'=>$fila['footer']
+				'auth_key'=>$fila['auth_key']
 			);
 		}
 		$mysqli->close();

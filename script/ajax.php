@@ -16,9 +16,9 @@ function serializeToArray($arreglo)
 			$code2=explode("=", $code[$i]);
 			if($code2[0]=="txtDescripcion")
 			{
-				if(strlen($code2[1])>0 && strlen($code2[1])<1000)
+				if(strlen($code2[1])>0 && strlen($code2[1])<100000)
 				{
-					$variables[$code2[0]]= str_replace("'",'%22', urldecode($code2[1]));
+					$variables[$code2[0]]= str_replace("'",'%22', $code2[1]);
 				}
 			}
 			else
@@ -597,6 +597,7 @@ if(isset($_POST['agregarServicio']))
 		}
 		else
 		{
+			//print_r($variables);
 			echo "Error al recibir los parametros";
 		}
 	}
