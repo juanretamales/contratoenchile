@@ -429,6 +429,19 @@ li
 {
 	display: none;
 }
+#divFacebook
+{
+	background: #3A5795;
+	color: white;
+	width: 100%;
+	float: left;
+}
+#divTwitter
+{
+	background: lightblue;
+	width: 100%;
+	float: left;
+}
 /* - /administracion(ininio del panel de administracion) */
 .divPrincipal > .actBody > .grafico >canvas
 {

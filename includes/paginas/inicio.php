@@ -41,12 +41,27 @@
 				</article>
 				<article id="artRedes">
 					<div id="divTwitter">
-						<label>Ultimos Twits con nuestro pajaro</label>
-						<div></div>
+						<label>Ultimos mensajes de Twitter</label>
+						<div>
+							           <a class="twitter-timeline"  href="https://twitter.com/Mineclack" data-widget-id="633709186161987585" 
+  height="300"   data-chrome="transparent noborders" data-tweet-limit="3">Tweets por el @Mineclack.</a>
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+							
+						</div>
 					</div>
 					<div id="divFacebook">
 						<label>Ultimos Mensajes de Facebook</label>
-						<div></div>
+						<div>
+							<div class="fb-comments" data-href="https://www.facebook.com/AnimeGateMerchading/posts/1204733162901536" data-width="512" data-numposts="5"></div>
+							<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4&appId=259290437609367";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+						</div>
 					</div>
 				</article>
 			</section>

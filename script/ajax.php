@@ -43,7 +43,7 @@ if(isset($_POST['actualizarPermisos']))
 		"nada" => '0'
 	);
 	$nuevospermisos=$_POST['actualizarPermisos'];
-	print_r($nuevospermisos);
+	//print_r($nuevospermisos);
 	$variable;
 	$permisos=$transaccion->listarPermisos($arg);
 	$permisosAgregar= array();
