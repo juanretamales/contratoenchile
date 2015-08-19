@@ -13,9 +13,9 @@ if(isset($_REQUEST['pagina']))
 }
 			cc_menu($pagina); ?>
 	</section>
-	<section id="contenido" >
-	<form class="formulario" onsubmit="return modificarMultimedia()" method="post">	<div id="error"></div>
-				<h1 class="titulo2">Modificar Multimedia</h1>
+	<section id="contenido" ><h1 class="titulo">Modificar Multimedia</h1>
+	<form class="formulario" onsubmit="return modificarMultimedia()" method="post">
+				
 				<?php
 						require_once "script/webConfig.php";
 						$page=explode("/",$pagina);
@@ -86,10 +86,10 @@ if(isset($_REQUEST['pagina']))
 					<label id="lblUrl2"></label>
 					<input onchange="actualizarMedia()"  type="text" id="txtUrl2" name="txtUrl2" maxlength="255">
 				</div>
-				<div id="url3">
-					<label id="lblUrl3"></label>
-					<input onchange="actualizarMedia()"  type="text" id="txtUrl3" name="txtUrl3" maxlength="255">
-				</div>
+				<div id="url3">
+					<label id="lblUrl3"></label>
+					<input onchange="actualizarMedia()"  type="text" id="txtUrl3" name="txtUrl3" maxlength="255">
+				</div>
 				<input value="<?php echo $med[0]['url_med']; ?>" required type="hidden" id="txtUrl" name="txtUrl" maxlength="255">
 				<script>
 				cambiarMedia();
@@ -100,8 +100,8 @@ if(isset($_REQUEST['pagina']))
 				$('#txtUrl1').val('<?php echo $url [0]; ?>');
 				$('#txtUrl2').val('<?php echo $url [1]; ?>');
 				$('#txtUrl3').val('<?php echo $url [2]; ?>');
-				</script>				</div>
-				<div>				<input class="boton submit" type="submit" value="Añadir">				<a class="boton cancel" href="<?php echo WEB_BASE.$back;?>">Cancelar</a>				</div>
+				</script>				
+				<div>				<input class="boton submit" type="submit" value="Modificar">				<a class="boton cancel" href="<?php echo WEB_BASE.$back;?>">Cancelar</a>				</div>
 	</form>
 </section>
 
