@@ -607,28 +607,46 @@ if(isset($_POST['agregarMultimedia']))
 {
 	$variables=serializeToArray($_POST['agregarMultimedia']);
 	if(
-		isset($variables ['txtServicio']) &&
 		isset($variables ['txtNombre']) &&
 		isset($variables ['txtTipoMultimedia']) &&
 		isset($variables ['txtUrl'])
 	)
 	{
-		include_once('./transaccion.php');
-		$transaccion=new transaccion();
-		$arg=array(
-			'id_serv'=>$variables ['txtServicio'], 
-			'nom_med'=>$variables ['txtNombre'], 
-			'id_tm'=>$variables ['txtTipoMultimedia'], 
-			'url_med'=>$variables ['txtUrl'] 
-		);
-		$resultado=$transaccion->insertarMedia($arg);
-		if($resultado==true)
+		$ent=0;
+		if(isset($variables ['txtEmpresa']))
 		{
-			echo "Exito";
+			$ent=$variables ['txtEmpresa'];
 		}
 		else
 		{
-			echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+			if(isset($_SESSION['empresa']))
+			{
+				$ent=$_SESSION['empresa'];
+			}
+		}
+		if($ent!=0)
+		{
+			include_once('./transaccion.php');
+			$transaccion=new transaccion();
+			$arg=array(
+				'id_ent'=>$ent, 
+				'nom_med'=>$variables ['txtNombre'], 
+				'id_tm'=>$variables ['txtTipoMultimedia'], 
+				'url_med'=>$variables ['txtUrl'] 
+			);
+			$resultado=$transaccion->insertarMedia($arg);
+			if($resultado==true)
+			{
+				echo "Exito";
+			}
+			else
+			{
+				echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+			}
+		}
+		else
+		{
+			echo "Seleccione la empresa a agregar el archivo multimedia";
 		}
 	}
 	
@@ -1603,35 +1621,53 @@ if(isset($_POST['modificarMultimedia']))
 	if(
 		isset($variables ['txtCode']) && 
 		isset($variables ['txtNombre']) && 
-		isset($variables ['txtServicio']) && 
 		isset($variables ['txtTipoMultimedia']) && 
 		isset($variables ['txtUrl'])
 	) 
 	{
-		$arg = array (
-			"nom_med" => $variables ['txtNombre'],
-			"id_serv" => $variables ['txtServicio'],
-			"id_tm" => $variables ['txtTipoMultimedia'],
-			"url_med" => $variables ['txtUrl'],
-			"condition" => "id_med",
-			"data" => $variables ['txtCode'],
-			"affected" => md5('nada')
-		);
-		include_once('./transaccion.php');
-		$transaccion=new transaccion;
-		$resultado=$transaccion->modificarMedia($arg);
-		switch($resultado)
+		$ent=0;
+		if(isset($variables ['txtEmpresa']))
 		{
-			case 0:
-				echo "Error al recibir los datos";
-				break;
-			case 1:
-				echo "Exito";
-				break;
-			default:
-				echo "Ocurrio un error, recargue la pagina e intente nuevamente";
-				break;
-		} 
+			$ent=$variables ['txtEmpresa'];
+		}
+		else
+		{
+			if(isset($_SESSION['empresa']))
+			{
+				$ent=$_SESSION['empresa'];
+			}
+		}
+		if($ent!=0)
+		{
+			$arg = array (
+				"nom_med" => $variables ['txtNombre'],
+				"id_ent" => $ent,
+				"id_tm" => $variables ['txtTipoMultimedia'],
+				"url_med" => $variables ['txtUrl'],
+				"condition" => "id_med",
+				"data" => $variables ['txtCode'],
+				"affected" => md5('nada')
+			);
+			include_once('./transaccion.php');
+			$transaccion=new transaccion;
+			$resultado=$transaccion->modificarMedia($arg);
+			switch($resultado)
+			{
+				case 0:
+					echo "Error al recibir los datos";
+					break;
+				case 1:
+					echo "Exito";
+					break;
+				default:
+					echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+					break;
+			} 
+		}
+		else
+		{
+			echo "Seleccione la empresa a editar el archivo multimedia";
+		}
 	}	
 	else
 	{

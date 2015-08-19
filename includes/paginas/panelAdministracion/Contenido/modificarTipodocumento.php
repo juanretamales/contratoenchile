@@ -50,7 +50,6 @@ if(isset($_REQUEST['pagina']))
 				<div>
 					<label>Nombre del Pais</label>
 					<input value="<?php echo $doc[0]['nom_td']; ?>" required x-moz-errormessage="Debe ingresar el nombre del pais" type="text" required maxlength="255" id="txtNombre" name="txtNombre">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNombre">
 				</div>
 				<div>
 					<input type="submit" value="Modificar">

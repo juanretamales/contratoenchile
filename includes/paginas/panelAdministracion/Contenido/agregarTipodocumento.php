@@ -20,7 +20,6 @@ if(isset($_REQUEST['pagina']))
 				<div>
 					<label>Nombre</label>
 					<input required x-moz-errormessage="Debe ingresar el nombre del Tipo de Documento" type="text" id="txtNombre" name="txtNombre" maxlength="255">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNombre">
 				</div>
 				<div>
 					<input type="submit" value="Añadir">

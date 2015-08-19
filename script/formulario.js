@@ -3238,14 +3238,10 @@ function modificarServicio(id)
 function agregarMultimedia()
 {
 	var mensaje="";
-	var elements = ["Nombre", "Servicio", "TipoMultimedia", "Url"];
+	var elements = ["Nombre", "TipoMultimedia", "Url"];
 	if(document.getElementById( 'txtEmpresa'))
 	{
 		elements.push('Empresa');
-	}
-	if(document.getElementById( 'txtServicio'))
-	{
-		elements.push('Servicio');
 	}
 	for (i = 0; i < elements.length; i++)
 	{
@@ -3308,20 +3304,35 @@ function agregarMultimedia()
 			}
 			break;
 		case 3:
-			/*//imagen
+			/*//imagen jpg
 			$('#lblUrl1').html('Enlace');
 			$('#url1').show();*/
+			var str = $('#txtUrl').val();
+			if(str.indexOf(".jpeg")==-1 && str.indexOf(".jpg")==-1)
+			{
+				mensaje="Error, en enlace no es un archivo JPEG o JPG valido";
+			}
 			break;
 		case 4:
+			/*//imagen png
+			$('#lblUrl1').html('Enlace');
+			$('#url1').show();*/
+			var str = $('#txtUrl').val();
+			if(str.indexOf(".png")==-1)
+			{
+				mensaje="Error, en enlace no es un archivo PNG valido";
+			}
+			break;
+		/*case 5:
 			//pdf
-			/*$('#lblUrl1').html('Enlace');*/
+			$('#lblUrl1').html('Enlace');
 			var str = $('#txtUrl').val();
 			var n = str.indexOf(".pdf"); 
 			if(n==-1)
 			{
 				mensaje="Error, en enlace no es un archivo pdf valido";
 			}
-			break;
+			break;*/
 		case 5:
 			//youtube
 			/*$('#lblUrl1').html('Enlace');*/
@@ -3337,6 +3348,7 @@ function agregarMultimedia()
 			/*//otro
 			$('#lblUrl1').html('Codigo o enlace');
 			$('#url1').show();*/
+			mensaje="Tipo de archivo no valido";
 			break;
 	}
 	if(mensaje=="")
@@ -3351,7 +3363,7 @@ function agregarMultimedia()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						if(document.getElementById( 'txtServicio'))
+						if(document.getElementById( 'txtEmpresa'))
 						{
 							window.location=urlbase+"administracion/contenido/multimedia";
 						}
@@ -3376,17 +3388,10 @@ function agregarMultimedia()
 function modificarMultimedia()
 {
 	var mensaje="";
-	var elements = ["Code", "Nombre", "Servicio", "TipoMultimedia", "Url"];
-	if(document.getElementById( 'txtServicio'))
+	var elements = ["Code", "Nombre", "TipoMultimedia", "Url"];
+	if(document.getElementById( 'txtEmpresa'))
 	{
-		elements.push('Servicio');
-	}
-	for (i = 0; i < elements.length; i++)
-	{
-		if(!comprobador(elements[i]))
-		{
-			mensaje="error con el "+elements[i];
-		}
+		elements.push('Empresa');
 	}
 	for (i = 0; i < elements.length; i++)
 	{
@@ -3449,20 +3454,35 @@ function modificarMultimedia()
 			}
 			break;
 		case 3:
-			/*//imagen
+			/*//imagen jpg
 			$('#lblUrl1').html('Enlace');
 			$('#url1').show();*/
+			var str = $('#txtUrl').val();
+			if(str.indexOf(".jpeg")==-1 && str.indexOf(".jpg")==-1)
+			{
+				mensaje="Error, en enlace no es un archivo JPEG o JPG valido";
+			}
 			break;
 		case 4:
+			/*//imagen png
+			$('#lblUrl1').html('Enlace');
+			$('#url1').show();*/
+			var str = $('#txtUrl').val();
+			if(str.indexOf(".png")==-1)
+			{
+				mensaje="Error, en enlace no es un archivo PNG valido";
+			}
+			break;
+		/*case 5:
 			//pdf
-			/*$('#lblUrl1').html('Enlace');*/
+			$('#lblUrl1').html('Enlace');
 			var str = $('#txtUrl').val();
 			var n = str.indexOf(".pdf"); 
 			if(n==-1)
 			{
 				mensaje="Error, en enlace no es un archivo pdf valido";
 			}
-			break;
+			break;*/
 		case 5:
 			//youtube
 			/*$('#lblUrl1').html('Enlace');*/
@@ -3478,6 +3498,7 @@ function modificarMultimedia()
 			/*//otro
 			$('#lblUrl1').html('Codigo o enlace');
 			$('#url1').show();*/
+			mensaje="Tipo de archivo no valido";
 			break;
 	}
 	if(mensaje=="")
@@ -3493,7 +3514,7 @@ function modificarMultimedia()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						if(document.getElementById( 'txtServicio'))
+						if(document.getElementById( 'txtEmpresa'))
 						{
 							window.location=urlbase+"administracion/contenido/multimedia";
 						}

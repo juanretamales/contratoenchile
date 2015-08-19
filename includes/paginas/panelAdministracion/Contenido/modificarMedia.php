@@ -46,7 +46,6 @@ if(isset($_REQUEST['pagina']))
 				<div>
 					<label>Nombre </label>
 					<input value="<?php echo $med[0]['nom_med']; ?>"  required x-moz-errormessage="Debe ingresar el nombre del Documento" type="text" id="txtNombre" name="txtNombre" maxlength="255">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNombre">
 				</div>
 				<div>
 					<label>Tipo multimedia</label>
@@ -58,14 +57,13 @@ if(isset($_REQUEST['pagina']))
 							for($i=0;$i<count($tm);$i++)
 							{
 								?>
-					<option <?php if($media[0]['id_tm']==$tm [$i] ['id_tm']) { echo "selected"; } ?> value="<?php echo $tm [$i] ['id_tm']; ?>"><?php echo $tm [$i] ['nom_tm']; ?></option>
+					<option <?php if($med[0]['id_tm']==$tm [$i] ['id_tm']) { echo "selected"; } ?> value="<?php echo $tm [$i] ['id_tm']; ?>"><?php echo $tm [$i] ['nom_tm']; ?></option>
 				<?php } ?>
-					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgTipodoc">
+					</select>
 				</div>
 				<div>
 					<label>Empresa</label>
-					<select required x-moz-errormessage="Debe seleccionar una empresa" onchange="listarServicios()" id="txtEmpresa" name="txtEmpresa">
+					<select required x-moz-errormessage="Debe seleccionar una empresa"  id="txtEmpresa" name="txtEmpresa">
 					<?php
 							require_once('script/function.php');
 							$arg=array ('id_serv'=>$med[0]['id_serv']);
@@ -78,38 +76,19 @@ if(isset($_REQUEST['pagina']))
 								?>
 						<option <?php if($servicio[0]['id_ent']==$ent [$i] ['id_ent']) { echo " selected "; } ?>  value="<?php echo $ent [$i] ['id_ent']; ?>"><?php echo $ent [$i] ['nom_ent']; ?></option>
 					<?php } ?>
-					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgEmpresa">
-				</div>
-				<div>
-					<label>Servicio</label>
-					<select required x-moz-errormessage="Debe seleccionar un servicio" id="txtServicio" name="txtServicio">
-						<?php
-							require_once('script/function.php');
-							$arg=array ('id_ent'=>$servicio[0]['id_ent']);
-							$servicios=listarServicio($arg);
-							for($i=0;$i<count($servicios);$i++)
-							{
-								?>
-						<option  <?php if($med[0]['id_serv']==$servicios [$i] ['id_serv']) { echo " selected "; } ?> value="<?php echo $servicios [$i] ['id_serv']; ?>"><?php echo $servicios [$i] ['nom_serv']; ?></option>
-					<?php } ?>
-					</select>
-					<img  src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgServicio">
+					</select>
 				</div>
 				<div id="url1">
 					<label id="lblUrl1"></label>
-					<input onchange="actualizarMedia()"  type="text" id="txtUrl1" name="txtUrl1" maxlength="255">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png">
+					<input onchange="actualizarMedia()"  type="text" id="txtUrl1" name="txtUrl1" maxlength="255">
 				</div>
 				<div id="url2">
 					<label id="lblUrl2"></label>
-					<input onchange="actualizarMedia()"  type="text" id="txtUrl2" name="txtUrl2" maxlength="255">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png">
+					<input onchange="actualizarMedia()"  type="text" id="txtUrl2" name="txtUrl2" maxlength="255">
 				</div>
 				<div id="url3">
 					<label id="lblUrl3"></label>
-					<input onchange="actualizarMedia()"  type="text" id="txtUrl3" name="txtUrl3" maxlength="255">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png">
+					<input onchange="actualizarMedia()"  type="text" id="txtUrl3" name="txtUrl3" maxlength="255">
 				</div>
 				<input value="<?php echo $med[0]['url_med']; ?>" required type="hidden" id="txtUrl" name="txtUrl" maxlength="255">
 				<script>
@@ -121,11 +100,8 @@ if(isset($_REQUEST['pagina']))
 				$('#txtUrl1').val('<?php echo $url [0]; ?>');
 				$('#txtUrl2').val('<?php echo $url [1]; ?>');
 				$('#txtUrl3').val('<?php echo $url [2]; ?>');
-				</script>
-				<div>
-					<input type="submit" value="Modificar">
-				</div>
-				<a href="<?php echo WEB_BASE.$back;?>">Cancelar</a>
+				</script>				</div>
+				<div>				<input class="boton submit" type="submit" value="Añadir">				<a class="boton cancel" href="<?php echo WEB_BASE.$back;?>">Cancelar</a>				</div>
 	</form>
 </section>
 

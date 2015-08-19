@@ -246,7 +246,7 @@ if(isset($_REQUEST['pagina']))
 					echo WEB_BASE.$back;
 				?>
 				">Cancelar</a>
-				</div>
+			</div>
 		</article>
 		<div id="seleccionarMultimedia" class="divMultimedia oculto">
 			<a class="boton">Agregar mas multimedia</a>

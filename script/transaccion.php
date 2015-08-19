@@ -3732,8 +3732,8 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "INSERT INTO `media`(`id_tm`, `id_serv`, `nom_med`, `url_med`) VALUES 
-		('".$arg['id_tm']."', '".$arg['id_serv']."', '".$arg['nom_med']."', '".$arg['url_med']."')";
+		$query = "INSERT INTO `media`(`id_tm`, `id_ent`, `nom_med`, `url_med`) VALUES 
+		('".$arg['id_tm']."', '".$arg['id_ent']."', '".$arg['nom_med']."', '".$arg['url_med']."')";
 		$mysqli=$this->conectar();
 		$resultado = $mysqli->real_query($query);
 		if(isset($arg['insert_id']))
@@ -4987,7 +4987,7 @@ class transaccion
 				}
 				$query = $query." id_tm='".$arg['id_tm']."'";
 			}
-			if(isset($arg['id_serv']))
+			if(isset($arg['id_ent']))
 			{
 				if($condicion==0)
 				{
@@ -4997,7 +4997,7 @@ class transaccion
 				{
 					$query = $query . ',';
 				}
-				$query = $query." id_serv='".$arg['id_serv']."'";
+				$query = $query." id_ent='".$arg['id_ent']."'";
 			}
 			if(isset($arg['nom_med']))
 			{

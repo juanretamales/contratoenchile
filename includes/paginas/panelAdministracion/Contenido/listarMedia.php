@@ -17,15 +17,18 @@
 					$arg=array ('nada'=>0);
 					$tm=listarTipomedia($arg);
 					$page=explode("/",$pagina);
-					$servicio="";
-					$servicio=listarServicio($arg);
 						$entidad=listarEntidad($arg);
 					$media=listarMedia($arg);
 				?>
 		</section>
 		<section id="contenido" >
+		<div class="mensaje informativo">
+		<em></em>
+		<p>Los archivos multimedia se muestran en la descripcion del servicio, tales como imagenes, fotos, videos o musica.</p>
+		<a onclick="this.parentNode.remove()">X</a>
+		</div>
 			<h1 class="titulo">Multimedia</h1>
-			<a class="myButton" style="width: 50px;" href="<?php
+			<a class="boton" href="<?php
 				echo WEB_BASE;
 				$pagina="administracion/multimedia";
 				echo $pagina;
@@ -34,16 +37,12 @@
 				<input type="hidden" id="txtCode" name="txtCode">
 			</form>
 	<div id="error"></div>
-			<section id="descripcion">
-				Los archivos multimedia se muestran en la descripcion del servicio, tales como imagenes, fotos, videos o musica.
-			</section>
 			
 			<table cellpadding="0" cellspacing="0" border="0" id="table" class="sortable">
 				<thead>
 					<tr>
 						<th><h3>Nombre</h3></th>
 						<th><h3>Tipo</h3></th>
-						<th><h3>Servicio</h3></th>
 						<th><h3>Empresa</h3></th>
 						<th><h3>URL</h3></th>
 						<th colspan="2" class="nosort"><h3>Accion</h3></th>
@@ -72,27 +71,11 @@
 					
 					<td>
 					<?php
-						$arg=array ('nada'=>0);
-						$ent="";
-						for($j=0;$j<count($servicio);$j++)
-						{
-							if($servicio [$j] ['id_serv']==$media [$i] ['id_serv'])
-							{
-								echo $servicio [$j] ['nom_serv'];
-								$ent=$servicio [$j] ['id_ent'];
-								break;
-							}
-						}
-					?>
-					</td>
-					
-					<td>
-					<?php
 						
 						$arg=array ('nada'=>0);
 						for($j=0;$j<count($entidad);$j++)
 						{
-							if($entidad [$j] ['id_ent']==$ent)
+							if($entidad [$j] ['id_ent']==$media [$i] ['id_ent'])
 							{
 								echo $entidad [$j] ['nom_ent'];
 								break;
@@ -102,21 +85,27 @@
 					</td>
 					<td>
 					<?php
+					//echo  $media [$i] ['url_med'];
 						$enlaces = explode(";", $media [$i] ['url_med']);
+						//print_r($enlaces);
 						for($j=0;$j<count($enlaces);$j++)
 						{
+							
+							if($enlaces[$j]!="")
+							{
 					?>
 						<a href="<?php 
 							$urlmedia=$enlaces[$j];
-								if(strpos('http',$urlmedia)===false && strpos('https',$urlmedia)===false)
+								if(strpos('http://',$urlmedia)<0 && strpos('https://',$urlmedia)<0)
 								{
-									$urlmedia='http://'.$urlmedia;
+									echo 'http://';
 								}
-							echo $urlmedia; 
+							echo $enlaces[$j]; 
 						?>">
 							<img title="<?php echo $media [$i] ['nom_med']; ?>" width="20px" src="<?php echo WEB_BASE; ?>imagenes/UI/adjuntar.png">
 						</a>
 					<?php
+							}
 						}
 					?>
 					</td>
