@@ -30,7 +30,7 @@
 					</div>
 					<div>
 						
-						<img title="Captcha" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
+						<img title="Captcha" onclick="actualizarCaptcha()" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
 					</div>
 					<div>
 						<label title="Copie el texto de la imagen">Captcha:</label>

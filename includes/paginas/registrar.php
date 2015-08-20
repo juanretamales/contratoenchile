@@ -26,11 +26,10 @@
 					<div>
 						<label>Ingrese el Codigo</label>
 						<input type="text" required x-moz-errormessage="Debe ingresar el codigo" value="<?php echo $page[1]; ?>" id="txtCode" name="txtCode">
-						<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgCode">
 					</div>
 					<div>
-						<input type="submit" value="Verificar">
-					</div>
+							<input class="boton submit" type="submit" value="Verificar codigo">
+						</div>
 				</form>
 			<?php
 			}
@@ -49,17 +48,18 @@
 					<input required x-moz-errormessage="Debe ingresar el mismo correo" id="txtReEmail" name="txtReEmail" type="email" maxlength="255">
 				</div>
 				<div>
-					<img title="Captcha" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
+					<img title="Captcha" onclick="actualizarCaptcha()" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
 				</div>
 				<div>
-					<label>Ingrese el texto de la imagen:</label>
-					<input required x-moz-errormessage="Debe ingresar el texto de la imagen" type="text" size="16" id="txtCaptcha" name="txtCaptcha"  maxlength="255" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." /><br>
+					<label title="Copie el texto de la imagen">Captcha:</label>
+					<input required x-moz-errormessage="Por favor ingrese el texto de la imagen." maxlength="255"  type="text" size="16" id="txtCaptcha" name="txtCaptcha" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." /><br>
 				</div>
 				<div>
 					<label><a href="<?php echo WEB_BASE; ?>terminos_y_condiciones">He leido y acepto los terminos y condiciones</a><label>
 				</div>
-				<div>	
-					<input type="submit" value="Enviar correo">
+				<div>
+					<input class="boton submit" type="submit" value="Enviar Correo">
+					<a class="boton cancel" href="<?php echo WEB_BASE;?>">Cancelar</a>
 				</div>
 			</form>
 			<?php } ?>

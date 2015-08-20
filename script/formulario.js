@@ -654,7 +654,11 @@ function validarFormularioPersona()
 		return false;
 	}
 }
-
+function actualizarCaptcha()
+{
+	d = new Date();
+	$('#Captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+}
 function validarFormularioLogin()
 {
 	var mensaje="";
@@ -701,9 +705,7 @@ function validarFormularioLogin()
 	//else
 	if(mensaje!="" && mensaje!='Exito')
 	{
-		d = new Date();
-		$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
-		//alerta("Revise el formulario, "+mensaje);
+		actualizarCaptcha();
 		alerta(mensaje);
 	}
 	return false;
