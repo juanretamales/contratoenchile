@@ -692,11 +692,7 @@ function validarFormularioLogin()
 					}
 					else
 					{
-						mensaje="Revise el formulario, "+response;
-						alerta(response);
-						//alert("Revise el formulario, "+response);
-						d = new Date();
-						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+						actualizarCaptcha();
 						return false;
 					}
                 }
@@ -4826,9 +4822,7 @@ function recuperarContrasena()
 				}
 				else
 				{
-					alerta(response);
-					d = new Date();
-					$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+					actualizarCaptcha();
 				}
 			}
 		});
@@ -4972,9 +4966,7 @@ function modificarConfiguracion()
 						}
 						else
 						{
-							alerta(response);
-							d = new Date();
-							$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+							actualizarCaptcha();
 						}
 					}
 			});
@@ -5259,9 +5251,8 @@ function enviarCorreo()
 				}
 				else
 				{
-					alerta(response);
-					d = new Date();
-					$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+					actualizarCaptcha();
+					return false;
 				}
 			}
 		});

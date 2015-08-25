@@ -18,10 +18,10 @@
 			if(isset($page[1]) && $page[0]=='registrar')
 			{
 				
-			?>
+			?><h1 class="titulo">Registro paso 2</h1>
 				<form class="formulario" onsubmit="return verificarCodigo()" action="<?php echo WEB_BASE; ?>registrar-paso3" method="post">
-		<div id="error"></div>
-					<h1 class="titulo2">Registro paso 2</h1>
+		
+					
 					<p>Se envio un correo su email e ingrese el codigo o acceda al enlace enviado</p>
 					<div>
 						<label>Ingrese el Codigo</label>
@@ -35,10 +35,10 @@
 			}
 			else
 			{
-			?>
+			?><h1 class="titulo">Registro paso 1</h1>
 				<form class="formulario" onsubmit="return registrarse()">
 				<div id="error"></div>
-				<h1 class="titulo2">Registro paso 1</h1>
+				
 				<div>
 					<label>Email:</label>
 					<input required x-moz-errormessage="Debe ingresar un correo" id="txtEmail" name="txtEmail" type="email" maxlength="255">

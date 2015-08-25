@@ -14,10 +14,10 @@ if(isset($_REQUEST['pagina']))
 			cc_menu($pagina); ?>
 	</section>
 	<section id="contenido">
-<section id="contenido">
+<h1 class="titulo">Añadir nueva pregunta</h1>
 	<form class="formulario" onsubmit="return agregarPregunta()" method="post">
 	<div id="error"></div>
-				<h1 class="titulo2">Añadir nueva pregunta</h1>
+				
 					<?php
 						require_once "script/webConfig.php";
 						$page=explode("/",$pagina);
@@ -37,17 +37,15 @@ if(isset($_REQUEST['pagina']))
 				<div>
 					<label>Enunciado</label>
 					<input required x-moz-errormessage="Debe ingresar el enunciado" type="text" required maxlength="255" id="txtNombre" name="txtNombre">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNombre">
 				</div>
 				<div>
 					<label>Descripcion</label>
 					<input required x-moz-errormessage="Debe ingresar la descripcion" type="text" required maxlength="255" id="txtDescripcion" name="txtDescripcion">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgDescripcion">
 				</div>
 				<div>
-					<input type="submit" value="Añadir">
+					<input class="boton submit" type="submit" value="Añadir">
+					<a class="boton cancel" href="<?php echo WEB_BASE.$back;?>">Cancelar</a>
 				</div>
-				<a href="<?php echo WEB_BASE.$back;?>">Cancelar</a>
 	</form>
 </section>
 	<?php cc_footer(); ?>

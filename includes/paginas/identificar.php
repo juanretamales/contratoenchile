@@ -37,9 +37,9 @@
 						<input required x-moz-errormessage="Por favor ingrese el texto de la imagen." maxlength="255"  type="text" size="16" id="txtCaptcha" name="txtCaptcha" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." /><br>
 					</div>
 					<div>
-						<input type="submit" name="btnIdentificar" value="identificarme">
+						<input class="boton submit" type="submit" value="identificarme">
+						<a class="boton cancel" href="<?php echo WEB_BASE; ?>recuperar-contrasena">Recuperar contraseña<a/>
 					</div>
-					<a href="<?php echo WEB_BASE; ?>recuperar-contrasena">Recuperar contraseña<a/>
 				</form>
 			</section>
 		<?php cc_footer(); ?>

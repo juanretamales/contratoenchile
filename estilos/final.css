@@ -304,23 +304,29 @@ li
 }
 #menuVertical li > a:hover
 {
-	background: #E9ECF2;
-	//color: white;
+	
+	
+	background: #98CBF2;
+	color: white;
 }
 #menuVertical .tipo
 {
-	color: #F2A01E;
+	color:  #F7CA26;
 }
 #menuVertical .seleccionado
 {
 	background: #30A5FF;
 	color: white;
 }
+#menuVertical .categoria
+{
+	background:  #188E57;
+}
 #menuVertical .seleccionado:hover
 {
 	color: #30A5FF;
+	background: #E9ECF2;
 }
-
 /* - Panel de control */
 #menuVertical li > span
 {
@@ -668,7 +674,7 @@ li
 	height: auto;
 	min-height: 40px;
 }
-.servicios > a > img
+.servicios > a > img, .servicios > img
 {
 	height: 200px;
 	width: 80%;
@@ -714,24 +720,49 @@ li
 {
 	background: gray;
 }
-.servicios > .reputacion, .servicios > .reputacion label
+
+/*Detalle de los servicios*/
+.detalle
+{
+	width: 100%;
+}
+.detalle > div
+{
+	width: 100%;
+}
+.detalle > #descripcion
+{
+	width: 100%;
+	float: left;
+}
+.detalle > #reputacion > ul, .detalle > #reputacion
+{
+	width: 100%;
+	float: left;
+}
+.detalle > #reputacion > h2
+{
+	width: 100%;
+	text-align:  center;
+}
+.detalle > #reputacion > ul > li > label
 {
 	font-size: 12px;
 }
-.servicios .reputacion label
+.detalle > #reputacion > ul > li > label
 {
 	float: right;
 	text-align: center;
 }
-.servicios > .reputacion li
+.detalle > #reputacion > ul > li
 {
 	padding: 5px;
 }
-.servicios > .reputacion > .calNo_calificable
+.detalle > #reputacion > ul > .calNo_calificable
 {
 	display: none;
 }
-.servicios > .reputacion li:nth-child(2n)
+.detalle > #reputacion li:nth-child(2n)
 {
 	background: silver;
 }

@@ -57,17 +57,19 @@ if(isset($_POST['actualizarPermisos']))
 			{
 				//$permisosEliminar[count($permisosEliminar)]=array('id_pag'=>$nuevospermisos[$i][0], 'id_tu' => $nuevospermisos[$i][1]);
 				$permisosEliminar=$transaccion->eliminarPermisos(array('id_pag'=>$nuevospermisos[$i][0], 'id_tu' => $nuevospermisos[$i][1]));
+				$accion ="Error";
 				if($permisosEliminar===true)
 				{
-					echo "Exito";
+					$accion="Exito";
 				}
 				else
 				{
-					echo 'Error en eliminar:';
-					print_r(array('id_pag'=>$nuevospermisos[$i][0], 'id_tu' => $nuevospermisos[$i][1]));
+					$accion='Error en eliminar:';
+					//print_r(array('id_pag'=>$nuevospermisos[$i][0], 'id_tu' => $nuevospermisos[$i][1]));
 				}
 				//echo "<br>permiso a eliminar N°".count($permisosEliminar).":";
 				//print_r($permisosEliminar);
+				echo $accion;
 			}
 			else
 			{

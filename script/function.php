@@ -354,7 +354,7 @@
 				for($i=0;$i<count($categorias);$i++)
 				{
 					//echo '<li><a style="background: green;" class="myButton" href="'.WEB_BASE.$categorias [$i] ['nom_cat'].'/'.$page[2].'/'.$page[3].'">'.$tp [$i] ['subcategorias'].'</a></li>';
-					echo '<li><a class="menu seleccionado" href="'.WEB_BASE.'">'.$categorias [$i] ['nom_cat'].'</a></li>';
+					echo '<li><a class="menu categoria seleccionado" href="'.WEB_BASE.'">'.$categorias [$i] ['nom_cat'].'</a></li>';
 				}
 				//echo '<li><a style="background: green;" class="myButton" href="http://www.contratoenchile.cl/servicios/'.$page[1].'/'.$page[2].'/">Volver</a></li>';
 			}
@@ -395,7 +395,7 @@
 					{
 						if($page[3]==$tp [$i] ['nom_ts'])
 						{
-							echo '<li><a class="menu subcat seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/Todos">'.$tp [$i] ['nom_ts'].'</a></li>';
+							echo '<li><a class="menu tipo seleccionado" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/Todos">'.$tp [$i] ['nom_ts'].'</a></li>';
 							continue;
 						}
 						echo '<li><a class="menu tipo" href="'.WEB_BASE.'servicios/'.$page[1].'/'.$page[2].'/'.$tp [$i] ['nom_ts'].'">'.$tp [$i] ['nom_ts'].'</a></li>';
