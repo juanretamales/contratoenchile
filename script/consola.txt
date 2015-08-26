@@ -1,0 +1,126 @@
+clear();
+console.log("Borrando variables anteriores");
+delete chat;
+delete chatActivos;
+delete lista;
+delete chatActualizado;
+if (document.getElementById('divContratos'))
+{
+	console.log("Actualizando Chat:");
+	var chat = [];//aqui se asigna el contenido del localstorage
+	var chatActivos="";
+	if (typeof(Storage) != "undefined") 
+	{
+		if(localStorage.getItem("Chat")!=null)
+		{
+			chat=JSON.parse(localStorage.getItem("Chat"));
+		}
+		if(document.getElementById("divContratos"))
+		{
+		  $.ajax({
+			data:  {"actualizarContratos" : document.getElementById("divContratos").innerHTML},
+			url:   urlbase+'script/ajax.php',
+			type:  'post',
+			success:  function (response) {
+			  if(response!="")
+			  {
+				document.getElementById("divContratos").innerHTML=response;
+			  }
+			}
+		  });
+		}
+		//2-Actualizo el localstorage (ahora es distinto por que los contratos ya estan actualizados
+		var lista=document.getElementById("divContratos");
+		var chatActualizado= [];
+		for(var i=0;i<(lista.childNodes.length);i++)
+		{
+		  console.log(" - Loop N°"+i);
+		  if(lista.childNodes[i].id)//revisa si existe el id
+		  {
+			console.log(" - Existe la id");
+			if(lista.childNodes[i].id.indexOf("listChat")!=-1)
+			{
+			  console.log(" - Encontro el listChat");
+			  var id=lista.childNodes[i].id.substring(8);
+			  if(id != undefined)
+			  {
+				console.log(" - La id fue encontrada");
+				console.log(" - - id del chat: "+id);
+				//console.log(" - - contenido: "+chat[id]);
+				if(chat[id])
+				{
+				  console.log(" - - - Encontro el chat[i]");
+				  chatActualizado[chatActualizado.length]=[id,chat[id]];
+				}
+				else
+				{
+				  console.log(" - - - No encontro el chat[i]");
+				  chatActualizado[chatActualizado.length]=[id,""];
+				}
+			  }
+			}
+		  }
+		}
+		//3-buscamos el ultimo mensaje de todos los chats (se busca en la variable chat (que contiene lo mismo que el localstorage)
+		var mensajes= [];
+		//hay que enviar el id y el ultimo mensaje
+		for(var i=0;i<chatActualizado.length;i++)
+		{
+		  var historial = chatActualizado[i][1];
+		  var ultimomensaje=0;
+		  if(historial!="")
+		  {
+			var arreglo=historial.split('<p id="msg');
+      ultimomensaje=arreglo[arreglo.length-1].substring(0,arreglo[arreglo.length-1].indexOf('"'));
+		  }
+		  mensajes[mensajes.length]=[chatActualizado[i][0],ultimomensaje];
+		}
+    console.log("mensajes:"+mensajes);
+    $.ajax({
+			data:  {"actualizarMensajes" : mensajes},
+			url:   urlbase+'script/ajax.php',
+			type:  'post',
+			success:  function (response) 
+			{
+       if(response!="")
+				{
+					//console.log("response: "+response);
+					mensajes = $.parseJSON(response);
+          //5-actualizamos el chat y el localstorage
+          console.log("Mensajes: ");
+          for(var i=0;i<mensajes.length;i++)
+          {
+            console.log("id: ["+mensajes[i][0]+"]");
+            console.log("contenido: ["+mensajes[i][1]+"]");
+            if(document.getElementById("historial"+mensajes[i][0]))
+            {
+              console.log("Actualizo el div: historial"+mensajes[i][0]);
+              document.getElementById("historial"+mensajes[i][0]).innerHTML += mensajes[i][1];
+            }
+            if(chatActualizado[mensajes[i][0]])
+            {
+              console.log("Añado mensajes al localstorage"+mensajes[i][0]);
+              chatActualizado[mensajes[i][0]] += mensajes[i][1];
+            }
+            else
+            {
+              chatActualizado[mensajes[i][0]] = mensajes[i][1];
+              console.log("No existe por lo que creo el localstorage"+mensajes[i][0]);
+            }
+          }
+          localStorage.setItem("Chat", JSON.stringify(chatActualizado));  
+				}
+			}
+		});
+	}
+	else
+	{
+      console.log("lo lamentamos, tu navegador no soporta localstorage, por favor descarga una version mas reciente del mismo");
+      alert("lo lamentamos, tu navegador no soporta localstorage, por favor descarga una version mas reciente del mismo");
+      document.getElementById("historial"+id).innerHTML += '<p class="msgSystem">lo lamentamos, tu navegador no soporta localstorage, por favor descarga una version mas reciente del mismo</p>';
+	}
+}
+else
+{
+	console.log('no encontro el divcontratos');
+}

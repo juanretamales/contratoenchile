@@ -1,0 +1,102 @@
+commit c5df99fd5fee69d996009f929ff0d0d6db20da6c
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jun 22 15:19:35 2015 -0400
+
+    Se arreglo el diseño preeliminar del menu vertical, se corrigio un error en listar servicios
+
+commit 47e219cfda7dd397155aa6bf30c251c8d23d8b90
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sun Jun 21 18:47:37 2015 -0400
+
+    se dividio el css para facilitar la edicion del css, se avanzo con medidas sobre 1200px de pantalla en especifico menu superior, logo, contenido (general y pagina inicio), parte del menu vertical y el footer
+
+commit 82abfbc4bb69ee68b8e218e5c74caf4af74c4108
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sat Jun 20 17:40:37 2015 -0400
+
+    Se corrigio el menu vertical exepto los colores de fondo y se termino la pagina de inicio exepto las redes sociales
+
+commit d9eb7729a04484a09c37b5051cfe4e8ed2232723
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Thu Jun 18 12:46:53 2015 -0400
+
+    se diseño el menu de administracion y se intento empezara diseñar el menu de inicio de administracion
+
+commit 630d635499b0b952d8b4d783228ed0c6f08d7ac9
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jun 17 12:51:50 2015 -0400
+
+    se diseño los formularios para el celular
+
+commit c7cf94d38e37be8d3870304769a75e33cdea7be2
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jun 16 21:23:32 2015 -0400
+
+    Se termino el menu de celular
+
+commit 3d6ccf64f5f1d7955c554a13a036f5f8121eb4a7
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jun 16 16:28:33 2015 -0400
+
+    se editor el diseño del footer
+
+commit 2e51d6992bb4c3bf456909ba9e8c9aba9b7a8254
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sun Jun 14 17:43:28 2015 -0400
+
+    se corrigio el menu de celular para ahora fijarse, se rediseño el menu de celular y se agregaron iconos
+
+commit 6947db39b666c90b2a812a41c7cf04c72e1085a7
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sun Jun 14 13:30:50 2015 -0400
+
+    modificacion del diseño del banner, menu superior (enlaces y buscador) y las categorias
+
+commit 3e7330039ac264cb0cf7f226e31d831293e1ed04
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sat Jun 13 17:59:57 2015 -0400
+
+    rediseñando el sitios, se creo un respaldo y se empezara el diseño denuevo desde cero sacando codigo del anterior
+
+commit c079948ce0a46b5905c0a371e0a5fbd9e26fe71c
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Fri Jun 12 21:41:16 2015 -0400
+
+    se modifico el menu parte 1
+
+commit fe8f0d7ef40b1e4b13a8975b16a8c5fa31544e23
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Thu Jun 11 14:24:57 2015 -0400
+
+    se arreglo el diseño del index añadiendo fondo a las secciones
+
+commit 681d62bf898673942fb87b7367a24985337d2031
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jun 10 16:17:21 2015 -0400
+
+    ahora sigue mostrando las subcategorias y tipo en el menu
+
+commit 18aa885319ba38f7ec29863a7fce58b357028501
+Merge: 552f591 66a81a1
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jun 8 15:25:47 2015 -0400
+
+    Merge branch 'master' of https://github.com/juanretamales/contratoenchile
+
+commit 552f591752599ab038f5e4f7d00cad69b05308df
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jun 8 15:02:05 2015 -0400
+
+    se limpiaron script que ya no se usaran parte 1
+
+commit ee2bd8321f2a9ac0af8f526b8ce627d239084469
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jun 8 14:53:52 2015 -0400
+
+    primer commit
+
+commit 66a81a1014b4a0b74ef324ff976b9d69f780c6b9
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jun 8 13:46:25 2015 -0400
+
+    Initial commit

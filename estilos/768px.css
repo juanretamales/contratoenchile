@@ -1,0 +1,11 @@
+/*************************************/
+/* Diseño web Contrato en Chile      */
+/* V2.5                              */
+/*************************************/
+/* Móviles en horizontal o tablets en vertical*/
+@media (min-width: 768px) {
+	#menuSuperior > ul > li > a > label
+	{
+		display: none;
+	}
+}

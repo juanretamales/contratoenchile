@@ -1,0 +1,1039 @@
+/*************************************/
+/* Diseño web Contrato en Chile      */
+/* V2.5                              */
+/*************************************/
+/* Ventana por defecto tamaño grande */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+.oculto{
+    position: absolute;
+    text-indent: -1000000px;
+}
+ul > li 
+{
+	text-decoration: none;
+	list-style:none;
+}
+a
+{
+	color: white;
+	text-decoration: none;
+}
+a:focus
+{
+	outline: 2px dotted #bbb;
+}
+a:active
+{
+	text-decoration:bold;
+}
+html
+{
+	height: 100%;
+	margin:0px;
+}
+body
+{
+	font-family: sans-serif;
+	font-size: .9rem;
+	width: 100%;
+	height: 100%;
+	margin:0px;
+}
+/* Banner */
+#imglogo
+{
+	width: 220px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-image: url('../imagenes/minilogo.png');
+	background-size: auto 100%;
+	float: left;
+}
+#frmBuscar
+{
+	float: left;
+	background: #CBE86B;
+	//width: 50%;
+	height: 57px;
+	margin: 0px 0px 0px 0px;
+	width: 80%;
+}
+
+#frmBuscar > *
+{
+	margin: 10px 0;
+	
+}
+
+#frmBuscar > a
+{
+	background: #8FC242;
+	padding: 8px 8px 8px 8px;
+	margin: 6px 4px 4px 4px;
+	float: inline;
+	font-size: 1.1rem;
+	border-radius: 25px 25px 25px 25px;
+	-moz-border-radius: 25px 25px 25px 25px;
+	-webkit-border-radius: 25px 25px 25px 25px;
+	float: right;
+	border: 1px #8FC242 solid;
+	max-height: 20px;
+}
+#frmBuscar > a:hover
+{
+	background: #E0FF43;
+	border: 1px black solid;
+}
+#buscador
+{
+	margin: 0 4px 0 10px;
+	background: #e3f4ac;
+	width: 200px;
+}
+
+header
+{ 
+	//margin: 0px 0px; 
+	background: #CBE86B;
+	float: left;
+	margin: 0px;
+	width: 100%;
+	display: block;
+}
+/* chat */
+#divContratos
+{
+	background: white;
+	position: fixed;
+	float: right;
+	top: 60px;
+	right: 0px;
+	border: 2px solid rgba(143, 194, 66, 0.8);
+	width: 14em;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	height: 40%;
+	z-index: 20;
+}
+#divContratos2
+{
+	//position: fixed;
+	float: right;
+	top: 60px;
+	right: 0px;
+	border: 2px solid rgba(143, 194, 66, 0.8);
+	width: 14em;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	height: 40%;
+}
+
+.inactivo
+{
+	display: none;
+}
+#divContratos div:first-child
+{
+	background: rgba(143, 194, 66, 0.8);
+}
+#divContratos div
+{
+	background: white;
+	padding: 0 10px;
+}
+#divContratos div:nth-child(n+2):hover
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+#divContratos:last-child
+{
+	margin-bottom: 30px;
+}
+#divChat
+{
+	position: fixed;
+	bottom: 0px;
+	right: 200px;
+}
+#divChat > div
+{
+	width: 200px;
+	max-height: 300px;
+	margin: 0 2px;
+	border: 2px solid black;
+	float: left;
+}
+#divChat > div .cabecera
+{
+	background: lightblue;
+	font-size: 16px;
+	text-align: center;
+}
+#divChat > div .cabecera img
+{
+	width: 20px;
+	float: right;
+}
+#divChat > div .historial
+{
+	background: white;
+	padding: 2px;
+}
+#divChat > div .historial .a
+{
+	background: lightblue;
+	text-align: left;
+	margin: 2px 15px 2px 3px;
+	padding: 0 6px;
+	border-radius: 0px 5px 5px 0px;
+	-moz-border-radius: 0px 5px 5px 0px;
+	-webkit-border-radius: 0px 5px 5px 0px;
+	
+}
+#divChat > div .historial .b
+{
+	background: silver;
+	text-align: right;
+	margin: 2px 3px 2px 15px;
+	padding: 0 6px;
+	border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+}
+#divChat > div .escribir input
+{
+	width: 100%;
+}
+#divChat .inactivo div:nth-child(n+2)
+{
+	display: none;
+}
+/* menu */
+.menuprincipal
+{
+	float: left;
+	//font-weight:bold;
+	height:100%;
+}
+.menuprincipal > ul > li 
+{
+	text-align: center;
+}
+.menuprincipal > ul
+{
+	background: #8FC242;
+}
+.menu-panel
+{
+	float: left;
+	font-weight:bold;
+	background: black;
+	color: white;
+	font-size: 1em;
+	width: 10%;
+	height: 98%;
+}
+.menu-panel > ul > li
+{
+	text-align: center;
+	text-decoration: none;
+	list-style:none;
+	//background: red;
+	width: 100%;
+}
+#ddlEmpresa
+{
+	margin: 10px 0;
+}
+.menu-panel > ul > li a, .menu-panel > ul > li span 
+{
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: #585858;
+	border: solid 1px #fff;
+	padding: 4px;
+	position: relative;
+	
+}
+.menu-panel > ul > li > span > a { border: 0px }
+
+.menu-panel > ul > li ul li a
+{
+	background: #848484;
+	font-weight:normal;
+}
+
+.menu-panel > ul > li ul {display: none; }
+
+.menu-panel > ul > li a:link:hover ul {display: none;}
+
+.menu-panel > ul > li a:active:hover ul  {display: block;}
+
+.menu-panel > ul > li:focus ul, 
+.menu-panel > ul > li:active ul, 
+.menu-panel > ul > li a:active ul {display: block;}
+.menu
+{
+	margin: 0px;
+	color: black;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size:13px;
+	padding:3px 10px;
+	text-decoration:none;
+	width: 200px;
+	background: #8FC242;
+	
+}
+.menu:hover
+{
+	background: #CBE86B;
+}
+.subcat
+{
+	background: #429cc2;
+}
+.subcat:hover
+{
+	background: #93d5f0;
+}
+.tipo
+{
+	background: #eea950;
+}
+.tipo:hover
+{
+	background: #f0c793;
+}
+.tipo select
+{
+	margin: 2px 0;
+	width: 153px;
+	background: rgba(0,0,0,0);
+	color: silver;
+}
+.seleccionado:hover
+{
+	background-repeat: no-repeat;
+	background-image: url('../imagenes/UI/incorrecto.png');
+	background-size: 40px 40px;
+	background-position: right;
+}
+.celular
+{
+	display: none;
+}
+.escritorio
+{
+	display: inline;
+}
+.item
+{
+	display: none;
+}
+/*cuerpo */
+.boton
+{
+	background: #c6d5e1;
+	padding: 8px 20px;
+	margin: 0px 4px 0px 4px;
+	font-size: 1.1rem;
+	color: black;
+	float: left;
+}
+.boton:hover
+{
+	background: #ecf2f6;
+}
+#contenido
+{
+	display: inline;
+	background: white;
+	z-index: 1;
+}
+
+h1 
+{
+	text-align: center;
+	margin: 0px;
+	color: black;
+}
+#artComentarios, #artCelular, #artRedes
+{
+	width: calc(100% - 245px);
+	float: left;
+	margin: 0px 0px 10px 0px;
+	padding: 10px;
+	background: url(../imagenes/bg.png);
+}
+#artComentarios div
+{
+	width: 30%;
+	margin: 1.66%;
+	float: left;
+}
+#artComentarios div a
+{
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	display: block;
+}
+#artComentarios div label
+{
+	font-size: 20px;
+}
+#imgContrata
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/compra.png);
+}
+#imgProteccion
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/proteccion.png);
+}
+#imgPublica
+{
+	width: 96px;
+	height: 81px;
+	background: url(../imagenes/publica.png);
+}
+#imgCelular
+{
+	
+	margin-top: -80px;
+	float: right;
+	width: 200px;
+	height: 200px;
+	background: url(../imagenes/celular.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+#artCelular label
+{
+	font-size: 40px;
+}
+.servicios
+{
+	border: 2px solid gray;
+	margin: 2px 10px 0 0;
+	min-height: 95px;
+	width: 65%;
+	//background: #ffff99;
+	border: 2px solid;
+	margin: 10px;
+	float: left;
+	//margin: 10px 10px 10px 200px;
+	position: relative;
+}
+.servicios > .titulo
+{
+	font-weight:bold;
+}
+.servicios label
+{
+	color: black;
+	margin: 0 10px;
+	font-size: 20px;
+}
+.servicios p
+{
+	color: black;
+	font-weight:lighter;
+}
+.servicios:hover
+{
+	//background: #e8e96f;
+}
+.servicios .descripcion
+{
+	height: 40px;
+}
+.servicios .descripcion:hover
+{
+	height: auto;
+	min-height: 40px;
+}
+.servicios  img
+{
+	margin-right: 10px;
+	height: 95px;
+	width: 120px;
+	width: 10%;
+	float: left;
+}
+.servicios .tipo
+{
+	margin: 0px;
+	color: black;
+	display:inline-block;
+	cursor:pointer;
+	font-family:arial;
+	font-size:15px;
+	text-decoration:none;
+	text-align: left;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+.servicios .tipo a
+{
+	display: block;
+	background: white;
+	color: silver;
+}
+.servicios .tipo a:hover
+{
+	background: gray;
+}
+.servicios > .reputacion, .servicios > .reputacion label
+{
+	font-size: 12px;
+}
+.servicios .reputacion label
+{
+	float: right;
+	text-align: center;
+}
+.servicios > .reputacion li
+{
+	padding: 5px;
+}
+.servicios > .reputacion > .calNo_calificable
+{
+	display: none;
+}
+.servicios > .reputacion li:nth-child(2n)
+{
+	background: silver;
+}
+#error
+{
+	background: red;
+	color: black;
+	padding: 0px 0px;
+	margin: 0px 3px;
+}
+.formulario
+{
+	padding: 20px; 
+	margin: 20px;
+	float: left;
+	background: rgba(203,232,107,0.5)
+}
+.formulario a
+{
+	color: black;
+}
+.formulario > div
+{
+	margin-bottom: 1.5em;
+}
+.formulario > div > label
+{
+	width: 200px; 
+	float: left;
+}
+.formulario > div > input
+{
+	width: 200px;
+	margin: 0px;
+	padding: 3px;
+	float: left;
+	background: rgba(203,232,107,0.8);
+	border: 0px;
+}
+.formulario > div > img
+{
+	width: 20px; 
+	height: 20px; 
+	margin: 0px;
+	padding: 0px;
+}
+#Captcha
+{
+	height: 40px; 
+	width: 200px;
+	float: right;
+}
+.formulario > div > label
+{
+	height: 20px; 
+	width: 200px; 
+}
+.formulario > div > input[type="submit"]:first-child
+{
+	width: 400px;
+	background: rgba(203,232,107,1);
+	border: solid 1px rgba(255,255,255,0.5);
+	margin-top: 10px;
+}
+.formulario > .error
+{
+	color: red;
+}
+.formulario > .error > input
+{
+	background: rgba(255,0,0,1);
+}
+/** {margin:0; padding:0; outline:none}
+..sortable  {}*/
+
+.sortable 
+{
+	width: calc(90% - 2px); 
+	border-left:1px solid #c6d5e1; 
+	border-top:1px solid #c6d5e1; 
+	border-bottom:none; 
+	margin:40px 0 15px 0; 
+	font:10px Verdana,Arial; 
+	//margin:25px; 
+	background:#fff url(../imagenes/tabla/bg.gif) repeat-x; 
+	color:#091f30;
+}
+.sortable th {
+	background:url(../imagenes/tabla/header-bg.gif); 
+	text-align:left; 
+	color:#cfdce7; 
+	border:1px solid #fff; 
+	border-right:none;
+}
+.sortable th h3 
+{
+	font-size:10px; 
+	padding:6px 8px 8px;
+}
+.sortable td 
+{
+	padding:4px 6px 6px; 
+	border-bottom:1px solid #c6d5e1; 
+	border-right:1px solid #c6d5e1
+}
+.sortable .head h3 {background:url(../imagenes/tabla/sort.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .desc, .sortable .asc {background:url(../imagenes/tabla/header-selected-bg.gif)}
+.sortable .desc h3 {background:url(../imagenes/tabla/desc.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .asc h3 {background:url(../imagenes/tabla/asc.gif) 7px  center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#fff}
+.sortable .evenrow td {background:#fff}
+.sortable .oddrow td {background:#ecf2f6}
+.sortable td.evenselected {background:#ecf2f6}
+.sortable td.oddselected {background:#dce6ee}
+
+
+#controls {width:1100px;  margin:0 auto; height:20px}
+#perpage {float:left; width:200px; margin-left: 10px;}
+#perpage select {float:left; font-size:11px}
+#perpage span {float:left; margin:2px 0 0 5px}
+#navigation {float:left; width:540px; text-align:center}
+#navigation img {cursor:pointer}
+#text {float:right; width:200px; text-align:right; margin-top:2px}
+/* pie */
+#footer, .foot
+{
+	width: 100%;  
+	background: #CBE86B;
+	height: auto;
+	text-align: center;
+	bottom: 0px;
+	float: left;
+	padding-bottom: 20px;
+}
+.btn {
+    background-color: #282828;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    color: white;
+    float: center;
+    font-size: 0.75em;
+    font-weight: normal;
+    padding: 8px 15px 9px 50px;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #484848;
+}
+.btn-collapse {
+    background: url("../imagenes/ui/collapse.png") no-repeat scroll center -5px rgba(72, 72, 72, 0.5); ;
+    border-radius: 2px;
+    line-height: 30px;
+    width: 50px;
+}
+.btn-collapsed {
+    background: url("../imagenes/ui/collapse.png") no-repeat scroll center -46px rgba(72, 72, 72, 0.5);
+    height: 40px;
+    top: -10px;
+	border-radius: 2px;
+    line-height: 30px;
+    width: 50px;
+}
+.derechos ul
+{
+	margin: 0 auto;
+}
+.derechos ul li
+{
+	width: 33%;
+	float: left;
+}
+#masdetalles div
+{
+	width: 33%;
+	float: left;
+}
+.divActividades
+{
+	background: red;
+	width: 30%;
+	//width: auto;
+}
+.divActividades .actHead div
+{
+	float: left;
+	padding: 2px 7px;
+	font-size: 15px;
+}
+.divActividades .actHead div:nth-child(n+2)
+{
+	float: right;
+}
+.divActividades .actBody div
+{
+	margin: 10px 6px;
+	border-bottom: 1px dotted black;
+}
+.divActividades .actBody div span
+{
+	font-size: 25px;
+	float: right;
+}
+.divActividades .actBody div p
+{
+	font-size: 10px;
+}
+.actBody .grafico
+{
+	width: 30%;
+}
+.divMultimedia
+{
+	width: 23%;
+	margin-left: 35%;
+	height: 60%;
+	position: absolute;
+	z-index: 10;
+	background: white;
+}
+.divMultimedia > a
+{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+.divMultimedia .listado div
+{
+	float: left;
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+	background: white;
+}
+.divMultimedia .listado div img
+{
+	max-height: 100px;
+	max-width: 100px;
+}
+/*************************************/
+/* Ventana Tablet                    */
+/*************************************/
+@media screen and (max-width: 900px)
+{
+	body
+	{
+		width: 900px;
+		background: b;
+	}
+	.celular
+	{
+		display: inline;
+		height: auto;
+	}
+	.escritorio
+	{
+		display: none;
+		height: auto;
+	}
+	.item
+	{
+		display: inline;
+	}
+	#imglogo
+	{
+		width: 900px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-image: url('../imagenes/minilogo.png');
+		background-size: auto 100%;
+		float: initial;
+		display: block;
+	}
+	.sortable 
+	{
+		width:900px; 
+	}
+}
+@media screen and (max-width: 768px)
+{
+	body
+	{
+		width: 768px;
+		background: b;
+	}
+	.celular
+	{
+		display: inline;
+		height: auto;
+	}
+	.escritorio
+	{
+		display: none;
+		height: auto;
+	}
+	.item
+	{
+		display: inline;
+	}
+	#imglogo
+	{
+		width: 768px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-image: url('../imagenes/minilogo.png');
+		background-size: auto 100%;
+		float: initial;
+		display: block;
+	}
+	.sortable 
+	{
+		width:768px; 
+	}
+}
+
+@media screen and (max-width: 600px)
+{
+	body
+	{
+		width: 600px;
+		background: b;
+	}
+	.celular
+	{
+		display: inline;
+		height: auto;
+	}
+	.escritorio
+	{
+		display: none;
+		height: auto;
+	}
+	.item
+	{
+		display: inline;
+	}
+	#imglogo
+	{
+		width: 600px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-image: url('../imagenes/minilogo.png');
+		background-size: auto 100%;
+		float: initial;
+		display: block;
+	}
+	.sortable 
+	{
+		width:600px; 
+	}
+}
+/*************************************/
+/* Ventana Celular                   */
+/*************************************/
+@media screen and (max-width: 480px)
+{
+	body
+	{
+		width: 480px;
+	}
+	.item
+	{
+		display: inline;
+	}
+	#imglogo
+	{
+		width: 480px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-image: url('../imagenes/minilogo.png');
+		background-size: auto 100%;
+		float: initial;
+		display: block;
+	}
+	.sortable 
+	{
+		width:480px; 
+	}
+	/*menu*/
+	#frmBuscar, #enlaces, #divContratos
+	{
+		display: none;
+	}
+	#menuCelular
+	{
+		float: right;
+		margin-top: -35px;
+		width: 10%;
+		height: 50px;
+		color: black;
+	}
+	#menuCelular ul li span a
+	{
+		color: black;
+	}
+	#header
+	{
+		position: fixed;
+		max-width: 480px;
+		width: 100%;
+	}
+	#header #imglogo
+	{
+		width: 80%;
+		height: 50px;
+	}
+	#contenido
+	{
+		margin-top: 70px;
+		float: left;
+		width: 100%;
+		max-width: 480px;
+	}
+	#contenido div
+	{
+		width: 80%; 
+		margin-left: 10%;
+	}
+}
+@media screen and (max-width: 320px)
+{
+	
+	body
+	{
+		width: 320px;
+		background: red;
+	}
+	.menu
+	{
+		float: none;
+		margin: 0px;
+		border:1px solid #0b0e07;
+		display:inline-block;
+		font-size:15px;
+		width: 320px;
+		padding: 10px 0px;
+	}
+	.celular
+	{
+		display: inline;
+		height: auto;
+	}
+	.escritorio
+	{
+		display: none;
+		height: auto;
+	}
+	.item
+	{
+		display: inline;
+	}
+	#imglogo
+	{
+		width: 320px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-image: url('../imagenes/minilogo.png');
+		background-size: auto 100%;
+		float: initial;
+		display: block;
+	}
+	#frmBuscar
+	{
+		display: block;
+		float: initial;
+		margin-bottom: 10px;
+	}
+	#frmBuscar a
+	{
+		display: block;
+		padding: 12px 0px;
+		width: 320px;
+		margin: 10px 0px;
+		float: initial;
+		
+	}
+	#buscador
+	{
+		display: block;
+		padding: 12px 0px;
+		width: 320px;
+		margin: 10px 0px;
+		float: initial;
+	}
+	.servicios
+	{
+		width: 320px;
+	}
+	.servicios .comparar, .servicios .canasta, .servicios .tipo
+	{
+		width: 320px;
+		float: initial;
+		display: block;
+		background: white;
+	}
+	.sortable 
+	{
+		width:320px; 
+	}
+	.sortable .td
+	{
+		margin-left: 100px;
+	}
+	#footer
+	{
+		width: 320px;
+		height: auto;
+	}
+	#footer > .block-menu2
+	{
+		margin: 0px;
+	}
+	#footer > .block-menu2 a
+	{
+		width: 320px;
+		float: initial;
+		display: block;
+		background: #ddf09e;
+		margin: 0px;
+		padding: 10px 0px;
+	}
+	
+}
