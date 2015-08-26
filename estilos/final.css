@@ -730,11 +730,48 @@ li
 {
 	width: 100%;
 }
+.detalle > .botones > .boton > .agregar, .detalle > .botones > .boton > em
+	{
+		font-family: 'icomoon';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		font-size: 24px;	
+	}
+.detalle > .botones > .boton > label
+{
+	//display: none;
+	font-size: 24px;
+	margin-left: 10px;
+}
+.detalle > .botones > .boton > .agregar:before
+{
+		content: "\f055";
+}
+.detalle > .botones > .carro
+{
+	background: #1EBFAE;
+}
+.detalle > .botones > .carro > em:before
+{
+		content: "\f07a";
+}
+.detalle > .botones > .comparacion
+{
+	background: #FFB53E;
+}
+.detalle > .botones > .comparacion > em:before
+{
+		content: "\e600";
+}
 .detalle > #descripcion
 {
 	width: 100%;
 	float: left;
 }
+
 .detalle > #reputacion > ul, .detalle > #reputacion
 {
 	width: 100%;
