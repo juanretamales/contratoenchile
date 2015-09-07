@@ -5501,6 +5501,7 @@ class transaccion
 			{
 				$query=$query . " WHERE `".$arg['condition']."`='".$arg['data']."'";
 			}
+			echo $query;
 			$mysqli=$this->conectar();
 			$resultado = $mysqli->real_query($query);
 			if(isset($arg['affected']))

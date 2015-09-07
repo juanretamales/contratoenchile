@@ -1,4 +1,4 @@
-<html lang="es" dir="LTR" >
+<?php	$pagina="";	if(isset($_REQUEST['pagina']))	{		$pagina=$_REQUEST['pagina'];	}?><html lang="es" dir="LTR" >
 <head>
 	<?php cc_head(); ?>
 </head>
@@ -13,9 +13,9 @@ if(isset($_REQUEST['pagina']))
 	$pagina=$_REQUEST['pagina'];
 }
 ?>
-	<section id="contenido">
-	<form class="formulario" onsubmit="return agregarUsuario()" method="post">		<div id="error"></div>
-				<h1 class="titulo2">Registro paso 3</h1>
+	<section id="contenido">	<h1 class="titulo">Registro paso 3</h1>
+	<form class="formulario" onsubmit="return agregarUsuario()" method="post">
+				
 					<?php
 						require_once "script/webConfig.php";
 						if(isset($_POST['txtCode']))

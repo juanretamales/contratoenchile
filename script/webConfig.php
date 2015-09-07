@@ -6,5 +6,5 @@ define('SERVICIO_DEFECTO', 5);
 define('USUARIO_DEFECTO', 1); 
 define('EMPRESA_DEFECTO', 5); 
 define('MAX_SERVICIOS', 12); 
-define('MAX_EMPRESAS', 1); 
+define('MAX_EMPRESAS', 2); 
 ?>

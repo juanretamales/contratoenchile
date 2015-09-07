@@ -3684,8 +3684,8 @@ function agregarUsuario()
 					else
 					{
 						alerta(response);
-						d = new Date();
-						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+						actualizarCaptcha();
+						return false;
 					}
                 }
         });
@@ -3735,6 +3735,7 @@ function modificarUsuario()
 					else
 					{
 						alert(response);
+						return false;
 					}
                 }
         });
@@ -3774,13 +3775,13 @@ function registrarse()
                     if(response=="Exito")
 					{
 						//alert('tamos pal exito');
-						$('#contenido').html('<form class="formulario" onsubmit="return verificarCodigo()" action="'+urlbase+'registrar-paso3"   method="post"><h1 class="titulo2">Registro paso 2</h1><p>Se envio un correo a '+email+' ingrese el codigo o acceda al enlace enviado</p><div><label>Ingrese el Codigo</label><input type="text" required x-moz-errormessage="Debe ingresar el codigo" id="txtCode" name="txtCode"><img src="'+urlbase+'imagenes/none.png" id="imgCode"></div><div><input type="submit" value="Verificar"></div></form>');
+						$('#contenido').html('<h1 class="titulo">Registro paso 2</h1><div class="mensaje informativo"><em></em><p>Se envio un correo a '+document.getElementById('txtReEmail').value+' con las instrucciones para continuar el registro.</p><a onclick="this.parentNode.remove()">X</a></div>');
 					}
 					else
 					{
 						alerta(response);
-						d = new Date();
-						$('#captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+						actualizarCaptcha();
+						return false;
 					}
                 }
         });

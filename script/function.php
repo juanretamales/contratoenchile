@@ -181,7 +181,7 @@
 			sorter.init("table",1);
 			sorter.size(10);
 		</script>
-	</div>';
+		</div>';
 	}
 	function cc_menu($pag)
 	{
@@ -324,9 +324,32 @@
 			$arg=array ();
 			echo '<nav id="menuVertical" class="menuprincipal escritorio">';
 			echo "<ul>";
-			if(isset($page[0])==true && isset($page[1])==false)
+			if(isset($page[0])==true)
 			{
-				if($page[0]!="servicios")
+				if(isset($page[1])==false || $page[0]=="registrar")
+				{
+					if($page[0]!="servicios")
+					{
+						$arg=array();
+						$categorias=$transaccion->listarCategorias($arg);
+						for($i=0;$i<count($categorias);$i++)
+						{
+							echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
+						}
+					}
+					else
+					{
+						$arg['nom_cat']=$page[1];
+						$categorias=$transaccion->listarCategorias($arg);
+						for($i=0;$i<count($categorias);$i++)
+						{
+							//echo '<li><a style="background: green;" class="myButton" href="'.WEB_BASE.$categorias [$i] ['nom_cat'].'/'.$page[2].'/'.$page[3].'">'.$tp [$i] ['subcategorias'].'</a></li>';
+							echo '<li><a class="menu seleccionado" href="'.WEB_BASE.'">'.$categorias [$i] ['nom_cat'].'</a></li>';
+						}
+						//echo '<li><a style="background: green;" class="myButton" href="http://www.contratoenchile.cl/servicios/'.$page[1].'/'.$page[2].'/">Volver</a></li>';
+					}
+				}
+				else
 				{
 					$arg=array();
 					$categorias=$transaccion->listarCategorias($arg);
@@ -334,17 +357,6 @@
 					{
 						echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
 					}
-				}
-				else
-				{
-					$arg['nom_cat']=$page[1];
-					$categorias=$transaccion->listarCategorias($arg);
-					for($i=0;$i<count($categorias);$i++)
-					{
-						//echo '<li><a style="background: green;" class="myButton" href="'.WEB_BASE.$categorias [$i] ['nom_cat'].'/'.$page[2].'/'.$page[3].'">'.$tp [$i] ['subcategorias'].'</a></li>';
-						echo '<li><a class="menu seleccionado" href="'.WEB_BASE.'">'.$categorias [$i] ['nom_cat'].'</a></li>';
-					}
-					//echo '<li><a style="background: green;" class="myButton" href="http://www.contratoenchile.cl/servicios/'.$page[1].'/'.$page[2].'/">Volver</a></li>';
 				}
 			}
 			else
@@ -511,30 +523,57 @@
 	}
 	function dateEncode($fecha)
 	{
-		$date=explode("/",$fecha);
+		/*$date=explode("/",$fecha);
 		if(count($date)==3)
 		{
 			return $date[0].'-'.$date[1].'-'.$date[2];
 		}
-		return false;
+		return false;*/
+		return date('Y-m-d', strtotime($fecha));
+		
 	}
 	
 	function dateDecode($fecha)
 	{
-		$date=explode("-",$fecha);
+		/*$date=explode("-",$fecha);
 		if(count($date)==3)
 		{
-			$hora=explode(" ",$date[2]);
 			if(count($date)==1)
 			{
 				return $date[2].'/'.$date[1].'/'.$date[0];
 			}
 			else
 			{
-				return $hora[0].'/'.$date[1].'/'.$date[0].' '.$hora[1];
+				if(isset($date[2]))
+				{
+					$hora=explode(" ",$date[2]);
+					if(isset($hora[1]))
+					{
+						return $hora[0].'/'.$date[1].'/'.$date[0].' '.$hora[1];
+					}
+					else
+					{
+						return $hora[0].'/'.$date[1].'/'.$date[0];
+					}
+				}
+				else
+				{
+					return false;
+				}
+				
+				
 			}
 		}
-		return false;
+		return false;*/
+		return date('d-m-Y', strtotime($fecha)); 
+	}
+	function timestampEncode($fecha)
+	{
+		return date('Y-m-d H:i:s', strtotime($fecha)); 
+	}
+	function timestampDecode($fecha)
+	{
+		return date('d-m-Y H:i:s', strtotime($fecha)); 
 	}
 	
 	function listarCantidadServicio($arg)

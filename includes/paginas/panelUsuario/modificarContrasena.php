@@ -14,34 +14,31 @@ if(isset($_REQUEST['pagina']))
 			cc_menu($pagina); ?>
 	</section>
 	<section id="contenido">
+	
+		<h1 class="titulo">Cambiar contraseÃ±a</h1>
 	<form method="post" onsubmit="return modificarContrasena()" class="formulario">
-		<div id="error"></div>
-		<h1 class="titulo2">Cambiar contraseña</h1>
 		<div>
-			<label>Antigua Contraseña:</label>
-			<input required x-moz-errormessage="Ingrese una contraseña" type="password" maxlength="255"  id="txtOldPassword" name="txtPassword">
-			<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgOldPassword">
+			<label>Antigua ContraseÃ±a:</label>
+			<input required x-moz-errormessage="Ingrese una contraseÃ±a" type="password" maxlength="255"  id="txtOldPassword" name="txtPassword">
 		</div>
 		<div>
-			<label>Nueva Contraseña:</label>
-			<input required x-moz-errormessage="Ingrese una contraseña" type="password" maxlength="255"  id="txtNewPassword" name="txtNewPassword">
-			<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNewPassword">
+			<label>Nueva ContraseÃ±a:</label>
+			<input required x-moz-errormessage="Ingrese una contraseÃ±a" type="password" maxlength="255"  id="txtNewPassword" name="txtNewPassword">
 		</div>
 		<div>
-			<label>Nueva RE-Contraseña:</label>
-			<input required x-moz-errormessage="Ingrese nuevamente la contraseña" maxlength="255"  type="password" id="txtNewRePassword" name="txtNewRePassword">
-			<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNewRePassword">
+			<label>Nueva RE-ContraseÃ±a:</label>
+			<input required x-moz-errormessage="Ingrese nuevamente la contraseÃ±a" maxlength="255"  type="password" id="txtNewRePassword" name="txtNewRePassword">
 		</div>
 		<div>
-			<img title="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" id="captcha" />
+			<img title="Captcha" onclick="actualizarCaptcha()"	 src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" id="captcha" />
 		</div>
 		<div>
 			<label>Captcha:</label>
 			<input required x-moz-errormessage="Ingrese el texto de la imagen." type="text" maxlength="255"  size="16" id="txtCaptcha"  name="captcha" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." />
-			<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgCaptcha">
 		</div>
 		<div>
-			<input type="submit" value="Modificar">
+			<input class="boton submit" type="submit" value="Modificar">
+			<a class="boton cancel" href="<?php echo WEB_BASE;?>">Cancelar</a>
 		</div>
 	</form>
 </section>

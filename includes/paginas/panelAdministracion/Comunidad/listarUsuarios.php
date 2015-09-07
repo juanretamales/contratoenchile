@@ -16,7 +16,7 @@
 	<section id="contenido">
 
 		<h1 class="titulo">Usuarios</h1>
-		<a class="myButton" style="width: 50px;" href="<?php echo WEB_BASE; ?>administracion/seguridad/usuario/agregar">Agregar</a>
+		<a class="boton" style="width: 50px;" href="<?php echo WEB_BASE; ?>administracion/seguridad/usuario/agregar">Agregar</a>
 		<form id="frmModificar" method="post" name="frmModificar" action="<?php echo WEB_BASE; ?>administracion/seguridad/usuario/modificar">
 				<input type="hidden" id="txtCode" name="txtCode">
 			</form>

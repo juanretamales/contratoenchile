@@ -18,6 +18,7 @@
 			?>
 		</section>
 			<section id="contenido">
+				<h1 class="titulo">Identificarse</h1>
 				<form class="formulario" onsubmit="return validarFormularioLogin()" method="post">
 				<div id="error"></div>
 					<div>

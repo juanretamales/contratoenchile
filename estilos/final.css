@@ -618,6 +618,10 @@ li
 {
 	background: #156FB4;
 }
+#contenido form > div > input[type="checkbox"]
+{
+	float: left;
+}
 .toolbar-container
 {
 	width: 100%;

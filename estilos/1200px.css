@@ -509,6 +509,12 @@
 	{
 		display: block;
 	}
+	#contenido form > div > input[type="checkbox"]
+	{
+		float: left;
+		display: inline;
+		margin: -15px 0 10px 0;
+	}
 	#contenido form > div > img
 	{
 		display: inline;

@@ -17,6 +17,7 @@ if(MANTENIMIENTO=='false')
 	if(isset($_REQUEST['pagina']))
 	{
 		cc_contenido($_REQUEST['pagina']); 
+		//echo '<!--'.$_REQUEST['pagina'].'-->';
 	}
 	else
 	{

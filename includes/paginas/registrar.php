@@ -19,10 +19,12 @@
 			{
 				
 			?><h1 class="titulo">Registro paso 2</h1>
+			<div class="mensaje informativo">
+					<em></em>
+					<p>Si no se completo el codigo con el enviado a su correo escribir manualmente</p>
+					<a onclick="this.parentNode.remove()">X</a>
+					</div>
 				<form class="formulario" onsubmit="return verificarCodigo()" action="<?php echo WEB_BASE; ?>registrar-paso3" method="post">
-		
-					
-					<p>Se envio un correo su email e ingrese el codigo o acceda al enlace enviado</p>
 					<div>
 						<label>Ingrese el Codigo</label>
 						<input type="text" required x-moz-errormessage="Debe ingresar el codigo" value="<?php echo $page[1]; ?>" id="txtCode" name="txtCode">

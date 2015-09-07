@@ -143,7 +143,7 @@ if(isset($_POST['registrarse']))
 						$url=WEB_BASE."registrar/".$emailcode;
 						$titulo="Continuacion registro en Contrato en Chile";
 						$mensaje='Para poder terminar el registro, llena el formulario del siguiente sitio '.$url.' 
-						o ingrese el codigo en el fomulario de registro '.$emailcode.' , este correo fue generado automaticamente, por lo que no sera respondido
+						o ingrese el codigo en el fomulario de registro si no se llena automaticamente <p> '.$emailcode.' </p> , este correo fue generado automaticamente, por lo que no sera respondido
 						por su preferencia, gracias.';
 						$resultado=mail($variables ['txtEmail'], $titulo, $mensaje);
 						if($resultado===true)
@@ -444,7 +444,7 @@ if(isset($_POST['agregarEmpresa']))
 			)
 	{
 		include_once('./transaccion.php');
-		include_once('./function.php');
+		//include_once('./function.php');
 		$transaccion=new transaccion();
 		$arg=array(
 			'id_est'=>$variables ['txtEstado'], 
@@ -1497,6 +1497,7 @@ if(isset($_POST['modificarPerfil']))
 			if(count(listarPersona($arg))==0 || $personas [0] ['email_per']==$variables ['txtEmail'])
 			{
 				include_once('./transaccion.php');
+				include_once('./function.php');
 				$transaccion=new transaccion();
 				$arg=array(
 					'nombre'=>$variables ['txtNombre'],
@@ -3662,7 +3663,7 @@ if(isset($_POST['desconectarse']))
 	$_SESSION['id']="";
 	$_SESSION['nombre']="";
 	$_SESSION['rol']="";
-	session_destroy();
+	$estadosession=session_destroy();
 	echo "Exito";
 }
 if(isset($_POST['seleccionarEmpresa']))
