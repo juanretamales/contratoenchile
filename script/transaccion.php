@@ -2451,7 +2451,7 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "SELECT `id_serv`, `id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `seo_serv`, `id_ts` FROM `servicio`";
+		$query = "SELECT `id_serv`, `id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `id_ts` FROM `servicio`";
 		$condicion=0;
 		if(isset($arg['id_serv']))
 		{
@@ -2587,8 +2587,7 @@ class transaccion
 				'id_ent'=>$fila['id_ent'], 
 				'id_est'=>$fila['id_est'], 
 				'nom_serv'=>$fila['nom_serv'], 
-				'desc_serv'=>$fila['desc_serv'], 
-				'seo_serv'=>$fila['seo_serv'], 
+				'desc_serv'=>$fila['desc_serv'],
 				'id_ts'=>$fila['id_ts']
 			);
 		}
@@ -5501,7 +5500,7 @@ class transaccion
 			{
 				$query=$query . " WHERE `".$arg['condition']."`='".$arg['data']."'";
 			}
-			echo $query;
+			//echo $query;
 			$mysqli=$this->conectar();
 			$resultado = $mysqli->real_query($query);
 			if(isset($arg['affected']))

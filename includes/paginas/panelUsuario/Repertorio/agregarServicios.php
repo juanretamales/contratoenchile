@@ -17,6 +17,7 @@ if(isset($_REQUEST['pagina']))
 			cc_menu($pagina); ?>
 	</section>
 	<section id="contenido" >
+	<h1 class="titulo">Agregar un servicio</h1>
 	<form class="" onsubmit="return agregarServicio()" method="post">
 				<?php
 					require_once "script/webConfig.php";
@@ -34,10 +35,10 @@ if(isset($_REQUEST['pagina']))
 						}
 					}
 				?>
-		<h1>Agregar un servicio</h1>
+		
 		<div class="mensaje informativo">
 		<em></em>
-		<p>Primero seleccione una categoria</p>
+		<p>1-Primero seleccione una categoria</p>
 		<a onclick="this.parentNode.remove()">X</a>
 		</div>
 		<div class="formulario">
@@ -59,15 +60,19 @@ if(isset($_REQUEST['pagina']))
 		</div>
 		<div class="mensaje informativo">
 		<em></em>
-		<p>Luego seleccione la imagen a mostrar, la subcategoria y el tipo.</p>
+		<p>2-Luego seleccione la imagen a mostrar, la subcategoria y el tipo.</p>
 		<a onclick="this.parentNode.remove()">X</a>
 		</div>
-		<p class="instrucciones">Previzualizacion del servicio</p>
 		<article class="servicios">
 			<a id="imagenDescripcion" ><img onclick="cambiarImagen()" style="background: url('<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg'); " src="<?php echo WEB_BASE; ?>imagenes/1x1.png">
 			<input type="hidden" id="txtimagenDescripcion" name="txtimagenDescripcion" value="<?php echo WEB_BASE; ?>/imagenes/haz click para cambiar la imagen.jpg">
 			
-			<label class="titulo"><input required x-moz-errormessage="Debe ingresar el nombre del servicio" type="text" id="txtNombre" name="txtNombre" required maxlength="255"> de <?php echo $_SESSION['empresa'];?></label>
+			<label class="titulo"><input required x-moz-errormessage="Debe ingresar el nombre del servicio" type="text" id="txtNombre" name="txtNombre" required maxlength="255"> de 
+			
+			<?php 
+			$arg=array ('id_ent'=>$_SESSION['empresa']);
+							$ent=listarEntidad($arg);
+			echo $ent [0]['nom_ent']; ?></label>
 			<p class="descripcion">La descripcion se llenara con el bloque de abajo</p>
 			<p class="tipo">
 				<a><select required x-moz-errormessage="Debe seleccionar un Tipo" id="txtSubcategoria" name="txtSubcategoria" required>
@@ -94,7 +99,7 @@ if(isset($_REQUEST['pagina']))
 		</article>
 		<div class="mensaje informativo">
 		<em></em>
-		<p>Ahora agregue la descripcion del servicio.</p>
+		<p>3-Ahora agregue la descripcion del servicio.</p>
 		<a onclick="this.parentNode.remove()">X</a>
 		</div>
 		<article class="servicios">
@@ -193,7 +198,11 @@ if(isset($_REQUEST['pagina']))
 					  <option value="right"></option>
 					  <option value="justify"></option>
 					</select></span>
-					<!--<span class="ql-format-group"><span title="Link" class="ql-format-button ql-link"></span><span class="ql-format-separator"></span><span title="Image" class="ql-format-button ql-image"></span><span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span></span>-->
+					<span class="ql-format-group">
+					<span title="Link" class="ql-format-button ql-link"></span>
+					<span class="ql-format-separator"></span><span onclick="anadirBiblioteca()" title="Image" class="ql-format-button ql-image"></span>
+					<span class="ql-format-separator"></span><span title="List" class="ql-format-button ql-list"></span>
+					</span>
 					</div>
 				<div id="editor" class="editor-container">Modifique este texto y cree la descripcion para su servicio</div>
 				<textarea class="oculto"  rows="4" cols="22" spellcheck="false" wrap="off" autofocus placeholder="Describe tu servicio..." required x-moz-errormessage="Debe ingresar el Url de la Pagina" id="txtDescripcion" name="txtDescripcion" maxlength="255">
@@ -209,6 +218,7 @@ if(isset($_REQUEST['pagina']))
 					'multi-cursor': true,
 					'toolbar': { container: '.toolbar-container' },
 					'link-tooltip': true
+				  //, 'image-tooltip': true
 				  },
 				  theme: 'snow'
 				});
@@ -225,18 +235,36 @@ if(isset($_REQUEST['pagina']))
 				  }
 				});
 				
+				
 				function actualizarDescripcion()
 				{
 					document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
 				}
+				var plantilla ="";
+				function anadirBiblioteca()
+				{
+					//var div = document.getElementsByClassName('ql-image-tooltip');
+					//plantilla = '<a class="boton" >Ver biblioteca</a><br>';
+					if ($("#divImage").hasClass('oculto')){
+						//actualizarChat=setInterval(actualizarChat(), 10000);
+						document.getElementById("divImage").className="divMultimedia";
+						//console.log("header era: activo");
+					}else{
+						document.getElementById("divImage").className="divMultimedia oculto";
+						//console.log("header era: inactivo");
+					}
+					//plantilla = '<div id="" class="divMultimedia"> <div class="listado"> <?php $media=listarMedia($arg); for($i=0;$i<count($media);$i++) { ?><div onclick="seleccionarImg(&quot;<?php echo $media[$i]['id_med']; ?>&quot;,&quot;<?php echo $media[$i]['url_med']; ?>&quot;)"><img src="<?php echo $media[$i]['url_med']; ?>"></div><?php } ?> </div></div>';
+					//div[0].innerHTML = plantilla + div[0].innerHTML;
+				}
 			</script>
 		</article>
-		<article class="servicios" >
 		<div class="mensaje informativo">
 		<em></em>
-		<p><a style="color: black;" href="<?php echo WEB_BASE.$back; ?>">Contrato en chile le recomienda leer las recomendaciones de nuestro panel de especialistas</a></p>
+		<p><a style="color: black;" href="<?php echo WEB_BASE.$back; ?>">Opcional: Contrato en chile le recomienda leer las recomendaciones de nuestro panel de especialistas</a></p>
 		<a onclick="this.parentNode.remove()">X</a>
 		</div>
+		<article class="servicios" >
+		
 			<div>
 					<input class="boton submit" type="submit" value="Añadir Servicio">
 			</div>
@@ -249,7 +277,7 @@ if(isset($_REQUEST['pagina']))
 			</div>
 		</article>
 		<div id="seleccionarMultimedia" class="divMultimedia oculto">
-			<a class="boton">Agregar mas multimedia</a>
+		<a class="boton" onclick="cambiarImagen()" >cerrar</a><br>
 			<div class="listado">
 				<?php
 					$arg=array(
@@ -258,13 +286,32 @@ if(isset($_REQUEST['pagina']))
 					$media=listarMedia($arg);
 					for($i=0;$i<count($media);$i++)
 					{
-						?>'<div onclick="seleccionarImagen('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
+						?><div onclick="seleccionarImagen('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
 									<img src="<?php echo $media[$i]['url_med']; ?>">
 							</div>
 						<?php
 					}
 				?>
 			</div>
+		</div>
+		<div id="divImage" class="divMultimedia oculto">
+			<a class="boton" onclick="anadirBiblioteca()" >cerrar</a><br>
+			<div class="listado">
+				<?php
+					$arg=array(
+					'id_ent'=>$_SESSION['empresa']
+					);
+					$media=listarMedia($arg);
+					for($i=0;$i<count($media);$i++)
+					{
+						?><div onclick="seleccionarImg('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
+									<img src="<?php echo $media[$i]['url_med']; ?>">
+							</div>
+						<?php
+					}
+				?>
+			</div>
+			
 		</div>
 		<script>
 		function cambiarImagen()
@@ -290,6 +337,11 @@ if(isset($_REQUEST['pagina']))
 			//console.log(imagen);
 			document.getElementById("txtimagenDescripcion").value = imagen;
 			cambiarImagen();
+		}
+		function seleccionarImg(imagen, url)
+		{
+			anadirBiblioteca()
+		  $("#ql-editor-1").append('<div><img src="'+url+'"></div>');
 		}
 		function actualizarEditor(editor)
 		{

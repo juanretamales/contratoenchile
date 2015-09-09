@@ -8679,10 +8679,11 @@ Range = Quill.require('range');
 
 ImageTooltip = (function(superClass) {
   extend(ImageTooltip, superClass);
-
   ImageTooltip.DEFAULTS = {
-    template: '<input class="input" type="textbox"> <div class="preview"> <span>Preview</span> </div> <a href="javascript:;" class="cancel">Cancel</a> <a href="javascript:;" class="insert">Insert</a>'
-  };
+		
+			template: '<input class="input" id="txtImg" type="textbox"> <div class="preview"> <span>Preview</span> </div> <a href="javascript:;" class="cancel">Cancel</a> <a href="javascript:;" class="insert">Insert</a>'
+		
+    };
 
   function ImageTooltip(quill, options) {
     this.quill = quill;
