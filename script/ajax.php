@@ -556,14 +556,14 @@ if(isset($_POST['agregarCobertura']))
 	else
 	{
 		if(
-			isset($variables ['txtNombre']) &&
+			isset($variables ['txtComuna']) &&
 			isset($_SESSION['empresa'])
 		)
 		{
 			include_once('./transaccion.php');
 			$transaccion=new transaccion();
 			$arg=array(
-				'is_com'=>$variables ['txtComuna'], 
+				'id_com'=>$variables ['txtComuna'], 
 				'id_ent'=>$_SESSION['empresa']
 			);
 			$resultado=$transaccion->insertarCobertura($arg);
@@ -2865,6 +2865,69 @@ if(isset($_POST['eliminarComuna']))
 			echo "Ocurrio un error, recargue la pagina e intente nuevamente";
 			break;
 	} 
+	
+}
+if(isset($_POST['eliminarCobertura']))
+{
+	$param=explode("-",$_POST["eliminarCobertura"]);
+	if(isset($param[0]))
+	{
+		if($param[0]>0)
+		{
+			$arg = array();
+			if(isset($param[1]) && $_SESSION['rol']>1)
+			{
+				$arg = array (
+					"id_com" => $param[0],
+					"id_ent" => $param[1],
+					"affected" => md5('nada')
+				);
+			}
+			else
+			{
+				if(isset($_SESSION['empresa']))
+				{
+					$arg = array (
+						"id_com" => $param[0],
+						"id_ent" => $_SESSION['empresa'],
+						"affected" => md5('nada')
+					);
+				}
+			}
+			if($arg != array())
+			{
+				include_once('./transaccion.php');
+				$transaccion=new transaccion;
+				$resultado=$transaccion->eliminarCobertura($arg);
+				switch($resultado)
+				{
+					case 0:
+						echo "Error al recibir los datos";
+						break;
+					case 1:
+						echo "Exito";
+						break;
+					default:
+						echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+						break;
+				}
+			}
+			else
+			{
+				echo "Problema al obtener los datos";
+			}
+		}
+		else
+		{
+			echo "La comuna no es valida";
+		}
+	}
+	else
+	{
+		echo "Los parametros enviados no son validos";
+	}
+	
+	 
 	
 }
 if(isset($_POST['eliminarTipousuario']))

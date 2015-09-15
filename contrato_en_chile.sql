@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2015 a las 22:13:48
+-- Tiempo de generación: 15-09-2015 a las 19:50:41
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -135,7 +135,7 @@ INSERT INTO `categoria` (`id_cat`, `nom_cat`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cobertura` (
-  `id_serv` int(11) NOT NULL,
+  `id_ent` int(11) NOT NULL,
   `id_com` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -670,7 +670,8 @@ INSERT INTO `item` (`id_menu`, `id_pag`) VALUES
 (5, 128),
 (5, 129),
 (5, 130),
-(5, 138);
+(5, 138),
+(4, 158);
 
 -- --------------------------------------------------------
 
@@ -686,7 +687,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `url` varchar(255) DEFAULT NULL,
   `id_tu` int(11) DEFAULT NULL,
   `usuario` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=497 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=743 ;
 
 --
 -- Volcado de datos para la tabla `log`
@@ -1175,7 +1176,254 @@ INSERT INTO `log` (`id_log`, `fecha`, `ip`, `id_pag`, `url`, `id_tu`, `usuario`)
 (493, '2015-08-25 20:05:24', '127.0.0.1', 149, 'ayuda', 3, '18.293.138-3'),
 (494, '2015-08-25 20:05:31', '127.0.0.1', 154, 'tutoriales', 3, '18.293.138-3'),
 (495, '2015-08-25 20:05:39', '127.0.0.1', 152, 'subscripciones', 3, '18.293.138-3'),
-(496, '2015-08-25 20:05:47', '127.0.0.1', 156, 'comprar', 3, '18.293.138-3');
+(496, '2015-08-25 20:05:47', '127.0.0.1', 156, 'comprar', 3, '18.293.138-3'),
+(497, '2015-08-26 00:38:33', '127.0.0.1', 9, '', 3, '18.293.138-3'),
+(498, '2015-08-26 00:38:41', '127.0.0.1', 0, 'servicios/Belleza/Todos/Todos', 3, '18.293.138-3'),
+(499, '2015-08-26 00:40:43', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(500, '2015-08-26 01:14:50', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(501, '2015-08-26 01:14:58', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(502, '2015-08-26 01:15:30', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(503, '2015-08-26 01:15:57', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(504, '2015-08-26 01:16:01', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(505, '2015-08-26 01:23:51', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(506, '2015-08-26 01:41:48', '127.0.0.1', 136, 'detalle/hola empresa/hola servicio', 3, '18.293.138-3'),
+(507, '2015-08-31 19:03:57', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(508, '2015-08-31 19:04:10', '127.0.0.1', 3, 'registrar', 0, 'Anonimo'),
+(509, '2015-08-31 19:13:55', '127.0.0.1', 3, 'registrar', 0, 'Anonimo'),
+(510, '2015-08-31 19:14:18', '127.0.0.1', 3, 'registrar', 0, 'Anonimo'),
+(511, '2015-09-02 15:28:30', '127.0.0.1', 3, 'registrar/dGVzdEB0ZXN0LmNs', 0, 'Anonimo'),
+(512, '2015-09-02 15:32:07', '127.0.0.1', 91, 'registrar-paso3', 0, 'Anonimo'),
+(513, '2015-09-02 15:32:10', '127.0.0.1', 3, 'registrar/dGVzdEB0ZXN0LmNs', 0, 'Anonimo'),
+(514, '2015-09-02 15:32:38', '127.0.0.1', 3, 'registrar/dGVzdEB0ZXN0LmNs', 0, 'Anonimo'),
+(515, '2015-09-02 15:37:45', '127.0.0.1', 3, 'registrar/dGVzdEB0ZXN0LmNs', 0, 'Anonimo'),
+(516, '2015-09-02 16:59:13', '127.0.0.1', 3, 'registrar/dGVzdEB0ZXN0LmNs', 0, 'Anonimo'),
+(517, '2015-09-02 17:02:32', '127.0.0.1', 91, 'registrar-paso3', 0, 'Anonimo'),
+(518, '2015-09-02 17:03:59', '127.0.0.1', 91, 'registrar-paso3', 0, 'Anonimo'),
+(519, '2015-09-02 19:21:07', '127.0.0.1', 91, 'registrar-paso3', 0, 'Anonimo'),
+(520, '2015-09-02 23:43:41', '127.0.0.1', 91, 'registrar-paso3', 0, 'Anonimo'),
+(521, '2015-09-02 23:43:44', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(522, '2015-09-02 23:54:34', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(523, '2015-09-02 23:54:39', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(524, '2015-09-02 23:54:50', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(525, '2015-09-02 23:54:55', '127.0.0.1', 16, 'administracion', 1, '18.293.138-1'),
+(526, '2015-09-03 00:03:11', '127.0.0.1', 16, 'administracion', 1, '18.293.138-1'),
+(527, '2015-09-03 00:04:44', '127.0.0.1', 16, 'administracion', 1, '18.293.138-1'),
+(528, '2015-09-03 00:05:36', '127.0.0.1', 16, 'administracion', 1, '18.293.138-1'),
+(529, '2015-09-03 00:10:15', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(530, '2015-09-03 00:11:43', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(531, '2015-09-03 00:11:47', '127.0.0.1', 125, 'administracion/subscriptores/calificaciones', 1, '18.293.138-1'),
+(532, '2015-09-03 00:12:01', '127.0.0.1', 127, 'administracion/subscriptores/contratos', 1, '18.293.138-1'),
+(533, '2015-09-03 00:13:18', '127.0.0.1', 127, 'administracion/subscriptores/contratos', 1, '18.293.138-1'),
+(534, '2015-09-03 00:13:26', '127.0.0.1', 56, 'administracion/registrar/empresa', 1, '18.293.138-1'),
+(535, '2015-09-03 00:16:06', '127.0.0.1', 56, 'administracion/registrar/empresa', 1, '18.293.138-1'),
+(536, '2015-09-03 00:17:40', '127.0.0.1', 56, 'administracion/registrar/empresa', 1, '18.293.138-1'),
+(537, '2015-09-04 13:31:01', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(538, '2015-09-04 17:43:56', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(539, '2015-09-04 18:33:59', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(540, '2015-09-06 19:49:34', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(541, '2015-09-06 19:49:38', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(542, '2015-09-06 19:49:50', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(543, '2015-09-06 19:49:57', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(544, '2015-09-06 19:50:00', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(545, '2015-09-06 19:50:13', '127.0.0.1', 9, '', 3, '18.293.138-3'),
+(546, '2015-09-06 19:50:17', '127.0.0.1', 15, 'administracion', 3, '18.293.138-3'),
+(547, '2015-09-06 20:02:37', '127.0.0.1', 9, '', 3, '18.293.138-3'),
+(548, '2015-09-06 20:02:40', '127.0.0.1', 15, 'administracion', 3, '18.293.138-3'),
+(549, '2015-09-06 20:02:51', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(550, '2015-09-06 20:02:58', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(551, '2015-09-06 20:03:05', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(552, '2015-09-06 20:03:11', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(553, '2015-09-06 20:03:16', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(554, '2015-09-06 20:03:20', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(555, '2015-09-06 20:04:19', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(556, '2015-09-06 20:31:36', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(557, '2015-09-06 20:31:42', '127.0.0.1', 125, 'administracion/subscriptores/calificaciones', 1, '18.293.138-1'),
+(558, '2015-09-07 17:17:23', '127.0.0.1', 125, 'administracion/subscriptores/calificaciones', 1, '18.293.138-1'),
+(559, '2015-09-07 19:32:22', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(560, '2015-09-07 19:32:48', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(561, '2015-09-07 19:32:50', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(562, '2015-09-07 19:33:05', '127.0.0.1', 9, '', 3, '18.293.138-3'),
+(563, '2015-09-07 19:33:08', '127.0.0.1', 15, 'administracion', 3, '18.293.138-3'),
+(564, '2015-09-07 19:33:38', '127.0.0.1', 41, 'administracion/seguridad/usuario', 3, '18.293.138-3'),
+(565, '2015-09-07 19:33:41', '127.0.0.1', 90, 'administracion/seguridad/usuario/agregar', 3, '18.293.138-3'),
+(566, '2015-09-07 19:35:04', '127.0.0.1', 41, 'administracion/seguridad/usuario', 3, '18.293.138-3'),
+(567, '2015-09-07 19:35:10', '127.0.0.1', 90, 'administracion/seguridad/usuario/agregar', 3, '18.293.138-3'),
+(568, '2015-09-07 19:37:00', '127.0.0.1', 90, 'administracion/seguridad/usuario/agregar', 3, '18.293.138-3'),
+(569, '2015-09-07 19:52:39', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(570, '2015-09-07 19:52:41', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(571, '2015-09-07 19:52:49', '127.0.0.1', 9, '', 1, '18.293.138-1');
+INSERT INTO `log` (`id_log`, `fecha`, `ip`, `id_pag`, `url`, `id_tu`, `usuario`) VALUES
+(572, '2015-09-07 19:52:54', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(573, '2015-09-07 19:52:57', '127.0.0.1', 56, 'administracion/registrar/empresa', 1, '18.293.138-1'),
+(574, '2015-09-07 19:53:48', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(575, '2015-09-07 19:53:51', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(576, '2015-09-07 19:54:43', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(577, '2015-09-07 19:56:10', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(578, '2015-09-07 19:56:13', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(579, '2015-09-07 19:56:18', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(580, '2015-09-07 19:58:25', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(581, '2015-09-07 19:59:14', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(582, '2015-09-07 20:06:35', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(583, '2015-09-07 20:09:32', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(584, '2015-09-07 20:09:36', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(585, '2015-09-07 20:09:42', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(586, '2015-09-07 20:10:43', '127.0.0.1', 58, 'administracion/cambiar_contrasena', 1, '18.293.138-1'),
+(587, '2015-09-07 20:11:52', '127.0.0.1', 58, 'administracion/cambiar_contrasena', 1, '18.293.138-1'),
+(588, '2015-09-07 20:12:07', '127.0.0.1', 58, 'administracion/cambiar_contrasena', 1, '18.293.138-1'),
+(589, '2015-09-07 20:12:13', '127.0.0.1', 58, 'administracion/cambiar_contrasena', 1, '18.293.138-1'),
+(590, '2015-09-07 21:21:54', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(591, '2015-09-07 21:23:46', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(592, '2015-09-07 21:25:47', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(593, '2015-09-07 21:34:30', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(594, '2015-09-07 21:47:12', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(595, '2015-09-07 21:49:03', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(596, '2015-09-08 14:15:38', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(597, '2015-09-08 14:15:41', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(598, '2015-09-08 14:15:46', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(599, '2015-09-08 14:15:50', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(600, '2015-09-08 14:16:18', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(601, '2015-09-08 14:25:30', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(602, '2015-09-08 14:41:01', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(603, '2015-09-08 14:41:08', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(604, '2015-09-08 14:44:24', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(605, '2015-09-08 14:48:45', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(606, '2015-09-08 14:52:09', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(607, '2015-09-08 15:04:51', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(608, '2015-09-08 15:10:55', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(609, '2015-09-08 16:12:42', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(610, '2015-09-08 16:13:04', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(611, '2015-09-08 16:13:08', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(612, '2015-09-08 16:27:54', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(613, '2015-09-08 16:28:47', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(614, '2015-09-08 16:30:16', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(615, '2015-09-08 16:31:10', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(616, '2015-09-08 16:31:15', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(617, '2015-09-08 16:33:48', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(618, '2015-09-08 16:34:23', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(619, '2015-09-08 16:35:22', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(620, '2015-09-08 16:35:34', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(621, '2015-09-08 16:35:40', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(622, '2015-09-08 16:36:00', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(623, '2015-09-08 16:37:08', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(624, '2015-09-08 16:38:48', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(625, '2015-09-08 16:41:25', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(626, '2015-09-08 16:42:16', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(627, '2015-09-08 16:43:56', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(628, '2015-09-08 16:48:10', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(629, '2015-09-08 16:50:03', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(630, '2015-09-08 16:50:27', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(631, '2015-09-08 16:54:24', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(632, '2015-09-08 16:57:53', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(633, '2015-09-08 16:58:16', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(634, '2015-09-08 16:59:01', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(635, '2015-09-08 17:02:06', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(636, '2015-09-08 18:42:40', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(637, '2015-09-08 18:44:19', '127.0.0.1', 58, 'administracion/cambiar_contrasena', 1, '18.293.138-1'),
+(638, '2015-09-08 18:45:14', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(639, '2015-09-08 18:45:18', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(640, '2015-09-08 18:50:11', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(641, '2015-09-08 18:50:39', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(642, '2015-09-08 18:53:03', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(643, '2015-09-08 18:54:35', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(644, '2015-09-08 18:55:54', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(645, '2015-09-08 18:56:22', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(646, '2015-09-08 18:57:03', '127.0.0.1', 83, 'administracion/servicios/agregar', 1, '18.293.138-1'),
+(647, '2015-09-08 19:00:21', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(648, '2015-09-08 19:07:59', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(649, '2015-09-08 19:09:43', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(650, '2015-09-08 19:10:21', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(651, '2015-09-09 01:49:23', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(652, '2015-09-09 01:49:25', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(653, '2015-09-09 15:49:28', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(654, '2015-09-09 16:06:46', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(655, '2015-09-09 19:27:29', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(656, '2015-09-09 19:29:38', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(657, '2015-09-09 19:30:17', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(658, '2015-09-09 19:36:29', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(659, '2015-09-09 19:37:04', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(660, '2015-09-09 19:38:41', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(661, '2015-09-09 19:39:38', '127.0.0.1', 84, 'administracion/servicios/modificar', 1, '18.293.138-1'),
+(662, '2015-09-09 19:41:31', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(663, '2015-09-09 19:42:50', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(664, '2015-09-09 19:42:54', '127.0.0.1', 86, 'administracion/multimedia/agregar', 1, '18.293.138-1'),
+(665, '2015-09-09 19:43:08', '127.0.0.1', 86, 'administracion/multimedia/agregar', 1, '18.293.138-1'),
+(666, '2015-09-09 19:44:09', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(667, '2015-09-09 19:44:14', '127.0.0.1', 87, 'administracion/multimedia/modificar', 1, '18.293.138-1'),
+(668, '2015-09-09 21:37:23', '127.0.0.1', 87, 'administracion/multimedia/modificar', 1, '18.293.138-1'),
+(669, '2015-09-09 21:37:24', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(670, '2015-09-09 22:43:32', '127.0.0.1', 87, 'administracion/multimedia/modificar', 1, '18.293.138-1'),
+(671, '2015-09-09 22:45:56', '127.0.0.1', 87, 'administracion/multimedia/modificar', 1, '18.293.138-1'),
+(672, '2015-09-09 22:47:28', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(673, '2015-09-09 22:48:45', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(674, '2015-09-09 22:50:30', '127.0.0.1', 85, 'administracion/multimedia', 1, '18.293.138-1'),
+(675, '2015-09-09 22:51:02', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(676, '2015-09-09 23:57:44', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(677, '2015-09-09 23:57:48', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(678, '2015-09-09 23:57:52', '127.0.0.1', 0, 'servicios/Belleza/Todos/Todos', 1, '18.293.138-1'),
+(679, '2015-09-09 23:57:56', '127.0.0.1', 0, 'servicios/Clases,Cursos y Capacitaciones/Todos/Todos', 1, '18.293.138-1'),
+(680, '2015-09-09 23:58:00', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(681, '2015-09-09 23:58:02', '127.0.0.1', 0, 'servicios/Clases,Cursos y Capacitaciones/Todos/Todos', 1, '18.293.138-1'),
+(682, '2015-09-09 23:58:04', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(683, '2015-09-09 23:58:06', '127.0.0.1', 0, 'servicios/Fiestas y Eventos/Todos/Todos', 1, '18.293.138-1'),
+(684, '2015-09-09 23:58:11', '127.0.0.1', 0, 'servicios/Mantenimiento de VehÃ­culos/Todos/Todos', 1, '18.293.138-1'),
+(685, '2015-09-09 23:58:13', '127.0.0.1', 0, 'servicios/Mantenimiento del Hogar/Todos/Todos', 1, '18.293.138-1'),
+(686, '2015-09-09 23:58:15', '127.0.0.1', 0, 'servicios/Otros Servicios/Todos/Todos', 1, '18.293.138-1'),
+(687, '2015-09-09 23:58:17', '127.0.0.1', 0, 'servicios/Profesionales/Todos/Todos', 1, '18.293.138-1'),
+(688, '2015-09-10 00:26:19', '127.0.0.1', 0, 'servicios/Profesionales/Todos/Todos', 1, '18.293.138-1'),
+(689, '2015-09-10 02:14:54', '127.0.0.1', 0, 'servicios/Profesionales/Todos/Todos', 1, '18.293.138-1'),
+(690, '2015-09-10 02:23:11', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(691, '2015-09-10 02:23:56', '127.0.0.1', 0, 'servicios/Belleza/Todos/Todos', 1, '18.293.138-1'),
+(692, '2015-09-10 02:24:06', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(693, '2015-09-10 04:21:29', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(694, '2015-09-10 04:24:46', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(695, '2015-09-10 04:25:30', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(696, '2015-09-10 04:27:30', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(697, '2015-09-10 04:30:12', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(698, '2015-09-10 04:59:58', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(699, '2015-09-10 05:00:10', '127.0.0.1', 96, 'comparacion', 1, '18.293.138-1'),
+(700, '2015-09-11 01:05:44', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(701, '2015-09-11 01:05:48', '127.0.0.1', 0, 'servicios/Belleza/Todos/Todos', 1, '18.293.138-1'),
+(702, '2015-09-11 03:35:48', '127.0.0.1', 0, 'servicios/Belleza/Todos/Todos', 1, '18.293.138-1'),
+(703, '2015-09-12 22:39:37', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(704, '2015-09-12 22:39:44', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(705, '2015-09-12 22:39:59', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(706, '2015-09-12 22:40:21', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(707, '2015-09-12 22:40:32', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(708, '2015-09-13 03:25:16', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(709, '2015-09-14 20:50:43', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(710, '2015-09-14 20:50:49', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(711, '2015-09-14 20:50:54', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(712, '2015-09-14 20:50:56', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(713, '2015-09-14 20:51:12', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(714, '2015-09-14 20:51:12', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(715, '2015-09-14 20:52:41', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(716, '2015-09-14 20:55:10', '127.0.0.1', 82, 'administracion/servicios', 1, '18.293.138-1'),
+(717, '2015-09-14 20:55:17', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(718, '2015-09-14 20:55:18', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(719, '2015-09-14 20:56:09', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(720, '2015-09-14 20:57:50', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(721, '2015-09-14 21:39:16', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(722, '2015-09-14 21:51:47', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(723, '2015-09-15 02:51:07', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(724, '2015-09-15 02:53:54', '127.0.0.1', 57, 'administracion/mi_perfil', 1, '18.293.138-1'),
+(725, '2015-09-15 02:54:01', '127.0.0.1', 59, 'administracion/mis_contratos', 1, '18.293.138-1'),
+(726, '2015-09-15 02:56:04', '127.0.0.1', 59, 'administracion/mis_contratos', 1, '18.293.138-1'),
+(727, '2015-09-15 02:57:50', '127.0.0.1', 59, 'administracion/mis_contratos', 1, '18.293.138-1'),
+(728, '2015-09-15 02:58:30', '127.0.0.1', 59, 'administracion/mis_contratos', 1, '18.293.138-1'),
+(729, '2015-09-15 02:58:32', '127.0.0.1', 122, 'administracion/contratos/detalle', 1, '18.293.138-1'),
+(730, '2015-09-15 02:58:41', '127.0.0.1', 120, 'administracion/contratos/mensajes', 1, '18.293.138-1'),
+(731, '2015-09-15 02:58:59', '127.0.0.1', 123, 'administracion/contratos', 1, '18.293.138-1'),
+(732, '2015-09-15 02:59:25', '127.0.0.1', 123, 'administracion/contratos', 1, '18.293.138-1'),
+(733, '2015-09-15 02:59:39', '127.0.0.1', 122, 'administracion/contratos/detalle', 1, '18.293.138-1'),
+(734, '2015-09-15 03:00:16', '127.0.0.1', 122, 'administracion/contratos/detalle', 1, '18.293.138-1'),
+(735, '2015-09-15 03:00:39', '127.0.0.1', 122, 'administracion/contratos/detalle', 1, '18.293.138-1'),
+(736, '2015-09-15 03:01:50', '127.0.0.1', 122, 'administracion/contratos/detalle', 1, '18.293.138-1'),
+(737, '2015-09-15 17:25:17', '127.0.0.1', 9, '', 0, 'Anonimo'),
+(738, '2015-09-15 17:32:26', '127.0.0.1', 2, 'identificarse', 0, 'Anonimo'),
+(739, '2015-09-15 17:32:36', '127.0.0.1', 9, '', 1, '18.293.138-1'),
+(740, '2015-09-15 17:33:02', '127.0.0.1', 17, 'administracion', 1, '18.293.138-1'),
+(741, '2015-09-15 17:33:21', '127.0.0.1', 158, 'administracion/cobertura', 1, '18.293.138-1'),
+(742, '2015-09-15 17:33:25', '127.0.0.1', 159, 'administracion/cobertura/agregar', 1, '18.293.138-1');
 
 -- --------------------------------------------------------
 
@@ -1274,7 +1522,7 @@ CREATE TABLE IF NOT EXISTS `pagina` (
   `url_pag` varchar(255) DEFAULT NULL,
   `url_real` varchar(255) NOT NULL,
   `desc_pag` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=159 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=160 ;
 
 --
 -- Volcado de datos para la tabla `pagina`
@@ -1420,7 +1668,9 @@ INSERT INTO `pagina` (`id_pag`, `id_tp`, `nom_pag`, `url_pag`, `url_real`, `desc
 (154, 1, 'tutoriales', 'tutoriales', 'includes/paginas/tutoriales.php', 'pagina publica'),
 (155, 1, 'desarrolladores', 'desarrolladores', 'includes/paginas/desarrolladores.php', 'pagina publica'),
 (156, 1, 'contratacion', 'contratacion', 'includes/paginas/contratacion.php', 'pagina publica'),
-(157, 1, 'publicacion', 'publicacion', 'includes/paginas/publicacion.php', 'pagina publica');
+(157, 1, 'publicacion', 'publicacion', 'includes/paginas/publicacion.php', 'pagina publica'),
+(158, 7, 'cobertura', 'administracion/cobertura', 'includes/paginas/panelUsuario/listarCobertura.php', 'pagina de usuario'),
+(159, 7, 'agregar cobertura', 'administracion/cobertura/agregar', 'includes/paginas/panelUsuario/agregarCobertura.php', 'pagina de usuario');
 
 -- --------------------------------------------------------
 
@@ -1480,7 +1730,6 @@ INSERT INTO `permisos` (`id_pag`, `id_tu`) VALUES
 (156, 0),
 (157, 0),
 (9, 1),
-(16, 1),
 (17, 1),
 (56, 1),
 (57, 1),
@@ -1523,6 +1772,8 @@ INSERT INTO `permisos` (`id_pag`, `id_tu`) VALUES
 (155, 1),
 (156, 1),
 (157, 1),
+(158, 1),
+(159, 1),
 (9, 3),
 (10, 3),
 (11, 3),
@@ -1653,7 +1904,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
 --
 
 INSERT INTO `persona` (`rut`, `id_com`, `id_est`, `id_tu`, `nombre`, `apellido`, `direccion`, `fecha_nac`, `tel_per`, `email_per`, `contrasena`) VALUES
-('18.293.138-1', 1, 1, 1, 'juan pablo', 'retamales lepe', 'descripcion', '0000-00-00', '', 'test2@contratoenchile.cl', 'e35ee65e2d18185dd790c7f34bf0a615'),
+('18.293.138-1', 1, 1, 1, 'juan pablo', 'retamales lepe', 'descripcion', '1982-07-08', '1567894', 'test2@contratoenchile.cl', 'e35ee65e2d18185dd790c7f34bf0a615'),
 ('18.293.138-2', 1, 2, 0, 'test', 'creado', 'asdasd', '0000-00-00', '4567891', 'test@contratoenchile.cl', '477d628eb43bfbd2dcb905e20cb1d5bd'),
 ('18.293.138-3', 1, 1, 3, 'admin2', 'admin', 'asdasd', '0000-00-00', '51170428', 'cheshire.darkness@gmail.com', 'e35ee65e2d18185dd790c7f34bf0a615');
 
@@ -1842,7 +2093,6 @@ CREATE TABLE IF NOT EXISTS `servicio` (
   `id_est` int(11) DEFAULT NULL,
   `nom_serv` varchar(255) DEFAULT NULL,
   `desc_serv` text,
-  `seo_serv` varchar(255) DEFAULT NULL,
   `id_ts` int(11) DEFAULT NULL,
   `desc_img` int(11) DEFAULT NULL COMMENT 'vincula una imagen de multimedia a servicio',
   `puntaje` int(11) DEFAULT '0'
@@ -1852,10 +2102,10 @@ CREATE TABLE IF NOT EXISTS `servicio` (
 -- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`id_serv`, `id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `seo_serv`, `id_ts`, `desc_img`, `puntaje`) VALUES
-(1, 3, 5, 5, 'hola servicio', 'probando metodo', '', 2, 5, 0),
-(2, 48, 8, 5, 'PÃ¡gina Web Para Pymes', 'Realizo pÃ¡ginas web para negocios locales en su fase de inicio o que aÃºn no tengan su sitio en la red:\r\n\r\n    DiseÃ±o simple, funcional, informativo y econÃ³mico basado en las herramientas de Wordpress.\r\n    Tiene correo propio (contacto@misitio.cl)\r\n    El sitio es autoadministrable.\r\n    El precio incluye dominio propio de nic chile (midominio.cl) y hosting.\r\n    El producto se entrega subido a la web.\r\n    Incluye correcciÃ³n ortogrÃ¡fica.', '', 3, 6, 0),
-(3, 21, 5, 5, 'test', '%3Cdiv+class%3D%22ql-multi-cursor%22%3E%3C%2Fdiv%3E%3Cdiv+id%3D%22ql-editor-1%22+class%3D%22ql-editor%22+contenteditable%3D%22true%22%3E%3Cdiv%3Emodifico%3Cspan+style%3D%22background-color%3A+rgb%28255%2C+153%2C+0%29%3B%22%3E+su+auto+para%3C%2Fspan%3E%3Cb%3E%3Cspan+style%3D%22background-color%3A+rgb%28255%2C+153%2C+0%29%3B%22%3E+su+%3C%2Fspan%3Ematrionio+co%3C%2Fb%3En+los+mejor%3Ci%3Ees+gra%3C%2Fi%3Efitis%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv+style%3D%22left%3A+-10000px%3B%22+class%3D%22ql-tooltip+ql-link-tooltip%22%3E%3Cspan+class%3D%22title%22%3EVisit+URL%3A%C2%A0%3C%2Fspan%3E+%3Ca+href%3D%22%23%22+class%3D%22url%22+target%3D%22_blank%22%3E%3C%2Fa%3E+%3Cinput+class%3D%22input%22+type%3D%22text%22%3E+%3Cspan%3E%C2%A0-%C2%A0%3C%2Fspan%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22change%22%3EChange%3C%2Fa%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22remove%22%3ERemove%3C%2Fa%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22done%22%3EDone%3C%2Fa%3E%3C%2Fdiv%3E%3Cdiv+class%3D%22ql-paste-manager%22+contenteditable%3D%22true%22%3E%3C%2Fdiv%3E', '', 3, NULL, 0);
+INSERT INTO `servicio` (`id_serv`, `id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `id_ts`, `desc_img`, `puntaje`) VALUES
+(1, 3, 5, 5, 'hola servicio', 'probando metodo', 2, 5, 0),
+(2, 48, 8, 5, 'PÃ¡gina Web Para Pymes', 'Realizo pÃ¡ginas web para negocios locales en su fase de inicio o que aÃºn no tengan su sitio en la red:\r\n\r\n    DiseÃ±o simple, funcional, informativo y econÃ³mico basado en las herramientas de Wordpress.\r\n    Tiene correo propio (contacto@misitio.cl)\r\n    El sitio es autoadministrable.\r\n    El precio incluye dominio propio de nic chile (midominio.cl) y hosting.\r\n    El producto se entrega subido a la web.\r\n    Incluye correcciÃ³n ortogrÃ¡fica.', 3, 6, 0),
+(3, 21, 5, 5, 'test', '%3Cdiv+class%3D%22ql-multi-cursor%22%3E%3C%2Fdiv%3E%3Cdiv+id%3D%22ql-editor-1%22+class%3D%22ql-editor%22+contenteditable%3D%22true%22%3E%3Cdiv%3Emodifico%3Cspan+style%3D%22background-color%3A+rgb%28255%2C+153%2C+0%29%3B%22%3E+su+auto+para%3C%2Fspan%3E%3Cb%3E%3Cspan+style%3D%22background-color%3A+rgb%28255%2C+153%2C+0%29%3B%22%3E+su+%3C%2Fspan%3Ematrionio+co%3C%2Fb%3En+los+mejor%3Ci%3Ees+gra%3C%2Fi%3Efitis%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv+style%3D%22left%3A+-10000px%3B%22+class%3D%22ql-tooltip+ql-link-tooltip%22%3E%3Cspan+class%3D%22title%22%3EVisit+URL%3A%C2%A0%3C%2Fspan%3E+%3Ca+href%3D%22%23%22+class%3D%22url%22+target%3D%22_blank%22%3E%3C%2Fa%3E+%3Cinput+class%3D%22input%22+type%3D%22text%22%3E+%3Cspan%3E%C2%A0-%C2%A0%3C%2Fspan%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22change%22%3EChange%3C%2Fa%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22remove%22%3ERemove%3C%2Fa%3E+%3Ca+href%3D%22javascript%3A%3B%22+class%3D%22done%22%3EDone%3C%2Fa%3E%3C%2Fdiv%3E%3Cdiv+class%3D%22ql-paste-manager%22+contenteditable%3D%22true%22%3E%3C%2Fdiv%3E', 3, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1943,7 +2193,7 @@ CREATE TABLE IF NOT EXISTS `tipocal` (
 `id_tc` int(11) NOT NULL,
   `nom_tc` varchar(255) DEFAULT NULL,
   `desc_tc` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `tipocal`
@@ -1957,8 +2207,7 @@ INSERT INTO `tipocal` (`id_tc`, `nom_tc`, `desc_tc`) VALUES
 (6, 'cumplimiento', 'Cumplimos con los plazos de entrega de informes y/o resultados'),
 (7, 'Sin errores', 'No cometemos errores en los informes y/o resultados'),
 (8, 'Precios', 'En general los precios son'),
-(9, 'Facturas a tiempo', 'La facturacion y notas de credito se realizan en tiempo y forma'),
-(10, 'nuevapregunta', 'nuevapregunta');
+(9, 'Facturas a tiempo', 'La facturacion y notas de credito se realizan en tiempo y forma');
 
 -- --------------------------------------------------------
 
@@ -2085,7 +2334,7 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `cobertura`
 --
 ALTER TABLE `cobertura`
- ADD PRIMARY KEY (`id_com`,`id_serv`), ADD KEY `id_serv` (`id_serv`);
+ ADD PRIMARY KEY (`id_com`,`id_ent`), ADD KEY `id_serv` (`id_ent`);
 
 --
 -- Indices de la tabla `comuna`
@@ -2296,7 +2545,7 @@ MODIFY `id_est` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `log`
 --
 ALTER TABLE `log`
-MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=497;
+MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=743;
 --
 -- AUTO_INCREMENT de la tabla `media`
 --
@@ -2316,7 +2565,7 @@ MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT de la tabla `pagina`
 --
 ALTER TABLE `pagina`
-MODIFY `id_pag` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=159;
+MODIFY `id_pag` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=160;
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --
@@ -2351,7 +2600,7 @@ MODIFY `id_scat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 -- AUTO_INCREMENT de la tabla `tipocal`
 --
 ALTER TABLE `tipocal`
-MODIFY `id_tc` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id_tc` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tipomedia`
 --
@@ -2397,7 +2646,7 @@ ADD CONSTRAINT `calificacionserv_ibfk_3` FOREIGN KEY (`id_tc`) REFERENCES `tipoc
 --
 ALTER TABLE `cobertura`
 ADD CONSTRAINT `cobertura_ibfk_1` FOREIGN KEY (`id_com`) REFERENCES `comuna` (`id_com`),
-ADD CONSTRAINT `cobertura_ibfk_2` FOREIGN KEY (`id_serv`) REFERENCES `servicio` (`id_serv`);
+ADD CONSTRAINT `cobertura_ibfk_2` FOREIGN KEY (`id_ent`) REFERENCES `entidad` (`id_ent`);
 
 --
 -- Filtros para la tabla `comuna`

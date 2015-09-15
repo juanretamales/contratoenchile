@@ -2017,6 +2017,51 @@ function agregarComuna()
 	}
 	return false;
 }
+function agregarCobertura()
+{
+	var mensaje="";
+	var elements = ["Comuna"];
+	for (i = 0; i < elements.length; i++)
+	{
+		if(!comprobador(elements[i]))
+		{
+			mensaje="error con el "+elements[i];
+		}
+	}
+	if ( document.getElementById( 'txtEmpresa'))
+	{
+		if(!comprobador('Empresa'))
+		{
+			mensaje="error con la empresa";
+		}
+	}
+	if(mensaje=="")
+	{
+		$.ajax({
+                data:  
+					{
+						"agregarCobertura" : $('.formulario').serialize()
+					},
+                url:   urlbase+'script/ajax.php',
+                type:  'post',
+                success:  function (response) {
+                    if(response=="Exito")
+					{
+						window.location=urlbase+"administracion/cobertura";
+					}
+					else
+					{
+						alerta(response);
+					}
+                }
+        });
+	}
+	else
+	{
+		alerta("Revise el formulario, "+mensaje);
+	}
+	return false;
+}
 
 function modificarComuna()
 {
