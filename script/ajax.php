@@ -529,7 +529,61 @@ if(isset($_POST['agregarEmpresa']))
 		}
 	}
 }
-
+if(isset($_POST['agregarCobertura']))
+{
+	$variables=serializeToArray($_POST['agregarCobertura']);
+	if(
+		isset($variables ['txtComuna']) &&
+		isset($variables ['txtEntidad'])
+	)
+	{
+		include_once('./transaccion.php');
+		$transaccion=new transaccion();
+		$arg=array(
+			'is_com'=>$variables ['txtComuna'], 
+			'id_ent'=>$variables ['txtEntidad']
+		);
+		$resultado=$transaccion->insertarCobertura($arg);
+		if($resultado==true)
+		{
+			echo "Exito";
+		}
+		else
+		{
+			echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+		}
+	}
+	else
+	{
+		if(
+			isset($variables ['txtNombre']) &&
+			isset($_SESSION['empresa'])
+		)
+		{
+			include_once('./transaccion.php');
+			$transaccion=new transaccion();
+			$arg=array(
+				'is_com'=>$variables ['txtComuna'], 
+				'id_ent'=>$_SESSION['empresa']
+			);
+			$resultado=$transaccion->insertarCobertura($arg);
+			if($resultado==true)
+			{
+				echo "Exito";
+			}
+			else
+			{
+				echo "Ocurrio un error, recargue la pagina e intente nuevamente";
+			}
+		}
+		else
+		{
+			//print_r($variables);
+			echo "Error al recibir los parametros";
+		}
+	}
+	
+}
 if(isset($_POST['agregarServicio']))
 {
 	$variables=serializeToArray($_POST['agregarServicio']);
@@ -3885,26 +3939,53 @@ if(isset($_POST['actualizarComparacion']))
 	$transaccion=new transaccion();
 	$arg=array ();
 	$tipocal=$transaccion->listarTipocal($arg);
-	$contenido='';
+	/*$contenido='';
 	for($i=0;$i<count($arreglo);$i++)
 	{
 		echo '<tr>';
-		$arg=array ('id_serv'=>$arreglo[$i]);
-		$servicio=$transaccion->listarServiciosSinDetalle($arg);
+		$arg=array ('id_serv'=>$arreglo[$i], 'ORDER_BY'=>'id_tc');
+		$servicio=$transaccion->listarServicio($arg);
 		echo '<td>'.$servicio[0]['nom_serv'].'</td>';
 		$serviciopromedio=$transaccion->listarPromedioCalificacionserv($arg);
+		//print_r($serviciopromedio);
 		//ahora empieza a cargar los promedios
 		for($j=0;$j<count($serviciopromedio);$j++)
 		{
 			echo '<td>'.$serviciopromedio [$j]['nom_ec'].'</td>';
 		}
 		$dif=count($tipocal)-count($serviciopromedio);
+		//echo $dif;
 		for($j=0;$j<count($dif);$j++)
 		{
 			echo '<td>Sin Calificar</td>';
 		}
 		echo '</tr>';
+	}*/
+	$contenido='';
+	for($i=0;$i<count($arreglo);$i++)
+	{
+		
+		$contenido = $contenido.'<tr>';
+		$arg=array ('id_serv'=>$arreglo[$i]);
+		$servicio=$transaccion->listarServicio($arg);
+		$contenido = $contenido.'<td>'.$servicio[0]['nom_serv'].'</td>';
+		$serviciopromedio=$transaccion->listarPromedioCalificacionserv($arg);
+		for($k=0;$k<count($tipocal);$k++)
+		{
+			$calificacion='<td>Sin Calificar</td>';
+			for($j=0;$j<count($serviciopromedio);$j++)
+			{
+				if($serviciopromedio [$j]['id_tc']==$tipocal[$k]['id_tc'])
+				{
+					$calificacion='<td>'.$serviciopromedio [$j]['nom_ec'].'</td>';
+					break;
+				}
+			}
+			$contenido = $contenido.$calificacion;
+		}
+		$contenido = $contenido.'</tr>';
 	}
+	echo $contenido;
 }
 
 if(isset($_POST['actualizarPaginaServicio']))

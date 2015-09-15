@@ -337,7 +337,7 @@ class transaccion
 		require_once('db.php');
 		$db=new db();
 		$condicion=0;
-		$query = "SELECT id_serv, tc.`desc_tc`, ec.`nom_ec`, TRUNCATE(AVG(valor),0) AS valor FROM calificacionserv cs, escalacal ec, tipocal tc WHERE ec.id_ec=cs.id_ec AND cs.`id_tc`=tc.`id_tc`";
+		$query = "SELECT id_serv, tc.`id_tc`, tc.`desc_tc`, ec.`nom_ec`, TRUNCATE(AVG(valor),0) AS valor FROM calificacionserv cs, escalacal ec, tipocal tc WHERE ec.id_ec=cs.id_ec AND cs.`id_tc`=tc.`id_tc`";
 		if(isset($arg['id_con']))
 		{
 			$query = $query.'and cs.id_con='.$arg['id_con'];
@@ -347,7 +347,15 @@ class transaccion
 			
 			$query = $query.'and cs.id_serv='.$arg['id_serv'];
 		}
-		$query = $query." GROUP BY tc.`id_tc`, cs.`id_serv` ORDER BY id_serv";
+		$query = $query." GROUP BY tc.`id_tc`, cs.`id_serv` ";
+		if(isset($arg['ORDER_BY']))
+		{
+			$query = $query." ORDER BY ".$arg['ORDER_BY'];
+		}
+		else
+		{
+			$query = $query." ORDER BY id_serv";
+		}
 		$listar= array();
 		$mysqli=$this->conectar();
 		$mysqli->real_query($query);
@@ -357,6 +365,7 @@ class transaccion
 			$listar[] = array 
 			(
 				'id_serv'=>$fila['id_serv'],
+				'id_tc'=>$fila['id_tc'],
 				'desc_tc'=>$fila['desc_tc'],
 				'nom_ec'=>$fila['nom_ec'],
 				'valor'=>$fila['valor']
@@ -486,9 +495,9 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "SELECT `id_serv`, `id_com` FROM `cobertura`";
+		$query = "SELECT `id_ent`, `id_com` FROM `cobertura`";
 		$condicion=0;
-		if(isset($arg['id_serv']))
+		if(isset($arg['id_ent']))
 		{
 			if($condicion!=0)
 			{
@@ -498,7 +507,7 @@ class transaccion
 			{
 				$query = $query . ' where ';
 			}
-			$query = $query. ' id_serv='.$arg['id_serv'];
+			$query = $query. ' id_ent='.$arg['id_ent'];
 			$condicion++;
 		}
 		if(isset($arg['id_com']))
@@ -514,7 +523,6 @@ class transaccion
 			$query = $query. ' id_com='.$arg['id_com'];
 			$condicion++;
 		}
-		$query = $query." order by `id_calc`";
 		$listar= array();
 		$mysqli=$this->conectar();
 		$mysqli->real_query($query);
@@ -523,10 +531,8 @@ class transaccion
 		{
 			$listar[] = array 
 			(
-				'id_calc'=>$fila['id_calc'], 
-				'id_con'=>$fila['id_con'],
-				'id_tc'=>$fila['id_tc'],
-				'id_ec'=>$fila['id_ec']
+				'id_ent'=>$fila['id_ent'], 
+				'id_com'=>$fila['id_com']
 			);
 		}
 		$mysqli->close();
@@ -1796,6 +1802,37 @@ class transaccion
 				'url_pag'=>$fila['url_pag'],
 				'url_real'=>$fila['url_real'],
 				'desc_pag'=>$fila['desc_pag']
+			);
+		}
+		$mysqli->close();
+		return $listar;
+	}
+	function listarLocalizacion($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query = "SELECT p.`id_pais`, r.`id_reg`, pr.`id_prov`, c.`id_com`, p.`nom_pais`, r.`nom_reg`, pr.`nom_prov`, c.`nom_com` FROM pais p, region r, provincia pr, comuna c WHERE p.`id_pais`=r.`id_pais` AND r.`id_reg`=pr.`id_reg` AND pr.`id_prov`=c.`id_prov` ";
+		if(isset($arg['id_com']))
+		{
+			$query = $query. ' AND c.`id_com`="'.$arg['id_com'].'" ';
+		}
+		$query = $query. ' order by c.`id_com`';
+		$listar= array();
+		$mysqli=$this->conectar();
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$listar[] = $listar[] = array 
+			(
+				'id_pais'=>$fila['id_pais'], 
+				'id_reg'=>$fila['id_reg'],
+				'id_prov'=>$fila['id_prov'],
+				'id_com'=>$fila['id_com'],
+				'nom_pais'=>$fila['nom_pais'],
+				'nom_reg'=>$fila['nom_reg'],
+				'nom_prov'=>$fila['nom_prov'],
+				'nom_com'=>$fila['nom_com']
 			);
 		}
 		$mysqli->close();
@@ -3299,6 +3336,120 @@ class transaccion
 		return $listar;
 	}
 	
+	function listarServiciosSinDetalleFiltroCobertura($arg)
+	{
+		$listar= array();
+		
+		require_once('db.php');
+		$db=new db();
+		$query="SELECT
+			s.id_serv,
+			s.nom_serv,
+			ent.nom_ent,
+			ts.nom_ts,
+			c.nom_cat,
+			sc.nom_scat,
+			est.nom_est,
+			s.desc_serv,
+			m.`url_med`,
+			s.`puntaje`
+		FROM
+			servicio s,
+			tiposervicio ts,
+			categoria c,
+			subcategoria sc,
+			entidad ent,
+			estado est,
+			media m
+		WHERE
+			s.id_ent=ent.id_ent AND
+			s.id_est=est.id_est AND
+			s.id_ts=ts.id_ts AND
+			s.id_scat=sc.id_scat AND
+			sc.id_cat=c.id_cat AND
+			m.`id_med`=s.`desc_img`";
+		
+		if(isset($arg['id_ent']))
+		{
+			$query = $query. " and s.id_ent='".$arg['id_ent']."'";
+		}
+		if(isset($arg['nom_serv']))
+		{
+			$query = $query. " and s.nom_serv='".$arg['nom_serv']."'";
+		}
+		if(isset($arg['nom_ent']))
+		{
+			$query = $query. " and ent.nom_ent='".$arg['nom_ent']."'";
+		}
+		if(isset($arg['id_serv']))
+		{
+			$query = $query. " and s.id_serv='".$arg['id_serv']."'";
+		}
+		if(isset($arg['id_est']))
+		{
+			$query = $query. " and s.id_est='".$arg['id_est']."'";
+		}
+		if(isset($arg['id_ts']))
+		{
+			$query = $query. " and s.id_ts='".$arg['id_ts']."'";
+		}
+		if(isset($arg['nom_ts']))
+		{
+			$query = $query. " and ts.nom_ts='".$arg['nom_ts']."'";
+		}
+		if(isset($arg['nom_scat']))
+		{
+			$query = $query. " and sc.nom_scat='".$arg['nom_scat']."'";
+		}
+		if(isset($arg['id_scat']))
+		{
+			$query = $query. " and s.id_scat='".$arg['id_scat']."'";
+		}
+		if(isset($arg['id_cat']))
+		{
+			$query = $query. " and c.id_cat='".$arg['id_cat']."'";
+		}
+		if(isset($arg['nom_cat']))
+		{
+			$query = $query. " and c.nom_cat='".$arg['nom_cat']."'";
+		}
+		if(isset($arg['order']))
+		{
+			$query = $query. " order by '".$arg['order']."'";
+		}
+		else
+		{
+			$query = $query." order by puntaje";
+		}
+		if(isset($arg['limit']))
+		{
+			$query = $query. " limit ".$arg['limit'];
+		}
+		//echo $query;
+		$mysqli=$this->conectar();
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		//print_r($resultado);
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$listar[] = array 
+			(
+				'id_serv'=>$fila['id_serv'], 
+				'nom_serv'=>$fila['nom_serv'], 
+				'nom_ent'=>$fila['nom_ent'], 
+				'nom_ts'=>$fila['nom_ts'], 
+				'nom_cat'=>$fila['nom_cat'], 
+				'nom_scat'=>$fila['nom_scat'], 
+				'nom_est'=>$fila['nom_est'], 
+				'desc_serv'=>$fila['desc_serv'],
+				'desc_img'=>$fila['url_med'],
+				'puntaje'=>$fila['puntaje']
+			);
+		}
+		$mysqli->close();
+		return $listar;
+	}
+	
 	function listarContactosSinDetalle($arg)
 	{
 		$listar= array();
@@ -3590,7 +3741,7 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "INSERT INTO `cobertura`(`id_serv`, `id_com`) VALUES ('".$arg['id_serv']."', '".$arg['id_com']."')";
+		$query = "INSERT INTO `cobertura`(`id_ent`, `id_com`) VALUES ('".$arg['id_ent']."', '".$arg['id_com']."')";
 		$mysqli=$this->conectar();
 		$resultado = $mysqli->real_query($query);
 		$mysqli->close();
@@ -4373,7 +4524,7 @@ class transaccion
 			require_once('db.php');
 			$db=new db();
 			$condicion=0;
-			if(isset($arg['id_serv']))
+			if(isset($arg['id_ent']))
 			{
 				if($condicion==0)
 				{
@@ -4383,7 +4534,7 @@ class transaccion
 				{
 					$query = $query . ',';
 				}
-				$query = $query." id_serv='".$arg['id_serv']."'";
+				$query = $query." id_ent='".$arg['id_ent']."'";
 			}
 			if(isset($arg['id_com']))
 			{
@@ -6230,7 +6381,7 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "DELETE FROM `cobertura` WHERE `id_serv`='".$arg['id_serv']."' and `id_com`='".$arg['id_com']."'";
+		$query = "DELETE FROM `cobertura` WHERE `id_ent`='".$arg['id_ent']."' and `id_com`='".$arg['id_com']."'";
 		$mysqli=$this->conectar();
 		$resultado = $mysqli->real_query($query);
 		if(isset($arg['affected']))

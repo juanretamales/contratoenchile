@@ -49,14 +49,14 @@ if(isset($_REQUEST['pagina']))
 			<form id="frmModificar" method="post" name="frmModificar" action="<?php echo WEB_BASE.$back; ?>/modificar">
 				<input type="hidden" id="txtCode" name="txtCode" value="<?php echo $_POST['txtCode']; ?>">
 			</form>		<div id="error"></div>
-			<a onclick="verMensajes('<?php echo $_POST['txtCode']; ?>')" class="myButton" style="width: 100px;">
+			<a onclick="verMensajes('<?php echo $_POST['txtCode']; ?>')" class="boton">
 				<img title="ver" width="20px" src="<?php echo WEB_BASE; ?>imagenes/UI/mensajes.png">Mensajes
 			</a>
 			<?php
 				if($contratos [0] ['id_est']==9 && $contratos [0] ['rut']==$_SESSION['rut'])
 				{
 			?>
-			<a  onclick="calificarContacto('<?php echo $contratos [0] ['id_con']; ?>')" class="myButton" style="width: 100px;">
+			<a  onclick="calificarContacto('<?php echo $contratos [0] ['id_con']; ?>')" class="boton">
 				<img title="Calificar" width="20px" src="<?php echo WEB_BASE;?>imagenes/UI/modificar.png">Calificar
 			</a>
 			<?php
@@ -66,7 +66,7 @@ if(isset($_REQUEST['pagina']))
 				if($contratos [0] ['id_ent']==$_SESSION['empresa'] && $contratos [0] ['id_est']==7)
 				{
 			?>
-			<a  onclick="finalizarContacto(<?php echo $contratos [0] ['id_con']; ?>, '<?php echo $contratos [0] ['nom_ent'].' con '.$contratos [0] ['nombre']." ".$contratos [0] ['apellido']; ?>')" class="myButton" style="width: 100px;">
+			<a  onclick="finalizarContacto(<?php echo $contratos [0] ['id_con']; ?>, '<?php echo $contratos [0] ['nom_ent'].' con '.$contratos [0] ['nombre']." ".$contratos [0] ['apellido']; ?>')" class="boton">
 				<img title="Calificar" width="20px" src="<?php echo WEB_BASE;?>imagenes/UI/flecha.png">Finalizar
 			</a>
 			<?php

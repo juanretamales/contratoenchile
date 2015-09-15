@@ -630,6 +630,12 @@
 		$transaccion=new transaccion($arg);
 		return $transaccion->listarPaginaEmpresa($arg);
 	}
+	function listarLocalizacion($arg)
+	{
+		require_once "transaccion.php";
+		$transaccion=new transaccion($arg);
+		return $transaccion->listarLocalizacion($arg);
+	}
 	/*******************************
 	* Los listar de transaccion    *
 	*******************************/

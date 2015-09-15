@@ -52,33 +52,29 @@
 						?>
 				<tr>
 					<td><?php echo $media [$i] ['nom_med']; ?></td>
-					<td><?php
-					for($j=0;$j<count($tm);$j++)
-						{
-							if($media [$i] ['id_tm']==$tm [$j] ['id_tm'])
-							{
-								echo $tm [$j] ['nom_tm'];
-								break;
-							}
-						}
-					?></td>
 					<td>
 					<?php
+					//echo  $media [$i] ['url_med'];
 						$enlaces = explode(";", $media [$i] ['url_med']);
+						//print_r($enlaces);
 						for($j=0;$j<count($enlaces);$j++)
 						{
+							
+							if(strlen($enlaces[$j])>0)
+							{
 					?>
 						<a href="<?php 
 							$urlmedia=$enlaces[$j];
-								if(strpos('http',$urlmedia)===false && strpos('https',$urlmedia)===false)
+								if(strpos('http://',$urlmedia)<0 && strpos('https://',$urlmedia)<0)
 								{
-									$urlmedia='http://'.$urlmedia;
+									echo 'http://';
 								}
-							echo $urlmedia; 
+							echo $enlaces[$j]; 
 						?>">
 							<img title="<?php echo $media [$i] ['nom_med']; ?>" width="20px" src="<?php echo WEB_BASE; ?>imagenes/UI/adjuntar.png">
 						</a>
 					<?php
+							}
 						}
 					?>
 					</td>

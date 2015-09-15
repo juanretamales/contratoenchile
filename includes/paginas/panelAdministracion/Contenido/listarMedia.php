@@ -91,10 +91,10 @@
 						for($j=0;$j<count($enlaces);$j++)
 						{
 							
-							if($enlaces[$j]!="")
+							if(strlen($enlaces[$j])>0)
 							{
 					?>
-						<a href="<?php 
+						<a target="_blank" href="<?php 
 							$urlmedia=$enlaces[$j];
 								if(strpos('http://',$urlmedia)<0 && strpos('https://',$urlmedia)<0)
 								{
