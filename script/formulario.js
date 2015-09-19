@@ -1570,7 +1570,10 @@ function comprobador(element, min=0, max=255)
 		}
 		else
 		{
-			document.getElementById('img'+element).src = urlbase+"imagenes/UI/incorrecto.png";
+			if ( document.getElementById( 'img'+element))
+			{
+				document.getElementById('img'+element).src = urlbase+"imagenes/UI/incorrecto.png";
+			}
 			document.getElementById('txt'+element).focus();
 			return false;
 		}
@@ -1714,7 +1717,7 @@ function modificarPais()
 	return false;
 }
 
-function listarRegiones()
+function listarRegiones(opciones="<option disabled selected></option>")
 {
 	var pais=$("#txtPais").val();
 	$("#txtRegion").html("<option disabled selected>...cargando</option>");
@@ -1728,7 +1731,7 @@ function listarRegiones()
 			url:   urlbase+'script/ajax.php',
 			type:  'post',
 			success:  function (response) {
-				$("#txtRegion").html("<option disabled selected></option>"+response);
+				$("#txtRegion").html(opciones+response);
 			}
 	});
 }
@@ -1787,7 +1790,7 @@ function seleccionarEmpresa()
 			}
 	});
 }
-function listarProvincias()
+function listarProvincias(opciones="<option disabled selected></option>")
 {
 	var reg=$("#txtRegion").val();
 	$("#txtProvincia").html("<option disabled selected>...cargando</option>");
@@ -1800,11 +1803,11 @@ function listarProvincias()
 			url:   urlbase+'script/ajax.php',
 			type:  'post',
 			success:  function (response) {
-				$("#txtProvincia").html("<option disabled selected></option>"+response);
+				$("#txtProvincia").html(opciones+response);
 			}
 	});
 }
-function listarComunas()
+function listarComunas(opciones="<option disabled selected></option>")
 {
 	var prov=$("#txtProvincia").val();
 	$("#txtComuna").html("<option disabled selected>...cargando</option>");
@@ -1816,7 +1819,7 @@ function listarComunas()
 			url:   urlbase+'script/ajax.php',
 			type:  'post',
 			success:  function (response) {
-				$("#txtComuna").html("<option disabled selected></option>"+response);
+				$("#txtComuna").html(opciones+response);
 			}
 	});
 }
@@ -2062,7 +2065,90 @@ function agregarCobertura()
 	}
 	return false;
 }
-
+function actualizarCobertura()
+{
+	var mensaje="";
+	var elements = ["Pais", "Region", "Provincia", "Comuna"];
+	for (i = 0; i < elements.length; i++)
+	{
+		if(!comprobador(elements[i]))
+		{
+			mensaje="error con el "+elements[i];
+		}
+	}
+	if(mensaje=="")
+	{
+		$.ajax({
+                data:  
+					{
+						"actualizarCobertura" : $('.filtro').serialize()
+					},
+                url:   urlbase+'script/ajax.php',
+                type:  'post',
+                success:  function (response) {
+                    if(response!="Exito")
+					{
+						alerta(response);
+					}
+					else
+					{
+						location.reload();
+					}
+                }
+        });
+	}
+	else
+	{
+		alerta("No se encuentra el filtro");
+	}
+	return false;
+}
+function limpiarCobertura()
+{
+	var mensaje="";
+	if ( document.getElementById( 'txtEmpresa'))
+	{
+		$.ajax({
+                data:  
+					{
+						"actualizarCobertura" : $('.filtro').serialize()
+					},
+                url:   urlbase+'script/ajax.php',
+                type:  'post',
+                success:  function (response) {
+                    if(response!="Exito")
+					{
+						alerta(response);
+					}
+					else
+					{
+						location.reload();
+					}
+                }
+        });
+	}
+	else
+	{
+		alerta("No se encuentra el filtro");
+	}
+	return false;
+}
+function buscar()
+{
+	if(document.getElementById('buscador'))
+	{
+		var texto = document.getElementById('buscador').value;
+		if (document.getElementById('buscador').value.length>3)
+		{
+			window.location=urlbase+"buscar/"+urlencode(texto);
+		}
+		else
+		{
+			alerta("El nombre del servicio a buscar es muy corto");
+		}
+	}
+	return false;
+}
 function modificarComuna()
 {
 	var mensaje="";

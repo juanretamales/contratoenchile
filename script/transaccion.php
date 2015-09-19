@@ -3342,7 +3342,7 @@ class transaccion
 		
 		require_once('db.php');
 		$db=new db();
-		$query="SELECT
+		/*$query="SELECT
 			s.id_serv,
 			s.nom_serv,
 			ent.nom_ent,
@@ -3367,8 +3367,52 @@ class transaccion
 			s.id_ts=ts.id_ts AND
 			s.id_scat=sc.id_scat AND
 			sc.id_cat=c.id_cat AND
-			m.`id_med`=s.`desc_img`";
-		
+			m.`id_med`=s.`desc_img`";*/
+		$query="SELECT
+					s.id_serv,
+					s.nom_serv,
+					ent.nom_ent,
+					ts.nom_ts,
+					c.nom_cat,
+					sc.nom_scat,
+					est.nom_est,
+					s.desc_serv,
+					m.`url_med`,
+					s.`puntaje`
+				FROM
+					servicio s,
+					tiposervicio ts,
+					categoria c,
+					subcategoria sc,
+					entidad ent,
+					estado est,
+					media m,
+					cobertura cob, 
+					comuna com, 
+					provincia pr, 
+					region r, 
+					pais p
+				WHERE
+					s.id_ent=ent.id_ent AND
+					s.id_est=est.id_est AND
+					s.id_ts=ts.id_ts AND
+					s.id_scat=sc.id_scat AND
+					sc.id_cat=c.id_cat AND
+					m.`id_med`=s.`desc_img` AND
+					( 
+						(
+						ent.`id_ent`=cob.`id_ent` AND 
+						cob.`id_com`=com.`id_com` AND 
+						com.`id_prov`=pr.`id_prov` AND 
+						pr.`id_reg`=r.`id_reg` AND 
+						r.`id_pais`=p.`id_pais`";
+						
+		if(isset($arg['cobertura']))
+		{
+			$query = $query. " and ".$arg['cobertura'];
+		}
+		$query = $query. ")  
+						|| ts.`nom_ts`='Solo Online')";
 		if(isset($arg['id_ent']))
 		{
 			$query = $query. " and s.id_ent='".$arg['id_ent']."'";
@@ -3413,9 +3457,21 @@ class transaccion
 		{
 			$query = $query. " and c.nom_cat='".$arg['nom_cat']."'";
 		}
+		if(isset($arg['like']))
+		{
+			$query = $query. " and ".$arg['like'];
+		}
+		if(isset($arg['groupby']))
+		{
+			$query = $query. " order by '".$arg['groupby']."'";
+		}
+		else
+		{
+			$query = $query." GROUP BY s.id_serv";
+		}
 		if(isset($arg['order']))
 		{
-			$query = $query. " order by '".$arg['order']."'";
+			$query = $query. " GROUP BY '".$arg['order']."'";
 		}
 		else
 		{

@@ -312,7 +312,6 @@
 
 	#menuVertical > ul > li ul li a
 	{
-		background: rgba(0, 0, 0, 0.5);
 		font-weight:normal;
 	}
 	/* CONTENIDO */
@@ -533,6 +532,49 @@
 		margin-left: 20px;
 		text-align: center;
 		padding: 7px 12px;
+	}
+	/* - /buscar(filtro) */
+	#filtro
+	{
+		width: 90%;
+		background: #EEFBC8;
+		height: 130px;
+		margin-left: 5%;
+		border: 5px solid #EEFBC8;
+		border-radius: 0px 0px 15px 15px;
+		-webkit-border-radius: 0px 0px 15px 15px;  /* Safari  */
+  	-moz-border-radius: 0px 0px 15px 15px;     /* Firefox */
+	}
+	#filtro > p
+	{
+		text-align: center;
+		font-size: 20px;
+		
+	}
+	.filtro
+	{
+		width: 100%;
+		background: #1EBFAE;
+	}
+	.filtro > div
+	{
+		background: #1EBFAE;
+		width: 100%;
+	}
+	.filtro > div >.boton
+	{
+		margin-top: 20px;
+		float: left;
+	}
+	.filtro > div > .submit
+	{
+		margin-left: 30%;
+	}
+	.filtro > div > *:not(.boton)
+	{
+		max-width: 80px;
+		width: 25%;
+		float: left;
 	}
 	/* Divmultimedia */
 	.divMultimedia

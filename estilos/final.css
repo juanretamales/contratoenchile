@@ -348,7 +348,7 @@ li
 
 #menuVertical > ul > li ul li a
 {
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.1);
 	font-weight:normal;
 }
 
@@ -369,8 +369,16 @@ li
 	background: rgba(255, 255, 255, 1);
 	width: 100%;
 }
-
-
+/* - /buscar(filtro) */
+.filtro
+{
+	width: 90%;
+	padding: 0 5%;
+}
+.filtro > div, .filtro > div > select
+{
+	width: 25%;
+}
 /* - /(ininio) */
 #artComentarios, #artCelular
 {

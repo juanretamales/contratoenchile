@@ -659,6 +659,23 @@ if(isset($_POST['agregarServicio']))
 	}
 	
 }
+if(isset($_POST['actualizarCobertura']))
+{
+	$variables=serializeToArray($_POST['actualizarCobertura']);
+	if(
+		isset($variables ['txtPais']) &&
+		isset($variables ['txtRegion']) &&
+		isset($variables ['txtProvincia']) &&
+		isset($variables ['txtComuna'])
+	)
+	{
+		$_SESSION['cobPais']=$variables ['txtPais'];
+		$_SESSION['cobReg']=$variables ['txtRegion'];
+		$_SESSION['cobProv']=$variables ['txtProvincia'];
+		$_SESSION['cobCom']=$variables ['txtComuna'];
+		echo "Exito";
+	}
+}
 if(isset($_POST['agregarMultimedia']))
 {
 	$variables=serializeToArray($_POST['agregarMultimedia']);

@@ -60,7 +60,9 @@
 			case "recuperar-contrasena":
 				$url_pag=$page[0];
 				break;
-				
+			case "buscar":
+				$url_pag=$page[0];
+				break;	
 			default:
 				if(isset($page[0]))
 				{
@@ -599,6 +601,12 @@
 		require_once "transaccion.php";
 		$transaccion=new transaccion($arg);
 		return $transaccion->listarServiciosSinDetalle($arg);
+	}
+	function listarServiciosSinDetalleFiltroCobertura($arg)
+	{
+		require_once "transaccion.php";
+		$transaccion=new transaccion($arg);
+		return $transaccion->listarServiciosSinDetalleFiltroCobertura($arg);
 	}
 	function listarContactosSinDetalle($arg)
 	{

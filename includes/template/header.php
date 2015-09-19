@@ -4,9 +4,8 @@
 			</a>
 			
 			<div>
-				<form id="frmBuscar"  method="get" action="http://www.google.com/search" >
+				<form id="frmBuscar"  onsubmit="return buscar()">
 					<input id="buscador" name="q" type="text" placeholder="Buscar servicio...">
-					<input type="hidden" name="sitesearch" value="<?php echo WEB_BASE;?>">
 					<input type="submit" value="Buscar">
 				</form>
 				<nav id="menuSuperior" class="">
