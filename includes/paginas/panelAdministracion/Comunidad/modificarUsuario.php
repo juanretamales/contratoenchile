@@ -98,7 +98,6 @@ if(isset($_REQUEST['pagina']))
 					<option <?php if($region [0] ['id_pais']==$paises [$i] ['id_pais']){ echo "selected"; } ?> value="<?php echo $paises [$i] ['id_pais']; ?>"><?php echo $paises [$i] ['nom_pais']; ?></option>
 				<?php } ?>
 					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgPais">
 				</div>
 				<div>
 					<label>Seleccione la region</label>
@@ -112,7 +111,6 @@ if(isset($_REQUEST['pagina']))
 							<option <?php if($region [0] ['id_reg']==$regiones [$i] ['id_reg']){ echo "selected"; } ?> value="<?php echo $regiones [$i] ['id_reg']; ?>"><?php echo $regiones [$i] ['nom_reg']; ?></option>
 						<?php } ?>
 					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgRegion">
 				</div>
 				<div>
 					<label>Seleccione la provincia</label>
@@ -125,8 +123,7 @@ if(isset($_REQUEST['pagina']))
 								?>
 							<option <?php if($provincia [0] ['id_prov']==$provincias [$i] ['id_prov']){ echo "selected"; } ?> value="<?php echo $provincias [$i] ['id_prov']; ?>"><?php echo $provincias [$i] ['nom_prov']; ?></option>
 						<?php } ?>
-					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgProvincia">
+					</select>
 				</div>
 				<div>
 					<label>Seleccione la comuna</label>
@@ -139,13 +136,11 @@ if(isset($_REQUEST['pagina']))
 								?>
 							<option <?php if($personas [0] ['id_com']==$comunas [$i] ['id_com']){ echo " selected "; } ?> value="<?php echo $comunas [$i] ['id_com']; ?>"><?php echo $comunas [$i] ['nom_com']; ?></option>
 						<?php } ?>
-					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgComuna">
+					</select>
 				</div>
 				<div>
 					<label>Direccion</label>
-					<input value="<?php echo $personas [0] ['direccion']; ?>" required x-moz-errormessage="Debe ingresar su direccion"  maxlength="255" id="txtDireccion" name="txtDireccion" type="text">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgDireccion">
+					<input value="<?php echo $personas [0] ['direccion']; ?>" required x-moz-errormessage="Debe ingresar su direccion"  maxlength="255" id="txtDireccion" name="txtDireccion" type="text">
 				</div>
 				<div>
 					<label>Tipo de usuario</label>

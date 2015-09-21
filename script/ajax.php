@@ -669,11 +669,47 @@ if(isset($_POST['actualizarCobertura']))
 		isset($variables ['txtComuna'])
 	)
 	{
-		$_SESSION['cobPais']=$variables ['txtPais'];
-		$_SESSION['cobReg']=$variables ['txtRegion'];
-		$_SESSION['cobProv']=$variables ['txtProvincia'];
-		$_SESSION['cobCom']=$variables ['txtComuna'];
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if($variables ['txtPais']!=0)
+		{
+			$_SESSION['cobPais']=$variables ['txtPais'];
+		}
+		else
+		{
+			
+			unset($_SESSION['cobPais']);
+		}
+		if($variables ['txtRegion']!=0)
+		{
+			
+			$_SESSION['cobReg']=$variables ['txtRegion'];
+		}
+		else
+		{
+			unset($_SESSION['cobReg']);
+		}
+		if($variables ['txtProvincia']!=0)
+		{
+			
+			$_SESSION['cobProv']=$variables ['txtProvincia'];
+		}
+		else
+		{
+			unset($_SESSION['cobProv']);
+		}
+		if($variables ['txtComuna']!=0)
+		{
+			
+			$_SESSION['cobCom']=$variables ['txtComuna'];
+		}
+		else
+		{
+			unset($_SESSION['cobCom']);
+		}
 		echo "Exito";
+		//echo $_SESSION['cobPais'];
 	}
 }
 if(isset($_POST['agregarMultimedia']))

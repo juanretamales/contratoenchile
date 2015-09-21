@@ -1721,8 +1721,8 @@ function listarRegiones(opciones="<option disabled selected></option>")
 {
 	var pais=$("#txtPais").val();
 	$("#txtRegion").html("<option disabled selected>...cargando</option>");
-	$("#txtProvincia").html("<option disabled selected></option>");
-	$("#txtComuna").html("<option disabled selected></option>");
+	$("#txtProvincia").html(opciones);
+	$("#txtComuna").html(opciones);
 	$.ajax({
 			data:  
 				{
@@ -1794,7 +1794,7 @@ function listarProvincias(opciones="<option disabled selected></option>")
 {
 	var reg=$("#txtRegion").val();
 	$("#txtProvincia").html("<option disabled selected>...cargando</option>");
-	$("#txtComuna").html("<option disabled selected></option>");
+	$("#txtComuna").html(opciones);
 	$.ajax({
 			data:  
 				{
@@ -2105,32 +2105,24 @@ function actualizarCobertura()
 }
 function limpiarCobertura()
 {
-	var mensaje="";
-	if ( document.getElementById( 'txtEmpresa'))
-	{
-		$.ajax({
-                data:  
-					{
-						"actualizarCobertura" : $('.filtro').serialize()
-					},
-                url:   urlbase+'script/ajax.php',
-                type:  'post',
-                success:  function (response) {
-                    if(response!="Exito")
-					{
-						alerta(response);
-					}
-					else
-					{
-						location.reload();
-					}
-                }
-        });
-	}
-	else
-	{
-		alerta("No se encuentra el filtro");
-	}
+	$.ajax({
+		data:  
+			{
+				"actualizarCobertura" : "txtPais=0&txtRegion=0&txtProvincia=0&txtComuna=0"
+			},
+		url:   urlbase+'script/ajax.php',
+		type:  'post',
+		success:  function (response) {
+			if(response!="Exito")
+			{
+				alerta(response);
+			}
+			else
+			{
+				location.reload();
+			}
+		}
+	});
 	return false;
 }
 function buscar()
@@ -2268,7 +2260,23 @@ function agregarSubcategoria()
 }
 function alerta(mensaje)
 {
-	document.getElementById("contenido").innerHTML = '<div class="mensaje alerta"><em></em><p>'+mensaje+'</p><a onclick="this.parentNode.remove()">X</a></div>'+document.getElementById("contenido").innerHTML;
+	if(mensaje!="")
+	{
+		var contenido = '<div class="mensaje alerta"><em></em><p>'+mensaje+'</p><a onclick="this.parentNode.remove()">X</a></div>';
+		if(document.getElementById("filtro"))
+		{
+			var filtro = document.getElementById('filtro');
+			filtro.outerHTML = filtro.outerHTML + contenido;
+		}
+		else
+		{
+			document.getElementById("contenido").innerHTML = contenido + document.getElementById("contenido").innerHTML;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 function agregarServicio()
 {

@@ -14,10 +14,144 @@
 				cc_menu($pagina); ?>
 		</section>
 		<section id="contenido">
+			<div id="filtro" class="">
+				<em></em>
+				<p>Filtro por cobertura</p>
+				<form class="filtro" onsubmit="return actualizarCobertura()">
+					<div>
+						<label>Pais</label>
+						<select required onchange='listarRegiones("<option value=\"0\"  selected>Omitir</option>")' x-moz-errormessage="Debe seleccionar un pais" maxlength="255"  id="txtPais" name="txtPais">
+							<option value="0" <?php if(!isset($_SESSION['cobPais'])) {  echo ' selected '; }  ?> >Omitir</option>
+							<?php
+									require_once('script/function.php');
+									$arg=array ('nada'=>0);
+									$paises=listarPais($arg);
+									for($i=0;$i<count($paises);$i++)
+									{
+										?>
+							<option value="<?php echo $paises [$i] ['id_pais']; ?>"
+							<?php
+								if(isset($_SESSION['cobPais']))
+								{
+									if($_SESSION['cobPais']==$paises [$i] ['id_pais'])
+									{
+										echo " selected ";
+									}
+								}
+							?>
+							><?php echo $paises [$i] ['nom_pais']; ?></option>
+						<?php } ?>
+						</select>
+					</div>
+
+					<div>
+						<label>Region</label>
+
+						<select required  onchange='listarProvincias("<option value=\"0\"  selected>Omitir</option>")' maxlength="255"  x-moz-errormessage="Debe seleccionar una region" id="txtRegion" name="txtRegion">
+
+							<option value="0" <?php if(!isset($_SESSION['cobReg'])) { echo 'selected'; } ?> >Omitir</option>
+							<?php
+								if(isset($_SESSION['cobPais']))
+								{
+									$arg=array ('id_pais'=>$_SESSION['cobPais']);
+
+									$regiones=listarRegion($arg);
+
+									for($i=0;$i<count($regiones);$i++)
+
+									{
+
+										?>
+
+									<option <?php if($_SESSION['cobReg']==$regiones [$i] ['id_reg']){ echo "selected"; } ?> value="<?php echo $regiones [$i] ['id_reg']; ?>"><?php echo $regiones [$i] ['nom_reg']; ?></option>
+
+										<?php } } ?>
+						</select>
+					</div>
+					<div>
+						<label>Provincia</label>
+						<select required  onchange='listarComunas("<option value=\"0\"  selected>Omitir</option>")'  maxlength="255"  x-moz-errormessage="Debe seleccionar un pais" id="txtProvincia" name="txtProvincia">
+							<option value="0" <?php if(!isset($_SESSION['cobProv'])) { echo 'selected'; } ?> >Omitir</option>
+							<?php
+								if(isset($_SESSION['cobReg']))
+								{
+									$arg=array ('id_reg'=>$_SESSION['cobReg']);
+
+							$provincias=listarProvincia($arg);
+
+							for($i=0;$i<count($provincias);$i++)
+
+							{
+
+								?>
+
+							<option <?php if($_SESSION['cobProv']==$provincias [$i] ['id_prov']){ echo "selected"; } ?> value="<?php echo $provincias [$i] ['id_prov']; ?>"><?php echo $provincias [$i] ['nom_prov']; ?></option>
+							<?php }
+								}
+							?>
+						
+						</select>
+					</div>
+					<div>
+						<label>Comuna</label>
+						<select required x-moz-errormessage="Debe seleccionar maxlength="255"  un pais" id="txtComuna" name="txtComuna">
+							<option value="0" <?php if(!isset($_SESSION['cobCom'])) { echo 'selected'; } ?> >Omitir</option>
+							<?php
+							if(isset($_SESSION['cobProv'])) {
+							$arg=array ('id_prov'=>$_SESSION['cobProv']);
+
+							$comunas=listarComuna($arg);
+
+							for($i=0;$i<count($comunas);$i++)
+
+							{
+
+								?>
+
+							<option <?php if($_SESSION['cobCom']==$comunas [$i] ['id_com']){ echo " selected "; } ?> value="<?php echo $comunas [$i] ['id_com']; ?>"><?php echo $comunas [$i] ['nom_com']; ?></option>
+
+						<?php }  } ?>
+						</select>
+					</div>
+					<div>
+						<input class="boton submit" type="submit" value="Aplicar Filtro">
+						<a class="boton cancel" onclick="limpiarCobertura()">Quitar Filtro</a>
+					</div>
+				</form>
+			</div>
 			<?php
 				require_once('script/function.php');
 				$page=explode("/",$pagina);
 				$arg=array ('id_est'=>5);
+				//filtro por cobertura
+				if(isset($_SESSION['cobPais']))
+				{
+					if($_SESSION['cobPais']!=0)
+					{
+						$arg['cobertura']=" p.id_pais='".$_SESSION['cobPais']."'";
+					}
+				}
+				if(isset($_SESSION['cobReg']))
+				{
+					if($_SESSION['cobReg']!=0)
+					{
+						$arg['cobertura']=" r.id_reg='".$_SESSION['cobReg']."'";
+					}
+				}
+				if(isset($_SESSION['cobProv']))
+				{
+					if($_SESSION['cobProv']!=0)
+					{
+						$arg['cobertura']=" pr.id_prov='".$_SESSION['cobProv']."'";
+					}
+				}
+				if(isset($_SESSION['cobCom']))
+				{
+					if($_SESSION['cobCom']!=0)
+					{
+						$arg['cobertura']=" c.id_com='".$_SESSION['cobCom']."'";
+					}
+				}
 				//print_r($page);
 				if($page[1]!="nada" || $page[1]!="")
 				{

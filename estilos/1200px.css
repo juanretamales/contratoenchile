@@ -536,6 +536,7 @@
 	/* - /buscar(filtro) */
 	#filtro
 	{
+		max-width: 1300px;
 		width: 90%;
 		background: #EEFBC8;
 		height: 130px;
@@ -554,12 +555,14 @@
 	.filtro
 	{
 		width: 100%;
+		margin: 0px;
 		background: #1EBFAE;
 	}
 	.filtro > div
 	{
 		background: #1EBFAE;
 		width: 100%;
+		margin-left: 0px;
 	}
 	.filtro > div >.boton
 	{
