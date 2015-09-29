@@ -182,7 +182,8 @@
 				{
 					$arg['limit']= "0, 10";
 				}
-				$servicios=listarServiciosSinDetalle($arg);
+				//$servicios=listarServiciosSinDetalle($arg);
+				$servicios=listarServiciosSinDetalleFiltroCobertura($arg);
 				if(count($servicios)==0)
 				{
 					?>
@@ -197,7 +198,7 @@
 				{
 			?>
 					<a href="<?php echo WEB_BASE.'detalle/'.$servicios [0] ['nom_ent'].'/'.$servicios [$i] ['nom_serv']; ?>">					<article class="servicios">										<?php						if($servicios [$i] ['desc_img']=="")						{					?>							<img  style="background: url(<?php echo WEB_BASE; ?>script/holder.js/120x95);" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">					<?php						}						else						{					?>	
-						<img  style="background: url(<?php echo $servicios [$i] ['desc_img']; ?>); background-size: 100% auto;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">					<?php						}					?>						<label class="titulo"><?php echo $servicios [$i] ['nom_serv'] . ' de ' . $servicios [$i] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo substr($servicios [$i] ['desc_serv'], 0, 250); ?></p>						<p class="tipo">							<a><?php echo $servicios [$i] ['nom_scat']; ?></a>							<a><?php echo $servicios [$i] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [$i] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [$i] ['id_serv']; ?>)" class="comparar">Agregar a comparacion</a>						<?php								} 							}						?>					</article>				</a>
+						<img  style="background: url(<?php echo str_replace(';',"",$servicios[$i]['desc_img']); ?>); background-size: 100% 100%;" src="<?php echo WEB_BASE; ?>imagenes/1x1.png">					<?php						}					?>						<label class="titulo"><?php echo $servicios [$i] ['nom_serv'] . ' de ' . $servicios [$i] ['nom_ent']; ?></label>						<p class="descripcion"><?php echo substr(strip_tags(urldecode($servicios [$i] ['desc_serv'])), 0, 250); ?></p>						<p class="tipo">							<a><?php echo $servicios [$i] ['nom_scat']; ?></a>							<a><?php echo $servicios [$i] ['nom_ts']; ?></a>						<?php							if(isset($_SESSION['rol']))							{								if($_SESSION['rol']>0)								{						?>							<a onclick="agregarAlCarro(<?php echo $servicios [$i] ['id_serv']; ?>)" class="canasta">Agregar a Canasta</a>							<a onclick="agregarAComparacion(<?php echo $servicios [$i] ['id_serv']; ?>)" class="comparar">Agregar a comparacion</a>						<?php								} 							}						?>					</article>				</a>
 			<?php } 
 			
 				$arg=array ('id_est'=>5);

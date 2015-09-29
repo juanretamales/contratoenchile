@@ -14,9 +14,9 @@ if(isset($_REQUEST['pagina']))
 	$pagina=$_REQUEST['pagina'];
 }
 			cc_menu($pagina); ?>
-<section id="contenido">
+<section id="contenido"><h1 class="titulo">Calificar Contrato</h1>
 	<form class="formulario" onsubmit="return calificarCon()" method="post">		<div id="error"></div>
-				<h1 class="titulo2">Calificar Contrato</h1>
+				
 				<?php
 					require_once "script/webConfig.php";
 					$page=explode("/",$pagina);
@@ -62,17 +62,9 @@ if(isset($_REQUEST['pagina']))
 						<option value="<?php echo $respuestas [$j] ['id_ec']; ?>"><?php echo $respuestas [$j] ['nom_ec']; ?></option>
 					<?php } ?>
 					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgUsuario">
 				</div>
 				<?php } ?>
-				<div>
-					<input type="submit" value="Terminar">
-				</div>
-				<a href="
-				<?php 
-					echo WEB_BASE.$back;
-				?>
-				">Cancelar</a>
+				<div>					<input class="boton submit" type="submit" value="Terminar">					<a class="boton cancel" href="<?php echo WEB_BASE;?>administracion/mis_contratos">Cancelar</a>				</div>
 				
 	</form><div id="watfk"></div>
 </section>

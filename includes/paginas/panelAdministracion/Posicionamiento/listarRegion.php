@@ -17,7 +17,7 @@ if(isset($_REQUEST['pagina']))
 
 
 			<h1 class="titulo">Regiones</h1>
-			<a class="myButton" style="width: 50px;" href="<?php echo WEB_BASE; ?><?php
+			<a class="boton" href="<?php echo WEB_BASE; ?><?php
 				$pagina="";
 				if(isset($_REQUEST['pagina']))
 				{

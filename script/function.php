@@ -328,7 +328,7 @@
 			echo "<ul>";
 			if(isset($page[0])==true)
 			{
-				if(isset($page[1])==false || $page[0]=="registrar")
+				if(isset($page[1])==false || $page[0]=="registrar" || $page[0]=="buscar")
 				{
 					if($page[0]!="servicios")
 					{
@@ -353,12 +353,12 @@
 				}
 				else
 				{
-					$arg=array();
+					/*$arg=array();
 					$categorias=$transaccion->listarCategorias($arg);
 					for($i=0;$i<count($categorias);$i++)
 					{
 						echo '<li><a href="'.WEB_BASE.'servicios/'.$categorias [$i] ['nom_cat'].'/Todos/Todos">'.$categorias [$i] ['nom_cat'].'</a></li>';
-					}
+					}*/
 				}
 			}
 			else

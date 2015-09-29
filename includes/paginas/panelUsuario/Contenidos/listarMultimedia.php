@@ -52,6 +52,13 @@
 						?>
 				<tr>
 					<td><?php echo $media [$i] ['nom_med']; ?></td>
+					<td><?php for($k=0;$k<count($tm);$k++)
+					{
+						if($media [$i] ['id_tm'] == $tm [$k] ['id_tm'])
+						{
+							echo $tm [$k] ['nom_tm'];
+						}
+					}						?></td>
 					<td>
 					<?php
 					//echo  $media [$i] ['url_med'];

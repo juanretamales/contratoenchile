@@ -1,3 +1,219 @@
+commit 51592831be12b465db8e6bf1d0364a280f96e1ab
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sun Sep 20 21:08:09 2015 -0400
+
+    se termino el filtro de cobertura y la busqueda, falta mejora en la visualizacion
+
+commit fa0f0a2422fc03c5424f42a0fdf32e7a3ca248d4
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sat Sep 19 16:33:37 2015 -0400
+
+    funciona el buscar, ahora falta agregar los filtros de cobertura en el buscar para prueba e implantarlo en la navegacion
+
+commit f25f70b38b5050dcd8e9b090ef2d120ef1668bef
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Sep 15 14:07:17 2015 -0400
+
+    agregado y funcionando el agregar y eliminar cobertura como usuario, falta el filtrar
+
+commit b0d7b557b15f8c19f605ea83053c0e1b162d78ea
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Sep 14 23:03:57 2015 -0400
+
+    se agrego el listar cobertura a usuario, se corrigio el listarmiscontratos de perfil y se arreglaro detalleContrato de usuario
+
+commit eabb81b5e37d65b23c1d5643a7e391048e9b959d
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Sep 9 15:45:52 2015 -0400
+
+    se corrigio el modificar servicios del tipo usuario=usuario
+
+commit 1db997efa1b03794ef884d8b73fb9da862554513
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Sep 7 17:44:52 2015 -0400
+
+    se corrigio y simplifico la funciones de dateEncode y dateEncode y se agrego el timestampEncode y timestampDecode, se corrigieron algunas paginas
+
+commit e5230adf90a0932b9717891f0f4db8538619bf00
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 26 14:09:07 2015 -0400
+
+    test por que faltan estilos
+
+commit c876c8ff80145596298e81178f15f25340a65e3d
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 26 14:08:33 2015 -0400
+
+    test por que faltan estilos
+
+commit 9c7d40fc171fea0a75dd53ee962d348a8f0d1816
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Aug 25 21:44:56 2015 -0400
+
+    se actualizaron las fuentes y se arreglo el detalle de servicios
+
+commit d8db1658013af734174f424df8c13c6c8594cfa8
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Aug 25 16:14:59 2015 -0400
+
+    se actualizaron las paginas publicas y la base de datos
+
+commit 56db018fe62ed3470307a3f49b03cdd3e62f646e
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Thu Aug 20 15:27:07 2015 -0400
+
+    se corrigio un error que el captcha no se actualizaba, ademas se quitaron las imagenes de registrar.pgp, registrarpaso2.php y registrarpaso3.php
+
+commit 38ef27f40c46e593009653590cf423eae2bd023a
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 19 18:47:28 2015 -0400
+
+    se corrigio el modificar multimedia, aparece un mensaje por unos segundos pero no es importante, falta en el area de usuario
+
+commit 18038bd7e6bda204f378f053ee23d10a797b16aa
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 19 18:34:38 2015 -0400
+
+    se corrigio el agregar multimedia, falta el modificar en el diseño y en el area de usuario
+
+commit 90a658d1ae773fe5a73ac2bf1d08dbd4978d34f1
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 19 15:34:48 2015 -0400
+
+    se agregaron las redes sociales
+
+commit 66aa4adacc029c031a76f82cccda7fb95bc1f4b6
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Aug 17 15:53:33 2015 -0400
+
+    se corrigio el body para pantallas 4k y ahora muestra los errores al principio del contenido con la funcion alerta(msg)
+
+commit c544d731f5195b6605a388e939f7bbc54db8c570
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 12 15:28:52 2015 -0400
+
+    se corrigio un problema del menu vertical y se optimizo
+
+commit d7c334288505086100bf1bb671e6252bd683f708
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 12 15:24:34 2015 -0400
+
+    se corrigio un error que la pagina de servicios no paginaba y mostraba una lista de TODOS los servicios de la categoria
+
+commit 9b5153c97e06e16a17570f981b960bfe5da8b194
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Fri Aug 7 21:55:42 2015 -0400
+
+    pude generar un archivo con los parametros para tener cache del servicio
+
+commit 83d4b180354ba6c1c1d9b4743a1680f6fb6550a8
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 5 16:46:06 2015 -0400
+
+    se termino el agregar servicio de 1200px falta version web
+
+commit 156f28eb043477783dfa42e1094aca05c2f2a73c
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Aug 5 00:31:12 2015 -0400
+
+    se pudo integrar un editor web (quill) para editar la descripcion del servicio, falta el diseño css
+
+commit db134b644770964939e844da70e3f975d6d79fba
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jul 29 18:01:07 2015 -0400
+
+    funcionando el contador de visitas
+
+commit 1fef12b1d2349d88c2e0f13d6284ecc1c6157637
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jul 29 15:18:15 2015 -0400
+
+    se corrigio un problema del log
+
+commit c38debd832791d9820ace9d590028705d8b963ca
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jul 29 14:38:16 2015 -0400
+
+    ahora el log es por DB y no por carpeta
+
+commit 3c71d91e6a0f991956d6e9cf02bf1ea1390a2ff4
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jul 28 17:42:09 2015 -0400
+
+    diseño del panel de usuario terminado, falta el contador de visitas
+
+commit 911624de592b41354ce81ddd298a7fbfac2d0413
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Fri Jul 24 13:23:06 2015 -0400
+
+    se puede actualizar el chat y abrir desde el localstorage, se actualiza cada 10 segundos exitosamente, tambien cierra y minimiza sin problemas, falta adaptar a celulares y otras resoluciones solamente
+
+commit 9f3efbf25f2a065247fcc56defef070c9611e608
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jul 22 20:35:16 2015 -0400
+
+    se arreglo por css en 1200px que no se podia tener mas de 1 chat o evitaban poder hacer click en botones, por ello ahora solo se pueden tener maximo 5 y cualquier otro estara fuera de la pantalla hasta que se cierre alguno
+
+commit d5d12a29883cce19152f3825d745feba85407d7d
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Wed Jul 22 18:26:15 2015 -0400
+
+    se modifico el diseño del chat, perdio compatibilidad en mobile, se avanzo en el chat (formulario.js, ajax.php)
+
+commit d3c3a1e92e0f703f2692a14ca0c5205383f05422
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jul 20 22:21:02 2015 -0400
+
+    se termino el enviar mensaje y abrir el chat, ya no admitira navegadores que no tengan localstorage, falta el actualizar
+
+commit 5a6c109fa32e1a1cc20c548507a7be0b442997b5
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jul 14 14:43:57 2015 -0400
+
+    ahora el actualizarchat() recoge la id del chat y el codigo del ultimo mensaje
+
+commit ca1b7f0b3e9c9305f58bb266d75445fb2e8fadda
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Mon Jul 13 19:55:42 2015 -0400
+
+    se corrigio el diseño del menu superior, ahora el mensaje del chat se borra al intentar enviar, falta el actualizar que se esta trabajando
+
+commit 146440ec27fe828be197f1e0cbe028934cbab8ed
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Fri Jul 10 20:56:49 2015 -0400
+
+    se corrigio el chat pero falta el diseño del menu superior y el diseño del chat para celulares
+
+commit b6577732b269c188fd5704dde38741ce8683d098
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Fri Jul 10 13:19:08 2015 -0400
+
+    se arreglo en gran medida el captcha dandole mas opciones y calidad, el menu superior se mejoro al cambio pero sigue presentando inconvenients en la parte de abrir chat, arreglar  a la brevedad
+
+commit 143b253b3f9e292e396a0fbc96c888398d035cf3
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Thu Jul 9 16:56:04 2015 -0400
+
+    se puede enviar mensajes desde el chat pero la interfaz presenta problemas, corregirp roximamente
+
+commit baa459016bcd0c1914a15e9a4f80e4c0cc5e08ba
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jul 7 16:51:11 2015 -0400
+
+    Se agrego el diseño del boton y se alineo al centro los titulos del panel
+
+commit 136b5fc76b80f73c9d81b9aef478193bf300bca4
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Tue Jul 7 16:43:17 2015 -0400
+
+    Se corrigio el head de las tablas para resoluciones de 1200px
+
+commit d90157c2e9702bc1a0a3eceab5b261849d1f5e13
+Author: Juan Retamales <jua.retamales@hotmail.cl>
+Date:   Sat Jun 27 16:57:28 2015 -0400
+
+    se corrigio el listar servicios
+
 commit c5df99fd5fee69d996009f929ff0d0d6db20da6c
 Author: Juan Retamales <jua.retamales@hotmail.cl>
 Date:   Mon Jun 22 15:19:35 2015 -0400

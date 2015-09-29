@@ -13,9 +13,9 @@ if(isset($_REQUEST['pagina']))
 }
 			cc_menu($pagina); ?>
 	</section>
-	<section id="contenido" >
+	<section id="contenido" ><h1 class="titulo">Modificar Empresa</h1>
 	<form class="formulario" onsubmit="return modificarEmpresa()"  method="post">		<div id="error"></div>
-				<h1 class="titulo2">Modificar Empresa</h1>
+				
 				<?php
 					require_once "script/webConfig.php";
 					$page=explode("/",$pagina);
@@ -46,27 +46,27 @@ if(isset($_REQUEST['pagina']))
 				<div>
 					<label>Rut:</label>
 					<input value="<?php echo $entidad[0]['rut_sii']; ?>" required x-moz-errormessage="Debe ingresar el rut sin puntos ni digito verificador"  maxlength="255" id="txtRut" name="txtRut" type="text" size="15">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgRut">
+				
 				</div>
 				<div>
 					<label>Nombre:</label>
 					<input value="<?php echo $entidad[0]['nom_ent']; ?>"  required x-moz-errormessage="Debe ingresar el/los nombres" id="txtNombre" maxlength="255"  name="txtNombre" type="text">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgNombre">
+				
 				</div>
 				<div>
 					<label>Descripcion:</label>
-					<input value="<?php echo $entidad[0]['desc_ent']; ?>"  required x-moz-errormessage="Debe ingresar una descripcion de la empresa"  maxlength="255" id="txtDescripcion" name="txtDescripcion" type="text"><br>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgDescripcion">
+					<input value="<?php echo urldecode($entidad[0]['desc_ent']); ?>"  required x-moz-errormessage="Debe ingresar una descripcion de la empresa"  maxlength="255" id="txtDescripcion" name="txtDescripcion" type="text"><br>
+				
 				</div>
 				<div>
 					<label>Telefono:</label>
 					<input value="<?php echo $entidad[0]['tel_ent']; ?>"  required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtTelefono" name="txtTelefono" type="phone">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgTelefono">
+				
 				</div>
 				<div>
 					<label>Email:</label>
 					<input value="<?php echo $entidad[0]['email_ent']; ?>"  required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtEmail" name="txtEmail" type="email">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgEmail">
+				
 				</div>
 				<div>
 					<label>Estado</label>
@@ -81,25 +81,15 @@ if(isset($_REQUEST['pagina']))
 					<option <?php if($entidad[0]['id_est']==$estados [$i] ['id_est']) { echo "selected"; } ?> value="<?php echo $estados [$i] ['id_est']; ?>"><?php echo $estados [$i] ['nom_est']; ?></option>
 				<?php } ?>
 					</select>
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgEstado">
+				
 				</div>
 				<div>
-					<label>SEO:</label>
-					<input value="<?php echo $entidad[0]['seo_ent']; ?>"  required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtSeo" name="txtSeo" type="text">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgSeo">
-				</div>
-				<div>
-					<label>Subscripcion: <?php if($entidad [$i] ['subscripcion']>date( "Y-m-j" , time()))
+					<label>Subscripcion: 					<?php if($entidad [0] ['subscripcion'] > date( "Y-m-j" , time()))
 					{ echo 'Si, hasta: ';  } else { echo 'No'; }?></label>
-					<input value="<?php echo dateDecode($entidad[0]['subscripcion']); ?>"  required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtSub" name="txtSub" type="text">
-					<img src="<?php echo WEB_BASE; ?>imagenes/none.png" id="imgSub">
+					<input value="<?php echo str_replace("-","/",dateDecode($entidad[0]['subscripcion'])); ?>"  required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtSub" name="txtSub" type="text">
+				
 				</div>
-				<div>
-					<input type="submit" name="btnRegistrarRegion" value="Modificar">
-				</div>
-				<a href="<?php 
-					echo WEB_BASE.$back;
-				?>">Cancelar</a>
+				<div>				<input class="boton submit" type="submit" value="Modificar">				<a class="boton cancel" href="<?php echo WEB_BASE.$back;?>">Cancelar</a>			</div>
 	</form>
 </section>
 	<?php cc_footer(); ?>

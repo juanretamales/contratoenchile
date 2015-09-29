@@ -84,9 +84,15 @@ function abrirChat(id,nombre)
 		document.getElementById("historial"+id).innerHTML = chat[id];
 		for(var i=0;i<chat.length;i++)
 		{
-		  if(chat[i][0]==id)
+			if(chat[i]!=null)
 		  {
-			document.getElementById("historial"+id).innerHTML = chat[i][1];
+			if(chat[i][0]!=null)
+			{
+			  if(chat[i][0]==id)
+			  {
+			  document.getElementById("historial"+id).innerHTML = chat[i][1];
+			  }
+			}
 		  }
 
 		}
@@ -227,6 +233,12 @@ function actualizarChat()
 				{
 				  //console.log("Actualizo el div: historial"+mensajes[i][0]);
 				  document.getElementById("historial"+mensajes[i][0]).innerHTML += mensajes[i][1];
+					if(document.getElementById("historial"+mensajes[i][0]).innerHTML.length<10 || document.getElementById("historial"+mensajes[i][0]).innerHTML=="undefined")
+					{
+					  
+					  document.getElementById("historial"+mensajes[i][0]).innerHTML += '<p title="mensaje de sistema, no quedara registrado" class="b">Aun no se inicia una conversacion entre ustedes, puedes ser el primero en enviar un mensaje.</p>';
+					  
+					}
 				}
 				if(chatActualizado[mensajes[i][0]])
 				{
@@ -658,6 +670,10 @@ function actualizarCaptcha()
 {
 	d = new Date();
 	$('#Captcha').attr("src", urlbase+"script/captcha/captcha.php?"+d.getTime());
+	if(document.getElementById('txtCaptcha'))
+	{
+		document.getElementById('txtCaptcha').value="";
+	}
 }
 function validarFormularioLogin()
 {
@@ -738,7 +754,7 @@ function eliminarCategoria(id, nombre)
 }
 function eliminarCobertura(id, nombre)
 {
-	if(confirm('Desea eliminar la pagina '+nombre+'?'))
+	if(confirm('Desea eliminar la cobertura a '+nombre+'?'))
 	{
 		$.ajax({
                 data:  {"eliminarCobertura" : id},
@@ -1396,7 +1412,7 @@ function modificarEmpresa()
 {
 	var mensaje="";
 	
-	var elements = ["Code", "Nombre", "Descripcion", "Telefono", "Seo"];
+	var elements = ["Code", "Nombre", "Descripcion", "Telefono"];
 	if(document.getElementById( 'txtSub'))
 	{
 		if(!comprobadorFecha('Sub'))
@@ -1434,7 +1450,7 @@ function modificarEmpresa()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						window.history.back();
+						window.location=urlbase+"administracion/empresas";
 					}
 					else
 					{
@@ -1623,7 +1639,7 @@ function agregarEmpresa()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						window.history.back();
+						window.location=urlbase+"administracion";
 					}
 					else
 					{
@@ -2320,16 +2336,16 @@ function agregarServicio()
 			serv+="&&txtEstado="+document.getElementById("txtEstado").value;
 		}
 	}
-	if ( document.getElementById( 'txtDescripcion'))
+	if ( document.getElementById( 'ql-editor-1'))
 	{
 		//document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
-		if(!comprobador('Descripcion', 0, 1000))
+		if(!comprobador('ql-editor-1', 0, 1000))
 		{
 			mensaje="error con la Descripcion";
 		}
 		else
 		{
-			serv+="&&txtDescripcion="+urlencode(document.getElementById("txtDescripcion").value);
+			serv+="&&txtDescripcion="+urlencode(document.getElementById("ql-editor-1").innerHTML);
 		}
 	}
 	if(mensaje=="")
@@ -2380,14 +2396,9 @@ function desconectarse()
 			url:   urlbase+'script/ajax.php',
 			type:  'post',
 			success:  function (response) {
-				if(response=="Exito")
-				{
+				
 					window.location=urlbase;
-				}
-				else
-				{
-					alerta(response);
-				}
+				
 			}
 	});
 }
@@ -3689,7 +3700,10 @@ function comprobadorFecha(element)
 		}
 		else
 		{
-			document.getElementById('img'+element).src = urlbase+"imagenes/UI/incorrecto.png";
+			if ( document.getElementById( 'img'+element))
+			{
+				document.getElementById('img'+element).src = urlbase+"imagenes/UI/incorrecto.png";
+			}
 			document.getElementById('txt'+element).focus();
 			return false;
 		}
@@ -3767,10 +3781,14 @@ function comprobadorRut(element)
 function agregarUsuario()
 {
 	var mensaje="";
-	var elements = ["Rut", "Nombre", "Apellido", "Telefono", "Comuna", "Direccion", "Password", "Captcha", "Email"];
+	var elements = ["Rut", "Nombre", "Apellido", "Telefono", "Comuna", "Direccion", "Password", "Captcha"];
 	if(document.getElementById( 'txtTipo'))
 	{
 		elements.push('Tipo');
+	}
+	if(document.getElementById( 'txtEmail'))
+	{
+		elements.push('Estado');
 	}
 	if(document.getElementById( 'txtEstado'))
 	{
@@ -3818,7 +3836,15 @@ function agregarUsuario()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						window.location=urlbase+"administracion/seguridad/usuario";
+						if(document.getElementById( 'txtEmail'))
+						{
+							window.location=urlbase+"administracion";
+						}
+						else
+						{
+							window.location=urlbase+"identificarse";
+						}
+						//window.location=urlbase+"administracion";
 					}
 					else
 					{
@@ -4132,11 +4158,10 @@ function contratar()
 		{
 			$('#contenido').html(
 				'<form class="formulario" onsubmit="return confirmarContrato()">'+
-				'<div id="error"></div>'+
-				'<div><img title="Captcha" id="Captcha" src="'+urlbase+'script/captcha/captcha.php" /></div>'+
-				'<div><label>Ingrese el texto de la imagen:</label><input required x-moz-errormessage="Debe ingresar el texto de la imagen" type="text" size="16" id="txtCaptcha" name="txtCaptcha"  maxlength="255" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." /><br><img src="'+urlbase+'imagenes/none.png" id="imgCaptcha"></div>'+
-				'<div><label style="width: 400px;" for="txtCondicion">Estoy de acuerdo con los <a  href="'+urlbase+'terminos_y_condiciones">Terminos y Condiciones</a></label></br><input id="txtCondicion" type="checkbox" required x-moz-errormessage="Debe aceptar los terminos y condiciones" /></div>'+
-				'<div><input type="submit" value="Confirmar Contrato"></div>'+
+				'<div><img title="Captcha" onclick="actualizarCaptcha()" id="Captcha" src="'+urlbase+'script/captcha/captcha.php" /></div>'+
+				'<div><label>Ingrese el texto de la imagen:</label><input required x-moz-errormessage="Debe ingresar el texto de la imagen" type="text" size="16" id="txtCaptcha" name="txtCaptcha"  maxlength="255" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." /></div>'+
+				'<div><label for="txtCondicion">Estoy de acuerdo con los <a  href="'+urlbase+'terminos_y_condiciones">Terminos y Condiciones</a></label></br><input id="txtCondicion" type="checkbox" required x-moz-errormessage="Debe aceptar los terminos y condiciones" /></div>'+
+				'<div><input class="boton submit" type="submit" value="Confirmar contrato"><a class="boton cancel" href="'+urlbase+'canasta">Cancelar<a/></div>'+
 				'</form>'
 			);
 		}
@@ -4624,12 +4649,21 @@ function eliminarMetrica(id, nombre)
 function modificarServicio()
 {
 	var mensaje="";
-	var elements = ["Code", "Nombre", "Categoria", "Subcategoria", "TipoServicio", "Descripcion"];
+	var elements = ["Code", "Nombre", "Categoria", "Subcategoria", "TipoServicio"];
+	var serv="";
 	for (i = 0; i < elements.length; i++)
 	{
 		if(!comprobador(elements[i]))
 		{
 			mensaje="error con el "+elements[i];
+		}
+		else
+		{
+			if(serv!="")
+			{
+				serv+="&&";
+			}
+			serv+="txt"+elements[i]+"="+document.getElementById("txt"+elements[i]).value;
 		}
 	}
 	if ( document.getElementById( 'txtEmpresa'))
@@ -4638,6 +4672,10 @@ function modificarServicio()
 		{
 			mensaje="error con la empresa";
 		}
+		else
+		{
+			serv+="&&txtEmpresa="+document.getElementById("txtEmpresa").value;
+		}
 	}
 	if ( document.getElementById( 'txtEstado'))
 	{
@@ -4645,13 +4683,29 @@ function modificarServicio()
 		{
 			mensaje="error con la Estado";
 		}
+		else
+		{
+			serv+="&&txtEstado="+document.getElementById("txtEstado").value;
+		}
+	}
+	if ( document.getElementById( 'ql-editor-1'))
+	{
+		//document.getElementById('txtDescripcion').innerHTML = document.getElementById('editor').innerHTML;
+		if(!comprobador('ql-editor-1', 0, 1000))
+		{
+			mensaje="error con la Descripcion";
+		}
+		else
+		{
+			serv+="&&txtDescripcion="+urlencode(document.getElementById("ql-editor-1").innerHTML);
+		}
 	}
 	if(mensaje=="")
 	{
 		$.ajax({
                 data:  
 					{
-						"modificarServicio" : $('.formulario').serialize()
+						"modificarServicio" : serv
 					},
                 url:   urlbase+'script/ajax.php',
                 type:  'post',
@@ -4984,7 +5038,7 @@ function finalizarContacto(id)
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						location.reload();
+						window.location=urlbase+"administracion/contratos";
 					}
 					else
 					{
@@ -5016,7 +5070,7 @@ function calificarCon()
                 success:  function (response) {
                     if(response=="Exito")
 					{
-						window.location=urlbase+"administracion/contratos";
+						window.location=urlbase+"administracion/mis_contratos";
 					}
 					else
 					{

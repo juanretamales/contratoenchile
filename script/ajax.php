@@ -285,7 +285,8 @@ if(isset($_POST['agregarUsuario']))
 				$arg=array('rut'=>$variables ['txtRut']);
 				if(count(listarPersona($arg))==0)
 				{
-					$arg=array('email_per'=>$variables ['txtEmail']);
+					$email = base64_decode(urldecode($variables ['txtCode']));
+					$arg=array('email_per'=>$email);
 					if(count(listarPersona($arg))==0)
 					{
 						if($variables ['txtPassword']==$variables ['txtRepassword'])
@@ -303,7 +304,7 @@ if(isset($_POST['agregarUsuario']))
 								'id_tu'=>USUARIO_DEFECTO,
 								'id_est'=>LOGIN_DEFECTO,
 								'contrasena'=>md5($variables ['txtPassword']),
-								'email_per'=>$variables ['txtEmail']
+								'email_per'=>$email
 							);
 							$resultado=$transaccion->insertarPersona($arg);
 							if($resultado==true)
@@ -491,7 +492,6 @@ if(isset($_POST['agregarEmpresa']))
 					'rut_sii'=>$variables ['txtRut'], 
 					'nom_ent'=>$variables ['txtNombre'], 
 					'sitio'=>urlencode($variables ['txtNombre']), 
-					'seo_ent'=>"", 
 					'desc_ent'=>$variables ['txtDescripcion'], 
 					'email_ent'=>$variables ['txtEmail'], 
 					'tel_ent'=>$variables ['txtTelefono'], 
@@ -594,7 +594,8 @@ if(isset($_POST['agregarServicio']))
 		isset($variables ['txtTipoServicio']) &&
 		isset($variables ['txtDescripcion']) &&
 		isset($variables ['txtEmpresa']) &&
-		isset($variables ['txtEstado'])
+		isset($variables ['txtEstado'])&&
+			isset($variables ['txtimagenDescripcion'])
 	)
 	{
 		include_once('./transaccion.php');
@@ -605,9 +606,8 @@ if(isset($_POST['agregarServicio']))
 			'id_est'=>$variables ['txtEstado'], 
 			'nom_serv'=>$variables ['txtNombre'], 
 			'desc_serv'=>$variables ['txtDescripcion'], 
-			'seo_serv'=>"", 
-			'id_ts'=>$variables ['txtTipoServicio'],
-			'seo_serv'=>""
+			'id_ts'=>$variables ['txtTipoServicio'], 
+				'desc_img'=>$variables ['txtimagenDescripcion']
 		);
 		$resultado=$transaccion->insertarServicio($arg);
 		if($resultado==true)
@@ -626,7 +626,8 @@ if(isset($_POST['agregarServicio']))
 			isset($variables ['txtCategoria']) &&
 			isset($variables ['txtSubcategoria']) &&
 			isset($variables ['txtTipoServicio']) &&
-			isset($variables ['txtDescripcion'])
+			isset($variables ['txtDescripcion'])&&
+			isset($variables ['txtimagenDescripcion'])
 		)
 		{
 			include_once('./transaccion.php');
@@ -637,7 +638,7 @@ if(isset($_POST['agregarServicio']))
 				'id_est'=>SERVICIO_DEFECTO, 
 				'nom_serv'=>$variables ['txtNombre'], 
 				'desc_serv'=>$variables ['txtDescripcion'], 
-				'seo_serv'=>"", 
+				'desc_img'=>$variables ['txtimagenDescripcion'],
 				'id_ts'=>$variables ['txtTipoServicio'],
 				'seo_serv'=>""
 			);
@@ -1558,7 +1559,7 @@ if(isset($_POST['finalizarContacto']))
 	$transaccion=new transaccion;
 	$arg = array (
 		"id_est" => 9,
-		"clause" => "id_con='".$_POST['finalizarContacto']."' and id_est='7' and id_ent='".$_SESSION['empresa']."'",
+		"clause" => "id_con='".$_POST['finalizarContacto']."' and id_est='7'",
 		"affected" => md5('nada')
 	);
 	
@@ -2251,7 +2252,6 @@ if(isset($_POST['modificarEmpresa']))
 		isset($variables ['txtEmail']) && 
 		isset($variables ['txtEstado']) && 
 		isset($variables ['txtSub']) && 
-		isset($variables ['txtSeo']) &&
 		isset($variables ['txtEstado'])
 	)
 	{
@@ -2266,7 +2266,6 @@ if(isset($_POST['modificarEmpresa']))
 				"email_ent" => $variables ['txtEmail'],
 				"tel_ent" => $variables ['txtTelefono'],
 				"desc_ent" => $variables ['txtDescripcion'],
-				"seo_ent" => $variables ['txtSeo'],
 				"condition" => "id_ent",
 				"data" => $variables ['txtCode'],
 				"affected" => md5('nada')
@@ -3833,7 +3832,10 @@ if(isset($_POST['desconectarse']))
 	$_SESSION['id']="";
 	$_SESSION['nombre']="";
 	$_SESSION['rol']="";
-	$estadosession=session_destroy();
+	if(session_destroy())
+	{
+		
+	}
 	echo "Exito";
 }
 if(isset($_POST['seleccionarEmpresa']))
@@ -3871,9 +3873,25 @@ if(isset($_POST['actualizarCanasta']))
 	$contenido='';
 	for($i=0;$i<count($arreglo);$i++)
 	{
-		$arg=array ('id_serv'=>$arreglo[$i]);
+		/*$arg=array ('id_serv'=>$arreglo[$i]);
 		$servicio=$transaccion->listarServicio($arg);
-		$contenido=$contenido.'<br>'.$servicio [0] ['nom_serv'];
+		$contenido=$contenido.'<br>'.$servicio [0] ['nom_serv'];*/
+		$arg=array ('id_serv'=>$arreglo[$i]);
+		$servicios=$transaccion->listarServiciosSinDetalleFiltroCobertura($arg);
+		//$contenido=$contenido.'<br>'.$servicio [0] ['nom_serv'];
+		$contenido=$contenido.'<article class="servicios">';
+		if($servicios [0] ['desc_img']=="")
+		{
+			$contenido=$contenido.'<img  style="background: url('.WEB_BASE.'script/holder.js/120x95);" src="'.WEB_BASE.'imagenes/1x1.png">';
+		}
+		else
+		{
+			$contenido=$contenido.'<img  style="background: url('.str_replace(';',"",$servicios[0]['desc_img']).'); background-size: 100% 100%;" src="'.WEB_BASE.'imagenes/1x1.png">';
+		}
+		$contenido=$contenido.'<label class="titulo">'.$servicios [0] ['nom_serv'] . ' de ' . $servicios [0] ['nom_ent'].'</label>';
+		$contenido=$contenido.'<a onclick="eliminarCarro('.$servicios [0] ['id_serv'].')" class="boton alerta">Eliminar de la canasta</a>';
+		$contenido=$contenido.'<a href="'.WEB_BASE.'detalle/'.$servicios [0] ['nom_ent'].'/'.$servicios [0] ['nom_serv'].'" class="boton">Visitar servicio</a></article>';
+		
 	}
 	echo $contenido;
 	

@@ -286,8 +286,8 @@ if(isset($_REQUEST['pagina']))
 					$media=listarMedia($arg);
 					for($i=0;$i<count($media);$i++)
 					{
-						?><div onclick="seleccionarImagen('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
-									<img src="<?php echo $media[$i]['url_med']; ?>">
+						?><div onclick="seleccionarImagen('<?php echo $media[$i]['id_med']; ?>','<?php echo str_replace(';',"",$media[$i]['url_med']); ?>')">
+									<img src="<?php echo str_replace(';',"",$media[$i]['url_med']); ?>">
 							</div>
 						<?php
 					}
@@ -304,8 +304,8 @@ if(isset($_REQUEST['pagina']))
 					$media=listarMedia($arg);
 					for($i=0;$i<count($media);$i++)
 					{
-						?><div onclick="seleccionarImg('<?php echo $media[$i]['id_med']; ?>','<?php echo $media[$i]['url_med']; ?>')">
-									<img src="<?php echo $media[$i]['url_med']; ?>">
+						?><div onclick="seleccionarImg('<?php echo $media[$i]['id_med']; ?>','<?php echo str_replace(';',"",$media[$i]['url_med']); ?>')">
+									<img src="<?php echo str_replace(';',"",$media[$i]['url_med']); ?>">
 							</div>
 						<?php
 					}

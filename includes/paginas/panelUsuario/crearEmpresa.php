@@ -4,7 +4,7 @@
 		require_once "script/webConfig.php";
 		$arg=array ('rut'=>$_SESSION['rut']);
 		$empresas=listarEntidadPorPersona($arg);
-		if(count($empesas)>=MAX_EMPRESAS)
+		if(count($empresas)>=MAX_EMPRESAS)
 		{
 			echo '<script language="javascript">window.location="'.WEB_BASE.'"</script>';
 		}
@@ -46,7 +46,10 @@ if(isset($_REQUEST['pagina']))
 			<input required x-moz-errormessage="Debe ingresar un telefono de contacto"  maxlength="255" id="txtEmail" name="txtEmail" type="email">
 		</div>
 		<div>
-			<img title="Captcha" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
+					<img title="Captcha" onclick="actualizarCaptcha()" id="Captcha" src="<?php echo WEB_BASE; ?>script/captcha/captcha.php" />
+				</div>
+		<div>
+			<label>Captcha:</label>
 			<input required x-moz-errormessage="Ingrese el texto de la imagen." type="text" maxlength="255"  size="16" id="captcha"  name="captcha" title="Ingrese el texto de la imagen." placeholder="Ingrese el texto de la imagen." />
 		</div>
 		<div>

@@ -38,7 +38,6 @@ if(isset($_SESSION['empresa']))
 	<div class="fb-like" data-href="<?php echo WEB_BASE.'in/'.$empresa [0] ['nom_ent'] ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 <?php
 */
-}
 $arg=array('id_ent'=>$_SESSION['empresa'], 'fecha'=>4);
 $contratos=listarResumenContacto($arg);
 $fecha = date("m");
@@ -207,6 +206,20 @@ for($i=0;$i<count($contratos);$i++)
 	</script>
 	</div>
 </div>
+
+<?php
+}
+else
+{
+	?>
+	<div class="mensaje informativo">
+<em></em>
+<p>Si realizas servicios puedes agregarlos a la biblioteca de Contrato en Chile para que otros usuarios puedan contactarte.</p>
+<a onclick="this.parentNode.remove()">X</a>
+</div>
+	<?php
+}
+?>
 </section>
 		<?php cc_footer(); ?>
 </body>

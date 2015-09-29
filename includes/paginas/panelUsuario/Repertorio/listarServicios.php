@@ -50,6 +50,7 @@ if(isset($_REQUEST['pagina']))
 					require_once('script/function.php');
 					$arg=array ('id_ent'=>$_SESSION['empresa'], 'id_est'=>5);
 					$servicios=listarServiciosSinDetalle($arg);
+					//print_r($servicios);
 					for($i=0;$i<count($servicios);$i++)
 					{
 					$url_gen=WEB_BASE."detalle/".$servicios [$i] ['nom_ent']."/".$servicios [$i] ['nom_serv'];

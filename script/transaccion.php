@@ -840,6 +840,96 @@ class transaccion
 		$mysqli->close();
 		return $listar;
 	}
+	function listarResumenFinanzas($arg)
+	{
+		require_once('db.php');
+		$db=new db();
+		$query = "SELECT COUNT(s.`id_serv`),MONTH(c.`fecha_con`) AS mes, YEAR(c.`fecha_con`) AS ano FROM contacto c, servcon sc, servicio s WHERE c.`id_con`=sc.`id_con` AND sc.`id_serv` = s.`id_serv` AND c.`id_est`='11' GROUP BY mes, ano";
+		$condicion=0;
+		if(isset($arg['id_doc']))
+		{
+			if($condicion!=0)
+			{
+				$query = $query . ' and';
+			}
+			else
+			{
+				$query = $query . ' where ';
+			}
+			$query = $query. ' id_doc='.$arg['id_doc'];
+			$condicion++;
+		}
+		if(isset($arg['id_ent']))
+		{
+			if($condicion!=0)
+			{
+				$query = $query . ' and';
+			}
+			else
+			{
+				$query = $query . ' where ';
+			}
+			$query = $query. ' id_ent='.$arg['id_ent'];
+			$condicion++;
+		}
+		if(isset($arg['id_td']))
+		{
+			if($condicion!=0)
+			{
+				$query = $query . ' and';
+			}
+			else
+			{
+				$query = $query . ' where ';
+			}
+			$query = $query. ' id_td='.$arg['id_td'];
+			$condicion++;
+		}
+		if(isset($arg['nom_doc']))
+		{
+			if($condicion!=0)
+			{
+				$query = $query . ' and';
+			}
+			else
+			{
+				$query = $query . ' where ';
+			}
+			$query = $query. ' nom_doc='.$arg['nom_doc'];
+			$condicion++;
+		}
+		if(isset($arg['url_doc']))
+		{
+			if($condicion!=0)
+			{
+				$query = $query . ' and';
+			}
+			else
+			{
+				$query = $query . ' where ';
+			}
+			$query = $query. ' url_doc='.$arg['url_doc'];
+			$condicion++;
+		}
+		$query = $query. " order by `id_doc`";
+		$listar= array();
+		$mysqli=$this->conectar();
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		while($fila = $resultado -> fetch_assoc())
+		{
+			$listar[] = array 
+			(
+				'id_doc'=>$fila['id_doc'], 
+				'id_ent'=>$fila['id_ent'],
+				'id_td'=>$fila['id_td'],
+				'nom_doc'=>$fila['nom_doc'],
+				'url_doc'=>$fila['url_doc']
+			);
+		}
+		$mysqli->close();
+		return $listar;
+	}
 	function listarDocumento($arg)
 	{
 		require_once('db.php');
@@ -3398,21 +3488,23 @@ class transaccion
 					s.id_ts=ts.id_ts AND
 					s.id_scat=sc.id_scat AND
 					sc.id_cat=c.id_cat AND
-					m.`id_med`=s.`desc_img` AND
-					( 
-						(
+					s.`desc_img`=m.`id_med` AND 
+					ent.id_est=5 ";
+			if(isset($arg['cobertura']))
+			{
+				$query = $query. " AND m.`id_med`=s.`desc_img` AND
+					( 	(
 						ent.`id_ent`=cob.`id_ent` AND 
 						cob.`id_com`=com.`id_com` AND 
 						com.`id_prov`=pr.`id_prov` AND 
 						pr.`id_reg`=r.`id_reg` AND 
-						r.`id_pais`=p.`id_pais`";
-						
-		if(isset($arg['cobertura']))
+						r.`id_pais`=p.`id_pais` and ".$arg['cobertura']. ")  
+						|| ts.`nom_ts`='Solo Online') ";
+			}
+		/*if(isset($arg['cobertura']))
 		{
 			$query = $query. " and ".$arg['cobertura'];
-		}
-		$query = $query. ")  
-						|| ts.`nom_ts`='Solo Online')";
+		}*/
 		if(isset($arg['id_ent']))
 		{
 			$query = $query. " and s.id_ent='".$arg['id_ent']."'";
@@ -3852,14 +3944,13 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "INSERT INTO `entidad`(`id_est`, `subscripcion`, `rut_sii`, `nom_ent`, `sitio`, `seo_ent`, `desc_ent`, `email_ent`, `tel_ent`, `auth_key`) VALUES 
+		$query = "INSERT INTO `entidad`(`id_est`, `subscripcion`, `rut_sii`, `nom_ent`, `sitio`, `desc_ent`, `email_ent`, `tel_ent`, `auth_key`) VALUES 
 		(
 		'".$arg['id_est']."', 
 		'".$arg['subscripcion']."', 
 		'".$arg['rut_sii']."', 
 		'".$arg['nom_ent']."', 
 		'".$arg['sitio']."', 
-		'".$arg['seo_ent']."', 
 		'".$arg['desc_ent']."', 
 		'".$arg['email_ent']."', 
 		'".$arg['tel_ent']."', 
@@ -4161,8 +4252,8 @@ class transaccion
 	{
 		require_once('db.php');
 		$db=new db();
-		$query = "INSERT INTO `servicio` (`id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `seo_serv`, `id_ts`) VALUES
-		('".$arg['is_scat']."', '".$arg['id_ent']."', '".$arg['id_est']."', '".$arg['nom_serv']."', '".$arg['desc_serv']."', '".$arg['seo_serv']."', '".$arg['id_ts']."')";
+		$query = "INSERT INTO `servicio` (`id_scat`, `id_ent`, `id_est`, `nom_serv`, `desc_serv`, `id_ts`, `desc_img`) VALUES
+		('".$arg['is_scat']."', '".$arg['id_ent']."', '".$arg['id_est']."', '".$arg['nom_serv']."', '".$arg['desc_serv']."', '".$arg['id_ts']."', '".$arg['desc_img']."')";
 		$mysqli=$this->conectar();
 		$resultado = $mysqli->real_query($query);
 		//echo $query;
@@ -6330,6 +6421,39 @@ class transaccion
 	
 	function modificarTipousuario($arg)
 	{
+		if((isset($arg['condition']) && isset($arg['data'])) || isset($arg['clause']))
+		{
+			$query="UPDATE `tipousuario` SET ";
+			require_once('db.php');
+			$db=new db();
+			$condicion=0;
+			if(isset($arg['nom_tu']))
+			{
+				$query = $query." nom_tu='".$arg['nom_tu']."'";
+			}
+			if(isset($arg['clause']))
+			{
+				$query=$query . " WHERE ".$arg['clause'];
+			}
+			else
+			{
+				$query=$query . " WHERE `".$arg['condition']."`='".$arg['data']."'";
+			}
+			$mysqli=$this->conectar();
+			$resultado = $mysqli->real_query($query);
+			if(isset($arg['affected']))
+			{
+				$resultado=$mysqli->affected_rows;
+			}
+			$mysqli->close();
+			return $resultado;
+		}
+		return false;
+	}
+	function actualizarContratos($arg)
+	{
+		//UPDATE contacto c SET c.`id_est`='11' WHERE (CURDATE() > ADDDATE(c.`fecha_con`, INTERVAL 30 DAY) AND c.`id_est`='9') || (CURDATE() > ADDDATE(c.`fecha_con`, INTERVAL 90 DAY) AND c.`id_est`='7');
+
 		if((isset($arg['condition']) && isset($arg['data'])) || isset($arg['clause']))
 		{
 			$query="UPDATE `tipousuario` SET ";
