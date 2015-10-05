@@ -801,8 +801,8 @@
 	.mensaje
 	{
 		width: 80%;
-		max-width: 800px;
-		margin: 20px 10%;
+		margin: 20px -moz-calc(10% - 8px);
+		margin: 20px calc(10% - 8px);
 		float: left;
 		border-radius: 4px;
 		color: #FFF;
